@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #
 # Common resets for OSX
 #
@@ -7,7 +8,7 @@
 #
 
 # Ask for the administrator password upfront
- sudo -v
+sudo -v
 
 # Use AirDrop over every interface. srsly this should be a default.
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
