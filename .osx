@@ -50,6 +50,8 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # in the login window
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
+# Disable transparency in the menu bar and elsewhere on Yosemite
+defaults write com.apple.universalaccess reduceTransparency -bool true
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
