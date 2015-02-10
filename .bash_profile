@@ -18,6 +18,7 @@ veupdate() {
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
 alias s='open -a "Sublime Text"'
+alias ps='open -a "/Applications/Adobe Photoshop CC 2014/Adobe Photoshop CC 2014.app"'
 
 # Color LS
 colorflag="-G"
