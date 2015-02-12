@@ -1,47 +1,17 @@
 ### Aliases
 
-#VeCommerce Update
-veupdate() {
-	BRANCH=$(git symbolic-ref --short -q HEAD)
-	if [ $BRANCH = "develop" ]
-	then
-	  git pull origin develop
-	  sudo composer self-update && composer update
-	  git submodule init && git submodule update
-	  php oil r migrate  || rm -f fuel/app/config/development/migrations.php ; php oil r migrate
-	  rm -rf fuel/app/cache/* && php oil r robots
-  	else
-	  echo you are on the wrong branch, checkout to develop and run again
-	fi	    
-}
-
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
 alias s='open -a "Sublime Text"'
 alias ps='open -a "/Applications/Adobe Photoshop CC 2014/Adobe Photoshop CC 2014.app"'
 
-# Color LS
-colorflag="-G"
-alias ls="command ls ${colorflag}"
-alias l="ls -lF ${colorflag}" # all files, in long format
-alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
-alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
-
-# Quicker navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-
 # Shortcuts to my Code folder in my home directory
 alias sites="cd ~/sites"
+alias docs="cd ~/Documents"
 
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
-
-# Colored up cat!
-# You must install Pygments first - "sudo easy_install Pygments"
-alias c='pygmentize -O style=monokai -f console256 -g'
+# Editing this file
+alias bashp='vim ~/.bash_profile && source ~/.bash_profile'
+alias vimrc='vim ~/.vimrc'
 
 # Git
 # You must install Git first - ""
@@ -59,6 +29,26 @@ alias prune='git remote prune origin'
 # Show/Hide hidden files
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
+# Color LS
+colorflag="-G"
+alias ls="command ls ${colorflag}"
+alias l="ls -lF ${colorflag}" # all files, in long format
+alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
+alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
+
+# Quicker navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# Colored up cat!
+# You must install Pygments first - "sudo easy_install Pygments"
+alias c='pygmentize -O style=monokai -f console256 -g'
 
 ### Prompt Colors
 # Modified version of @gf3’s Sexy Bash Prompt
