@@ -6,9 +6,10 @@ alias s='open -a "Sublime Text"'
 alias ps='open -a "/Applications/Adobe Photoshop CC 2014/Adobe Photoshop CC 2014.app"'
 
 # Shortcuts to my Code folder in my home directory
-alias sites="cd ~/sites"
-alias docs="cd ~/Documents"
-alias ="cd ~/Documents"
+alias sites='cd ~/sites'
+alias docs='cd ~/Documents'
+alias dot='cd ~/dotfiles'
+alias drop='cd ~/Dropbox'
 
 # Editing this file
 alias bashp='vim ~/.bash_profile && source ~/.bash_profile'
@@ -32,12 +33,12 @@ alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall 
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 # Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
+alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
 
 # Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-s
+alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+
 # Color LS
 colorflag="-G"
 alias ls="command ls ${colorflag}"
