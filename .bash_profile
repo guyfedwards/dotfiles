@@ -27,6 +27,7 @@ alias gdc='git diff --cached'
 alias gch='git checkout'
 alias gchb='git checkout -b'
 alias prune='git remote prune origin'
+alias gurl='git remote -v|sed "''s|.*git[:@]\\(.*\\).git.*|http://\\1|;s|m:|m/|''"|uniq|xargs open'
 
 # Show/Hide hidden files
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
