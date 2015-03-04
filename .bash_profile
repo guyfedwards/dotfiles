@@ -8,7 +8,7 @@ alias ps='open -a "/Applications/Adobe Photoshop CC 2014/Adobe Photoshop CC 2014
 # Shortcuts to my Code folder in my home directory
 alias sites='cd ~/sites'
 alias docs='cd ~/Documents'
-alias dot='cd ~/dotfiles'
+alias dots='cd ~/dotfiles'
 alias drop='cd ~/Dropbox'
 
 # Editing this file
