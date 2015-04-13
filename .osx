@@ -86,4 +86,7 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
 
+# Always show scrollbars
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+# Possible values: `WhenScrolling`, `Automatic` and `Always`
 
