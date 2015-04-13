@@ -62,6 +62,3 @@ let mapleader=","      " leader is comma
 map <C-n> :NERDTreeToggle<CR>
 " jk is escape
 :imap jk <Esc>
-
-" Emmet use tab to expand
-inoremap <buffer> <tab> <plug>(emmet-expand-abbr)
