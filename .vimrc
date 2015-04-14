@@ -9,6 +9,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'trusktr/seti.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/emmet-vim'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 
@@ -50,7 +51,7 @@ set ignorecase          " ignore case when searching
 set smartcase           " ignore case if search pattern is all lowercase,
                         "   case-sensitive otherwise
 " turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR> 
+nnoremap <leader><space> :set hlsearch!<CR>
 
 
 " Folding
@@ -77,7 +78,6 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-
 
 
 " Leader Shortcuts
