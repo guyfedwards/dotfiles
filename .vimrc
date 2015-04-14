@@ -16,6 +16,9 @@ call vundle#end()
 
 " Open in ~/sites by default
 cd ~/sites
+" disable auto backups and swap files
+set nobackup
+set noswapfile
 
 
 " Plugin Settings
@@ -25,6 +28,7 @@ set wildignore+=*/node_modules/**
 set wildignore+=*/.git/**
 let g:ctrlp_by_filename = 1
 
+
 " Colors
 " ----------------------
 syntax enable           " enable syntax processing
@@ -32,6 +36,7 @@ colorscheme seti
 if has('gui_running')
   set guifont=Menlo\ Regular:h16
 endif
+
 
 " Spaces & Tabs
 " ----------------------
@@ -52,6 +57,7 @@ filetype indent plugin on " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set lazyredraw          " redraw only when we need to.
 set showmatch           " highlight matching [{()}]
+set ruler               " line/character numbers bottom right
 
 
 " Searching 
