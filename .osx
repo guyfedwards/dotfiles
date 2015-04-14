@@ -90,3 +90,6 @@ defaults write com.apple.dock minimize-to-application -bool true
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
+# Set highlight color to red
+defaults write NSGlobalDomain AppleHighlightColor -string "0.8 0.870588 0.713725"
+
