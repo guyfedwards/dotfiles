@@ -10,19 +10,28 @@ Plugin 'trusktr/seti.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/emmet-vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'L9'
-Plugin 'FuzzyFinder'
+Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 
 " Open in ~/sites by default
 cd ~/sites
 
+
+" Plugin Settings
+" ----------------------
+" ctrlp - fuzzy search
+set wildignore+=*/node_modules/**
+set wildignore+=*/.git/**
+let g:ctrlp_by_filename = 1
+
 " Colors
 " ----------------------
 syntax enable           " enable syntax processing
 colorscheme seti 
-
+if has('gui_running')
+  set guifont=Menlo\ Regular:h16
+endif
 
 " Spaces & Tabs
 " ----------------------
@@ -96,6 +105,3 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " jk is escape
 :imap jk <Esc>
 
-" FuzzyFinder remaps
-nmap ,f :FufFileWithCurrentBufferDir<CR>
-nmap ,b :FufBuffer<CR>
