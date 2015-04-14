@@ -10,6 +10,8 @@ Plugin 'trusktr/seti.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/emmet-vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
 
 call vundle#end()
 
@@ -93,3 +95,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " jk is escape
 :imap jk <Esc>
+
+" FuzzyFinder remaps
+nmap ,f :FufFileWithCurrentBufferDir<CR>
+nmap ,b :FufBuffer<CR>
