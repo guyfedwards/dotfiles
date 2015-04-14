@@ -1,5 +1,21 @@
 [alias]
-	# TBC
+  # General 
+  s = status
+  a = add
+  aa = add --all
+  c = commit
+  p = push
+  pu = push -u origin
+  d = diff
+  dc = diff --cached
+
+  b = branch
+  bd = branch -D
+  ch = checkout
+  chb = checkout -b
+  
+  prune = remote prune origin
+
 [core]
 	# Use custom `.gitignore`
 	excludesfile = ~/.gitignore
@@ -27,3 +43,7 @@
 	email = guy.edwards@veinteractive.com
 [push]
 	default = simple
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true

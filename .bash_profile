@@ -16,21 +16,26 @@ alias drop='cd ~/Dropbox'
 alias bashp='vim ~/.bash_profile && source ~/.bash_profile'
 alias vimrc='vim ~/.vimrc'
 
+
 # Git
-# You must install Git first - ""
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit' # requires you to type a commit message
-alias gp='git push'
-alias gpu='git push -u origin'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gb='git branch'
-alias gbd='git branch -D'
-alias gch='git checkout'
-alias gchb='git checkout -b'
-alias prune='git remote prune origin'
-alias gurl='git remote -v|sed "''s|.*git[:@]\\(.*\\).git.*|http://\\1|;s|m:|m/|''"|uniq|xargs open'
+# Open current repo on github
+alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
+
+# Depreceted - Use git aliases instead
+du="Do not use non git aliases for git"
+
+alias gs='echo $du'
+alias ga='echo $du'
+alias gc='echo $du' # requires you to type a commit message
+alias gp='echo $du'
+alias gpu='echo $du'
+alias gd='echo $du'
+alias gdc='echo $du'
+alias gb='echo $du'
+alias gbd='echo $du'
+alias gch='echo $du'
+alias gchb='echo $du'
+alias prune='echo $du'
 
 # Show/Hide hidden files
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
