@@ -6,11 +6,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'trusktr/seti.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/emmet-vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 
@@ -32,9 +33,11 @@ let g:ctrlp_by_filename = 1
 " Colors
 " ----------------------
 syntax enable           " enable syntax processing
-colorscheme seti 
 if has('gui_running')
-  set guifont=Menlo\ Regular:h16
+  set guifont=Menlo\ Regular:h14
+  let g:solarized_termcolors=256
+  set background=dark
+  colorscheme solarized 
 endif
 
 
