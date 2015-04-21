@@ -70,8 +70,6 @@ set hlsearch            " highlight matches
 set ignorecase          " ignore case when searching
 set smartcase           " ignore case if search pattern is all lowercase,
                         "   case-sensitive otherwise
-" turn off search highlight
-nnoremap <leader><space> :set hlsearch!<CR>
 
 
 " Folding
@@ -114,3 +112,5 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " jk is escape
 :imap jk <Esc>
 
+" turn off search highlight
+nnoremap <leader><space> :set hlsearch!<CR>
