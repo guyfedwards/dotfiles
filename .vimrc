@@ -38,6 +38,7 @@ if has('gui_running')
   let g:solarized_termcolors=256
   set background=dark
   colorscheme solarized 
+  let g:solarized_bold=0
 endif
 
 
