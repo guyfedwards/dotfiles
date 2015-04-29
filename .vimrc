@@ -12,6 +12,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 
@@ -104,7 +105,7 @@ map <C-l> <C-w>l
 let mapleader=","      " leader is comma
 
 " NERDTree to Ctrl + n
-map <C-n> :NERDTreeToggle<CR>
+map <leader>nt :NERDTreeToggle<CR>
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
