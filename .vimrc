@@ -13,6 +13,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'suan/vim-instant-markdown'
 
 call vundle#end()
 
@@ -21,7 +22,8 @@ cd ~/sites
 " disable auto backups and swap files
 set nobackup
 set noswapfile
-
+" markdown formatting for .md files
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Plugin Settings
 " ----------------------
@@ -29,7 +31,8 @@ set noswapfile
 set wildignore+=*/node_modules/**
 set wildignore+=*/.git/**
 let g:ctrlp_by_filename = 1
-
+" Disable auto markdown preview. Use :InstantMarkdownPreview instead
+let g:instant_markdown_autostart = 0
 
 " Colors
 " ----------------------
@@ -104,8 +107,11 @@ map <C-l> <C-w>l
 " ----------------------
 let mapleader=","      " leader is comma
 
-" NERDTree to Ctrl + n
+" NERDTree to , + nt
 map <leader>nt :NERDTreeToggle<CR>
+
+" Markdown preview
+map <leader>md :InstantMarkdownPreview<CR>
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
