@@ -6,7 +6,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/emmet-vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/ctrlp.vim'
@@ -17,8 +16,6 @@ Plugin 'suan/vim-instant-markdown'
 
 call vundle#end()
 
-" Open in ~/sites by default
-cd ~/sites
 " disable auto backups and swap files
 set nobackup
 set noswapfile
@@ -33,6 +30,7 @@ set wildignore+=*/.git/**
 let g:ctrlp_by_filename = 1
 " Disable auto markdown preview. Use :InstantMarkdownPreview instead
 let g:instant_markdown_autostart = 0
+
 
 " Colors
 " ----------------------
@@ -94,24 +92,27 @@ nnoremap k gk
 nnoremap gV `[v`]
 
 
-" File Management
+" Window Management
 " ----------------------
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+" Open new panes to right and bottom
+set splitbelow
+set splitright
 
 
 " Leader Shortcuts
 " ----------------------
 let mapleader=","      " leader is comma
 
-" NERDTree to , + nt
-map <leader>nt :NERDTreeToggle<CR>
-
 " Markdown preview
 map <leader>md :InstantMarkdownPreview<CR>
+
+" Emmet leader
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
