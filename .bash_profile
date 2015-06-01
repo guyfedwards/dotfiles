@@ -4,7 +4,6 @@
 # "s ." will open the current directory in Sublime
 alias s='open -a "Sublime Text"'
 alias ps='open -a "/Applications/Adobe Photoshop CC 2014/Adobe Photoshop CC 2014.app"'
-alias mvim='/Applications/MacVim.app/contents/MacOS/MacVim'
 
 # Shortcuts to my Code folder in my home directory
 alias sites='cd ~/sites'
