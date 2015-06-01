@@ -35,13 +35,6 @@ let g:instant_markdown_autostart = 0
 " Colors
 " ----------------------
 syntax enable           " enable syntax processing
-if has('gui_running')
-  set guifont=Menlo\ Regular:h14
-  let g:solarized_termcolors=256
-  set background=dark
-  colorscheme solarized 
-  let g:solarized_bold=0
-endif
 
 
 " Spaces & Tabs
