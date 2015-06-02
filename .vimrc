@@ -15,12 +15,16 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'suan/vim-instant-markdown'
 
 call vundle#end()
-
+" General
+" ----------------------
 " disable auto backups and swap files
 set nobackup
 set noswapfile
 " markdown formatting for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+set laststatus=2
+set encoding=utf-8
+
 
 " Plugin Settings
 " ----------------------
@@ -35,6 +39,11 @@ let g:instant_markdown_autostart = 0
 " Colors
 " ----------------------
 syntax enable           " enable syntax processing
+set background=dark
+colorscheme solarized
+" airline theme
+let g:airline_theme='solarized'
+let g:airline_powerline_fonts = 1
 
 
 " Spaces & Tabs
