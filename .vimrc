@@ -97,6 +97,12 @@ set splitbelow
 set splitright
 
 
+" Syntax related
+" ----------------------
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+
 " Leader Shortcuts
 " ----------------------
 let mapleader=","      " leader is comma
