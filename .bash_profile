@@ -9,6 +9,7 @@ alias ps='open -a "/Applications/Adobe Photoshop CC 2014/Adobe Photoshop CC 2014
 alias sites='cd ~/sites'
 alias docs='cd ~/Documents'
 alias dots='cd ~/dotfiles'
+alias dotfiles='cd ~/dotfiles'
 alias drop='cd ~/Dropbox'
 
 # Editing this file
