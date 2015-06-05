@@ -25,6 +25,7 @@ set noswapfile
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 set laststatus=2
 set encoding=utf-8
+set backspace=2
 
 
 " Plugin Settings
@@ -136,4 +137,4 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nnoremap <leader><space> :set hlsearch!<CR>
 
 " toggle scrolloff between 999 and 0. 999 keeps line center screen
-:nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+:nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
