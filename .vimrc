@@ -13,6 +13,7 @@ Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'suan/vim-instant-markdown'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 " General
@@ -31,7 +32,6 @@ set encoding=utf-8
 " ctrlp - fuzzy search
 set wildignore+=*/node_modules/**
 set wildignore+=*/.git/**
-let g:ctrlp_by_filename = 1
 " Disable auto markdown preview. Use :InstantMarkdownPreview instead
 let g:instant_markdown_autostart = 0
 
@@ -116,6 +116,9 @@ let g:html_indent_tags = 'li\|p'
 " ----------------------
 let mapleader=","      " leader is comma
 
+" Switch between last two files
+map <leader><leader> <c-^>
+
 " Markdown preview
 map <leader>md :InstantMarkdownPreview<CR>
 
@@ -131,3 +134,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " turn off search highlight
 nnoremap <leader><space> :set hlsearch!<CR>
+
+" toggle scrolloff between 999 and 0. 999 keeps line center screen
+:nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
