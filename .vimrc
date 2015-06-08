@@ -111,7 +111,10 @@ set splitright
 " ----------------------
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
-
+" Liquid read as js/css/html
+autocmd BufRead,BufNewFile *.html.liquid set filetype=html
+autocmd BufRead,BufNewFile *.css/liquid set filetype=css
+autocmd BufRead,BufNewFile *.js.liquid set filetype=javascript
 
 " Leader Shortcuts
 " ----------------------
