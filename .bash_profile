@@ -1,5 +1,8 @@
 ### Aliases
 
+# Nodeschool
+alias funcjs='functional-javascript'
+
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
 alias s='open -a "Sublime Text"'
@@ -47,6 +50,9 @@ alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && k
 
 # Lock the screen (when going AFK)
 alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+
+# Flush DNS caches
+alias flushdns='sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches;echo "flushed"'
 
 # Color LS
 colorflag="-G"
