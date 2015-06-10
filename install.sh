@@ -2,7 +2,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files=".bash_profile .bashrc .gitconfig .gitignore .hushlogin .osx .vimrc z.sh"        # list of files/folders to symlink in homedir
+files=".bash_profile .bashrc .gitconfig .gitignore .hushlogin .tmux.conf .osx .vimrc z.sh"        # list of files/folders to symlink in homedir
 
 ##########
 
@@ -25,4 +25,4 @@ for file in $files; do
 done
 
 source ~/.bashrc
-source ~/.vimrc
+source ~/.bash_profile
