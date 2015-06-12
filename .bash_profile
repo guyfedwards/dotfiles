@@ -1,5 +1,12 @@
-### Aliases
+export PATH=$(brew --prefix josegonzalez/php/php55)/bin:$PATH
 
+# Export Path 
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
+
+# Use gnu tools instead 
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+
+### Aliases
 # Nodeschool
 alias funcjs='functional-javascript'
 
@@ -145,4 +152,3 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 # init z! (https://github.com/rupa/z)
 . ~/z.sh
-export PATH="$(brew --prefix josegonzalez/php/php55)/bin:$PATH"
