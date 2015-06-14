@@ -143,3 +143,6 @@ nnoremap <leader><space> :set hlsearch!<CR>
 
 " toggle scrolloff between 999 and 0. 999 keeps line center screen
 :nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
+
+" toggle paste mode
+set pastetoggle=<leader>p
