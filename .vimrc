@@ -14,8 +14,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-surround'
-Plugin 'jiangmiao/auto-pairs'
 Plugin 'matchit.zip'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/nerdcommenter'
+
 
 call vundle#end()
 " General
@@ -37,6 +39,7 @@ set wildignore+=*/node_modules/**
 set wildignore+=*/.git/**
 " Disable auto markdown preview. Use :InstantMarkdownPreview instead
 let g:instant_markdown_autostart = 0
+let b:javascript_fold = 0
 
 
 " Colors
