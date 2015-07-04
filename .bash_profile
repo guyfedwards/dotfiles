@@ -1,10 +1,19 @@
 export PATH=$(brew --prefix josegonzalez/php/php55)/bin:$PATH
 
-# Export Path 
+# Export Path
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
 
-# Use gnu tools instead 
+# Use gnu tools instead
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
 
 ### Aliases
 # Nodeschool
@@ -14,15 +23,18 @@ alias funcjs='functional-javascript'
 # "s ." will open the current directory in Sublime
 alias s='open -a "Sublime Text"'
 alias ps='open -a "/Applications/Adobe Photoshop CC 2014/Adobe Photoshop CC 2014.app"'
+alias preview='open -a Preview'
+alias f='open -a Finder'
+alias finder='open -a Finder'
 
-# Shortcuts to my Code folder in my home directory
+# Shortcuts to folders
 alias sites='cd ~/sites'
 alias docs='cd ~/Documents'
 alias dots='cd ~/dotfiles'
 alias dotfiles='cd ~/dotfiles'
 alias drop='cd ~/Dropbox'
 
-# Editing this file
+# Editing dotfiles
 alias bashp='vim ~/.bash_profile && source ~/.bash_profile'
 alias vimrc='vim ~/.vimrc'
 
