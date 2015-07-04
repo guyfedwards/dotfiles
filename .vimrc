@@ -30,6 +30,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 set laststatus=2
 set encoding=utf-8
 set backspace=2
+" trim whitespace
+autocmd BufWritePre * :%s/\s\+$//e
 
 
 " Plugin Settings
@@ -74,7 +76,7 @@ set showmatch           " highlight matching [{()}]
 set ruler               " line/character numbers bottom right
 
 
-" Searching 
+" Searching
 " ----------------------
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
