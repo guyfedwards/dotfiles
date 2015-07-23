@@ -24,6 +24,7 @@ alias funcjs='functional-javascript'
 alias s='open -a "Sublime Text"'
 alias ps='open -a "/Applications/Adobe Photoshop CC 2014/Adobe Photoshop CC 2014.app"'
 alias preview='open -a Preview'
+alias chrome='open -a google\ chrome'
 alias f='open -a Finder'
 alias finder='open -a Finder'
 
