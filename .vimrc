@@ -10,13 +10,14 @@ Plugin 'mattn/emmet-vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'matchit.zip'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'chriskempson/vim-tomorrow-theme'
 
 
 call vundle#end()
@@ -50,9 +51,10 @@ let g:NERDTreeChDirMode=2
 syntax enable           " enable syntax processing
 let base16colorspace=256
 set background=dark
-colorscheme solarized
+"colorscheme solarized
+colorscheme tomorrow-night
 " airline theme
-let g:airline_theme='solarized'
+let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
 
 
