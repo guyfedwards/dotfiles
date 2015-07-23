@@ -42,11 +42,13 @@ set wildignore+=*/.git/**
 " Disable auto markdown preview. Use :InstantMarkdownPreview instead
 let g:instant_markdown_autostart = 0
 let b:javascript_fold = 0
+let g:NERDTreeChDirMode=2
 
 
 " Colors
 " ----------------------
 syntax enable           " enable syntax processing
+let base16colorspace=256
 set background=dark
 colorscheme solarized
 " airline theme
