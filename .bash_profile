@@ -74,6 +74,9 @@ alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Flush DNS caches
 alias flushdns='sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches;echo "flushed"'
 
+# General
+alias yt='youtube-dl'
+
 # Color LS
 colorflag="-G"
 alias ls="command ls ${colorflag}"
