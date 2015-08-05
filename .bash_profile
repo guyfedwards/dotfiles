@@ -19,6 +19,9 @@ shopt -s cdspell
 # Nodeschool
 alias funcjs='functional-javascript'
 
+# simple server
+alias server='python -m SimpleHTTPServer'
+
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
 alias s='open -a "Sublime Text"'
