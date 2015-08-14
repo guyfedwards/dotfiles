@@ -44,7 +44,7 @@ set wildignore+=*/.git/**
 let g:instant_markdown_autostart = 0
 let b:javascript_fold = 0
 let g:NERDTreeChDirMode=2
-let g:airline_detect_whitespace=0
+let g:airline#extensions#whitespace#enabled = 1
 
 
 " Colors
