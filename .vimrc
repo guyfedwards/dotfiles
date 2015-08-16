@@ -147,7 +147,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " jk is escape
 :inoremap jk <Esc>
-:inoremap kj <Esc>
 
 " turn off search highlight
 nnoremap <leader><space> :set hlsearch!<CR>
