@@ -53,7 +53,7 @@ syntax enable           " enable syntax processing
 let base16colorspace=256
 set background=dark
 "colorscheme solarized
-colorscheme tomorrow-night
+colorscheme Tomorrow-Night
 " airline theme
 let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
