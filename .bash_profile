@@ -1,10 +1,11 @@
-export PATH=$(brew --prefix josegonzalez/php/php55)/bin:$PATH
 
-# Export Path
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
-
-# Use gnu tools instead
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+# check if OSX
+if [[ $OSTYPE == darwin* ]]; then
+  export PATH=$(brew --prefix josegonzalez/php/php55)/bin:$PATH
+  export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
+  # Use gnu tools instead
+  export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+fi
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
@@ -47,7 +48,7 @@ alias vimrc='vim ~/.vimrc'
 # Open current repo on github
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 
-# Depreceted - Use git aliases instead
+# Deprecated - Use git aliases instead
 du="Do not use non git aliases for git"
 
 alias gs='echo $du'
@@ -63,19 +64,21 @@ alias gch='echo $du'
 alias gchb='echo $du'
 alias prune='echo $du'
 
-# Show/Hide hidden files
-alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+if [[ $OSTYPE == darwin* ]]; then
+  # Show/Hide hidden files
+  alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+  alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
-alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
+  # Hide/show all desktop icons (useful when presenting)
+  alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
+  alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
 
-# Lock the screen (when going AFK)
-alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+  # Lock the screen (when going AFK)
+  alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 
-# Flush DNS caches
-alias flushdns='sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches;echo "flushed"'
+  # Flush DNS caches
+  alias flushdns='sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches;echo "flushed"'
+fi
 
 # General
 alias yt='youtube-dl'
