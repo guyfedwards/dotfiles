@@ -15,8 +15,11 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'matchit.zip'
 Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'mustache/vim-mustache-handlebars'
+
 
 
 call vundle#end()
@@ -155,3 +158,6 @@ nnoremap <leader><space> :set hlsearch!<CR>
 
 " toggle paste mode
 set pastetoggle=<leader>p
+
+" Nerdtree toggle
+map <leader>nt :NERDTreeToggle<CR>
