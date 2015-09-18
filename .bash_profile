@@ -23,14 +23,12 @@ alias funcjs='functional-javascript'
 # simple server
 alias server='python -m SimpleHTTPServer'
 
-# Open specified files in Sublime Text
-# "s ." will open the current directory in Sublime
-alias s='open -a "Sublime Text"'
 alias ps='open -a "/Applications/Adobe Photoshop CC 2014/Adobe Photoshop CC 2014.app"'
 alias preview='open -a Preview'
 alias chrome='open -a google\ chrome'
 alias f='open -a Finder'
 alias finder='open -a Finder'
+alias ql='qlmanage -p' # quicklook
 
 # Shortcuts to folders
 alias sites='cd ~/sites'
@@ -47,6 +45,8 @@ alias vimrc='vim ~/.vimrc'
 # Git
 # Open current repo on github
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
+# hub === git
+eval "$(hub alias -s)"
 
 # Deprecated - Use git aliases instead
 du="Do not use non git aliases for git"
