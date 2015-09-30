@@ -1,5 +1,5 @@
 [alias]
-  # General 
+  # General
   s = status
   a = add
   aa = add --all
@@ -13,7 +13,7 @@
   bd = branch -D
   ch = checkout
   chb = checkout -b
-  
+
   prune = remote prune origin
 
 [core]
@@ -30,17 +30,17 @@
 	local = yellow
 	remote = green
 [color "diff"]
-	meta = yellow 
-	frag = magenta 
-	old = red 
-	new = green 
+	meta = yellow
+	frag = magenta
+	old = red
+	new = green
 [color "status"]
 	added = yellow
 	changed = green
 	untracked = cyan
 [user]
 	name = guyfedwards
-	email = guy.edwards@veinteractive.com
+	email = guyfedwards@gmail.com
 [push]
 	default = simple
 [filter "hawser"]

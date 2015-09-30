@@ -1,7 +1,6 @@
 
 # check if OSX
 if [[ $OSTYPE == darwin* ]]; then
-  export PATH=$(brew --prefix josegonzalez/php/php55)/bin:$PATH
   export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
   # Use gnu tools instead
   export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
