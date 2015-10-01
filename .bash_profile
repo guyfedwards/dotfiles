@@ -1,4 +1,3 @@
-
 # check if OSX
 if [[ $OSTYPE == darwin* ]]; then
   export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
@@ -187,3 +186,5 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 # init z! (https://github.com/rupa/z)
 . ~/z.sh
+
+[ -n "$PS1" ] && source ~/.bashrc
