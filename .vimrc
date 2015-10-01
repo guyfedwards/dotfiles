@@ -33,6 +33,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 set laststatus=2
 set encoding=utf-8
 set backspace=2
+set relativenumber
 " trim whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
