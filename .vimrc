@@ -33,7 +33,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 set laststatus=2
 set encoding=utf-8
 set backspace=2
-set relativenumber
 " trim whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
@@ -47,6 +46,7 @@ set wildignore+=*/.git/**
 let g:instant_markdown_autostart = 0
 let b:javascript_fold = 0
 let g:NERDTreeChDirMode=2
+let NERDTreeShowHidden=1
 let g:airline#extensions#whitespace#enabled = 1
 
 
