@@ -62,6 +62,19 @@ alias gch='echo $du'
 alias gchb='echo $du'
 alias prune='echo $du'
 
+
+# tmux aliases
+alias tm='tmux'
+alias tml='tmux ls'
+alias tma='tmux attach -t'
+alias tmk='tmux kill-session -t'
+alias tmn="tmux new-session \; \
+  split-window -v -l 24 \; split-window -h -l 84 \; \
+  select-pane -t 1 \; split-window -h -l 84 \; \
+  select-pane -t 0 \; split-window -v -l 24 \; split-window -h -l 84 \; \
+  select-pane -t 1 \; split-window -h -l 84 \; select-pane -t 0 \;"
+
+
 if [[ $OSTYPE == darwin* ]]; then
   # Show/Hide hidden files
   alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
