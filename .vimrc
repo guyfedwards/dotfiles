@@ -18,7 +18,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'ustache/vim-mustache-handlebars'
 
 
 
@@ -131,6 +131,7 @@ let g:html_indent_tags = 'li\|p'
 autocmd BufRead,BufNewFile *.html.liquid set filetype=html
 autocmd BufRead,BufNewFile *.css/liquid set filetype=css
 autocmd BufRead,BufNewFile *.js.liquid set filetype=javascript
+autocmd BufRead,BufNewFile *.hbs set filetype=mustache
 
 " Leader Shortcuts
 " ----------------------
