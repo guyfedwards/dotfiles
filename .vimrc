@@ -18,7 +18,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'ustache/vim-mustache-handlebars'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'scrooloose/syntastic'
 
 
 
