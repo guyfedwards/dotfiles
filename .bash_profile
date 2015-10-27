@@ -21,7 +21,6 @@ alias funcjs='functional-javascript'
 # simple server
 alias server='python -m SimpleHTTPServer'
 
-alias ps='open -a "/Applications/Adobe Photoshop CC 2014/Adobe Photoshop CC 2014.app"'
 alias preview='open -a Preview'
 alias chrome='open -a google\ chrome'
 alias f='open -a Finder'
