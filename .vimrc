@@ -20,7 +20,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'scrooloose/syntastic'
-
+Plugin 'sirver/ultisnips'
+Plugin 'valloric/youcompleteme'
 
 
 call vundle#end()
@@ -49,6 +50,13 @@ let b:javascript_fold = 0
 let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=1
 let g:airline#extensions#whitespace#enabled = 1
+" YouCompleteMe
+let g:ycm_filetype_blacklist = {
+  \ 'html' : 1
+  \}
+let g:ycm_filetype_specific_completion_to_disable = {
+  \ 'html': 1
+  \}
 
 
 " Colors
