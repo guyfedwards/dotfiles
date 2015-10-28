@@ -22,6 +22,8 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'scrooloose/syntastic'
 Plugin 'sirver/ultisnips'
 Plugin 'valloric/youcompleteme'
+Plugin 'rking/ag.vim'
+
 
 
 call vundle#end()
