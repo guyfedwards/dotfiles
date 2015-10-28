@@ -94,6 +94,7 @@ set wildmenu            " visual autocomplete for command menu
 set lazyredraw          " redraw only when we need to.
 set showmatch           " highlight matching [{()}]
 set ruler               " line/character numbers bottom right
+set colorcolumn=81      " show line at 81 chars, stop before the line
 
 
 " Searching
