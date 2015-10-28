@@ -9,10 +9,18 @@
   d = diff
   dc = diff --cached
 
+  # branch
   b = branch
   bd = branch -D
   ch = checkout
   chb = checkout -b
+
+  # stash
+  st = stash
+  sts = stash save
+  stl = stash list
+  sta = "!f() { git stash apply stash@{$1}; }; f"
+  std = "!f() { git stash drop stash@{$1}; }; f"
 
   prune = remote prune origin
 
