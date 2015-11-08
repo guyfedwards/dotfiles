@@ -15,6 +15,7 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'matchit.zip'
 Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'chriskempson/vim-tomorrow-theme'
@@ -23,6 +24,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'sirver/ultisnips'
 Plugin 'valloric/youcompleteme'
 Plugin 'rking/ag.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 
 
@@ -161,9 +164,6 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
-" jk is escape
-:inoremap jk <Esc>
 
 " turn off search highlight
 nnoremap <leader><space> :set hlsearch!<CR>
