@@ -26,7 +26,7 @@ Plugin 'valloric/youcompleteme'
 Plugin 'rking/ag.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'nathanaelkane/vim-indent-guides'
-
+Plugin 'ervandew/supertab'
 
 
 call vundle#end()
@@ -42,6 +42,7 @@ set encoding=utf-8
 set backspace=2
 " trim whitespace
 autocmd BufWritePre * :%s/\s\+$//e
+set hidden " hide buffers instead of closing
 
 
 " Plugin Settings
@@ -62,6 +63,13 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_filetype_specific_completion_to_disable = {
   \ 'html': 1
   \}
+" using supertab to allow YCM and UltiSnips to play nice
+" Set shortcuts for ycm
+let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+" if tab doesn't expand snippet, its passed to supertab which calls YCM
+" shortcut from above
+let g:SuperTabDefaultCompletionType = '<C-Tab>'
 
 
 " Colors
@@ -159,7 +167,7 @@ map <leader><leader> <c-^>
 map <leader>md :InstantMarkdownPreview<CR>
 
 " Emmet leader
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+"imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -176,3 +184,7 @@ set pastetoggle=<leader>p
 
 " Nerdtree toggle
 map <leader>nt :NERDTreeToggle<CR>
+
+" select text that was jsut pasted
+nnoremap <leader>v V`]
+
