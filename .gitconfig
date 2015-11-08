@@ -21,6 +21,7 @@
   stl = stash list
   sta = "!f() { git stash apply stash@{$1}; }; f"
   std = "!f() { git stash drop stash@{$1}; }; f"
+  stsh = "!f() { git stash show -p stash@{$1}; }; f"
 
   prune = remote prune origin
 
