@@ -3,8 +3,8 @@
 " https://github.com/gmarik/vundle
 " ----------------------
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
+call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'airblade/vim-gitgutter'
@@ -27,9 +27,9 @@ Plugin 'rking/ag.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ervandew/supertab'
-
-
 call vundle#end()
+
+
 " General
 " ----------------------
 " disable auto backups and swap files
@@ -70,6 +70,7 @@ let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
 " if tab doesn't expand snippet, its passed to supertab which calls YCM
 " shortcut from above
 let g:SuperTabDefaultCompletionType = '<C-Tab>'
+let g:delimitMate_expand_cr=1
 
 
 " Colors
@@ -106,6 +107,10 @@ set lazyredraw          " redraw only when we need to.
 set showmatch           " highlight matching [{()}]
 set ruler               " line/character numbers bottom right
 set colorcolumn=81      " show line at 81 chars, stop before the line
+" change cursor in different modes
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 
 " Searching
