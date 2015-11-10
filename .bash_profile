@@ -14,6 +14,10 @@ shopt -s histappend
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
 
+# git completion
+# `$_` takes last parameter of previous command
+test -f ~/.git-completion.bash && . $_
+
 ### Aliases
 # Nodeschool
 alias funcjs='functional-javascript'
