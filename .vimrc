@@ -18,7 +18,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'chriskempson/vim-tomorrow-theme'
+"Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'chriskempson/base16-vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'scrooloose/syntastic'
 Plugin 'sirver/ultisnips'
@@ -42,7 +43,13 @@ set encoding=utf-8
 set backspace=2
 " trim whitespace
 autocmd BufWritePre * :%s/\s\+$//e
-set hidden " hide buffers instead of closing
+" tell it to use an undo file
+set undofile
+" " set a directory to store the undo history
+set undodir=~/.vimundo/
+" offset scroll few lines before bottom
+set scrolloff=3
+
 
 
 " Plugin Settings
@@ -50,12 +57,15 @@ set hidden " hide buffers instead of closing
 " ctrlp - fuzzy search
 set wildignore+=*/node_modules/**
 set wildignore+=*/.git/**
+let g:ctrlp_custom_ignore='dist'
 " Disable auto markdown preview. Use :InstantMarkdownPreview instead
 let g:instant_markdown_autostart = 0
 let b:javascript_fold = 0
 let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=1
 let g:airline#extensions#whitespace#enabled = 1
+let g:airline_theme='base16'
+let g:airline_powerline_fonts = 1
 " YouCompleteMe
 let g:ycm_filetype_blacklist = {
   \ 'html' : 1
@@ -71,6 +81,7 @@ let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
 " shortcut from above
 let g:SuperTabDefaultCompletionType = '<C-Tab>'
 let g:delimitMate_expand_cr=1
+let g:syntastic_html_tidy_exec = 'tidy5' " use tidy-html5
 
 
 " Colors
@@ -79,10 +90,8 @@ syntax enable           " enable syntax processing
 let base16colorspace=256
 set background=dark
 "colorscheme solarized
-colorscheme Tomorrow-Night
-" airline theme
-let g:airline_theme='tomorrow'
-let g:airline_powerline_fonts = 1
+"colorscheme Tomorrow-Night
+colorscheme base16-eighties
 set t_ut=
 
 
