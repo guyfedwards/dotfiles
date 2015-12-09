@@ -173,6 +173,29 @@ function parse_git_branch() {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
+# Change this symbol to something sweet.
+# (http://en.wikipedia.org/wiki/Unicode_symbols)
+symbol="\[$ORANGE\]❯\[$RESET\] "
+
+
+# show host if connected through ssh
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    if [ "$color_prompt" = yes ]; then
+        host="\u@\[\033[1;34m\]\h\[\033[00m\]"
+    else
+        host="\u@\h"
+    fi
+fi
+
+prompt_user="\[${BOLD}${MAGENTA}\]\u$host"
+prompt_cwd="\[$WHITE\]in \[$GREEN\]\w"
+prompt_git="\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)"
+prompt_symbol="\[$WHITE\]\n$symbol"
+
+export PS1="$prompt_user $prompt_cwd\[$WHITE\]$prompt_git$prompt_symbol\[$RESET\]"
+export PS2="\[$ORANGE\]→ \[$RESET\]"
+
+
 # Colored man pages
 man() {
     env \
@@ -185,14 +208,6 @@ man() {
       LESS_TERMCAP_us=$(printf "\e[1;32m") \
         man "$@"
 }
-
-
-# Change this symbol to something sweet.
-# (http://en.wikipedia.org/wiki/Unicode_symbols)
-symbol="☲ "
-
-export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n$symbol\[$RESET\]"
-export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 
 ### Misc
