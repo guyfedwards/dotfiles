@@ -28,6 +28,7 @@ Plugin 'rking/ag.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ervandew/supertab'
+Plugin 'mxw/vim-jsx'
 call vundle#end()
 
 
@@ -82,6 +83,7 @@ let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-Tab>'
 let g:delimitMate_expand_cr=1
 let g:syntastic_html_tidy_exec = 'tidy5' " use tidy-html5
+let g:jsx_ext_required = 0
 
 
 " Colors
@@ -179,9 +181,6 @@ map <leader><leader> <c-^>
 
 " Markdown preview
 map <leader>md :InstantMarkdownPreview<CR>
-
-" Emmet leader
-"imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
