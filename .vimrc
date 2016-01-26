@@ -83,6 +83,7 @@ let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-Tab>'
 let g:delimitMate_expand_cr=1
 let g:syntastic_html_tidy_exec = 'tidy5' " use tidy-html5
+autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard']
 let g:jsx_ext_required = 0
 
 
