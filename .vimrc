@@ -3,6 +3,8 @@
 " https://github.com/gmarik/vundle
 " ----------------------
 set rtp+=~/.vim/bundle/Vundle.vim
+set nocompatible " be iMproved, required
+filetype off     " required for Vundle
 
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
@@ -62,8 +64,10 @@ let g:ctrlp_custom_ignore='dist'
 " Disable auto markdown preview. Use :InstantMarkdownPreview instead
 let g:instant_markdown_autostart = 0
 let b:javascript_fold = 0
+" NERDTree
 let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=1
+" airline
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline_theme='base16'
 let g:airline_powerline_fonts = 1
@@ -82,6 +86,7 @@ let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
 " shortcut from above
 let g:SuperTabDefaultCompletionType = '<C-Tab>'
 let g:delimitMate_expand_cr=1
+" syntastic
 let g:syntastic_html_tidy_exec = 'tidy5' " use tidy-html5
 autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard']
 let g:jsx_ext_required = 0
