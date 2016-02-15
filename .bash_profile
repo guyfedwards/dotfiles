@@ -25,6 +25,9 @@ alias funcjs='functional-javascript'
 # simple server
 alias server='python -m SimpleHTTPServer'
 
+# VIM
+alias v='vim'
+
 alias preview='open -a Preview'
 alias chrome='open -a google\ chrome'
 alias f='open -a Finder'
@@ -76,6 +79,7 @@ alias tmn="tmux new-session \; \
   select-pane -t 1 \; split-window -h -l 84 \; \
   select-pane -t 0 \; split-window -v -l 24 \; split-window -h -l 84 \; \
   select-pane -t 1 \; split-window -h -l 84 \; select-pane -t 0 \;"
+alias tmfc='./tmux/session-scripts/tmux_fc.sh';
 
 
 if [[ $OSTYPE == darwin* ]]; then
