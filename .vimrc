@@ -10,8 +10,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-surround'
@@ -28,9 +29,10 @@ Plugin 'sirver/ultisnips'
 Plugin 'valloric/youcompleteme'
 Plugin 'rking/ag.vim'
 Plugin 'Raimondi/delimitMate'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ervandew/supertab'
+Plugin 'digitaltoad/vim-pug'
 Plugin 'mxw/vim-jsx'
+Plugin 'fatih/vim-go'
 call vundle#end()
 
 
