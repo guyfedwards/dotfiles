@@ -25,6 +25,9 @@
 
   prune = remote prune origin
 
+[branch]
+  autosetuprebase = always
+
 [core]
 	# Use custom `.gitignore`
 	excludesfile = ~/.gitignore
