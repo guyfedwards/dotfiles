@@ -33,6 +33,7 @@ alias chrome='open -a google\ chrome'
 alias f='open -a Finder'
 alias finder='open -a Finder'
 alias ql='qlmanage -p' # quicklook
+alias sqli='sequelize'
 
 # Shortcuts to folders
 alias sites='cd ~/sites'

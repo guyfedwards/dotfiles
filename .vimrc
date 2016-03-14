@@ -20,7 +20,6 @@ Plugin 'matchit.zip'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
 "Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'chriskempson/base16-vim'
 Plugin 'mustache/vim-mustache-handlebars'
@@ -33,6 +32,8 @@ Plugin 'ervandew/supertab'
 Plugin 'digitaltoad/vim-pug'
 Plugin 'mxw/vim-jsx'
 Plugin 'fatih/vim-go'
+Plugin 'moll/vim-node'
+Plugin 'yggdroot/indentline'
 call vundle#end()
 
 
@@ -43,6 +44,11 @@ set nobackup
 set noswapfile
 " markdown formatting for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" source vimrc on save
+augroup autosourcing
+  autocmd!
+  autocmd BufWritePost .vimrc source %
+augroup END
 set laststatus=2
 set encoding=utf-8
 set backspace=2
@@ -54,7 +60,6 @@ set undofile
 set undodir=~/.vimundo/
 " offset scroll few lines before bottom
 set scrolloff=3
-
 
 
 " Plugin Settings
@@ -92,6 +97,17 @@ let g:delimitMate_expand_cr=1
 let g:syntastic_html_tidy_exec = 'tidy5' " use tidy-html5
 autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard']
 let g:jsx_ext_required = 0
+" use ag over grep
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+let g:indentLine_char = '.'
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '.'
+let g:indentLine_bufNameExclude = ['*.jade']
 
 
 " Colors
@@ -130,6 +146,9 @@ set colorcolumn=81      " show line at 81 chars, stop before the line
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+if has('nvim')
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+endif
 
 
 " Searching
@@ -179,6 +198,12 @@ autocmd BufRead,BufNewFile *.html.liquid set filetype=html
 autocmd BufRead,BufNewFile *.css/liquid set filetype=css
 autocmd BufRead,BufNewFile *.js.liquid set filetype=javascript
 autocmd BufRead,BufNewFile *.hbs set filetype=mustache
+
+
+" Commands
+" ----------------------
+nnoremap \ :Ag!<SPACE>
+
 
 " Leader Shortcuts
 " ----------------------
