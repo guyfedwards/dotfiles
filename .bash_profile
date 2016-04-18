@@ -26,7 +26,7 @@ alias funcjs='functional-javascript'
 alias server='python -m SimpleHTTPServer'
 
 # VIM
-alias v='vim'
+alias v='nvim'
 
 alias preview='open -a Preview'
 alias chrome='open -a google\ chrome'
@@ -34,6 +34,7 @@ alias f='open -a Finder'
 alias finder='open -a Finder'
 alias ql='qlmanage -p' # quicklook
 alias sqli='sequelize'
+alias py='python'
 
 # Shortcuts to folders
 alias sites='cd ~/sites'

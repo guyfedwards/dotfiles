@@ -24,7 +24,7 @@ Plugin 'scrooloose/nerdcommenter'
 "Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'chriskempson/base16-vim'
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'sirver/ultisnips'
 Plugin 'valloric/youcompleteme'
 Plugin 'rking/ag.vim'
@@ -35,6 +35,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'fatih/vim-go'
 Plugin 'moll/vim-node'
 Plugin 'yggdroot/indentline'
+Plugin 'benekastah/neomake'
 call vundle#end()
 
 
@@ -51,7 +52,6 @@ augroup autosourcing
   autocmd BufWritePost .vimrc source %
 augroup END
 set laststatus=2
-set encoding=utf-8
 set backspace=2
 " trim whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -94,10 +94,16 @@ let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
 " shortcut from above
 let g:SuperTabDefaultCompletionType = '<C-Tab>'
 let g:delimitMate_expand_cr=1
-" syntastic
-let g:syntastic_html_tidy_exec = 'tidy5' " use tidy-html5
-autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard']
+ "syntastic
+"let g:syntastic_html_tidy_exec = 'tidy5'  use tidy-html5
+"autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard']
 let g:jsx_ext_required = 0
+"neomake
+autocmd! BufWritePost,BufReadPost * Neomake
+let g:neomake_javascript_enabled_makers = ['jshint']
+if filereadable(glob(".eslintrc.*"))
+  let g:neomake_javascript_enabled_makers = ['eslint']
+endif
 " use ag over grep
 if executable('ag')
   " Use ag over grep
@@ -116,7 +122,6 @@ let g:indentLine_bufNameExclude = ['*.jade']
 syntax enable           " enable syntax processing
 let base16colorspace=256
 set background=dark
-"colorscheme solarized
 "colorscheme Tomorrow-Night
 colorscheme base16-eighties
 set t_ut=
