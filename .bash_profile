@@ -47,6 +47,9 @@ alias drop='cd ~/Dropbox'
 alias bashp='vim ~/.bash_profile && source ~/.bash_profile'
 alias vimrc='vim ~/.vimrc'
 
+# Npm
+alias nis='npm install --save'
+alias nid='npm install --save-dev'
 
 # Git
 # Open current repo on github

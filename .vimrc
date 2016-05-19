@@ -14,17 +14,15 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-eunuch'
 Plugin 'matchit.zip'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-"Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'chriskempson/base16-vim'
 Plugin 'mustache/vim-mustache-handlebars'
-"Plugin 'scrooloose/syntastic'
 Plugin 'sirver/ultisnips'
 Plugin 'valloric/youcompleteme'
 Plugin 'rking/ag.vim'
@@ -34,8 +32,11 @@ Plugin 'digitaltoad/vim-pug'
 Plugin 'mxw/vim-jsx'
 Plugin 'fatih/vim-go'
 Plugin 'moll/vim-node'
-Plugin 'yggdroot/indentline'
+"Plugin 'yggdroot/indentline'
 Plugin 'benekastah/neomake'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'plasticboy/vim-markdown'
 call vundle#end()
 
 
@@ -69,8 +70,6 @@ set scrolloff=3
 set wildignore+=*/node_modules/**
 set wildignore+=*/.git/**
 let g:ctrlp_custom_ignore='dist'
-" Disable auto markdown preview. Use :InstantMarkdownPreview instead
-let g:instant_markdown_autostart = 0
 let b:javascript_fold = 0
 " NERDTree
 let g:NERDTreeChDirMode=2
@@ -109,12 +108,14 @@ if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore "node_modules" -g ""'
 endif
 let g:indentLine_char = '.'
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '.'
 let g:indentLine_bufNameExclude = ['*.jade']
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 
 " Colors
@@ -217,9 +218,6 @@ let mapleader=","      " leader is comma
 
 " Switch between last two files
 map <leader><leader> <c-^>
-
-" Markdown preview
-map <leader>md :InstantMarkdownPreview<CR>
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
