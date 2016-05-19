@@ -1,43 +1,40 @@
-"
-" Vundle
-" https://github.com/gmarik/vundle
-" ----------------------
-set rtp+=~/.vim/bundle/Vundle.vim
-set nocompatible " be iMproved, required
-filetype off     " required for Vundle
+call plug#begin('~/.vim/plugged')
 
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-eunuch'
-Plugin 'matchit.zip'
-Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'scrooloose/nerdtree'
-Plugin 'chriskempson/base16-vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'sirver/ultisnips'
-Plugin 'valloric/youcompleteme'
-Plugin 'rking/ag.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'ervandew/supertab'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'mxw/vim-jsx'
-Plugin 'fatih/vim-go'
-Plugin 'moll/vim-node'
-"Plugin 'yggdroot/indentline'
-Plugin 'benekastah/neomake'
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
-Plugin 'plasticboy/vim-markdown'
-call vundle#end()
+" General Vim
+Plug 'airblade/vim-gitgutter'
+Plug 'benekastah/neomake'
+Plug 'chriskempson/base16-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ervandew/supertab'
+Plug 'matchit.zip'
+Plug 'Raimondi/delimitMate'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree' , { 'on':  'NERDTreeToggle' }
+Plug 'sirver/ultisnips'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'valloric/youcompleteme'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Filetype specific
+Plug 'digitaltoad/vim-pug', { 'for': ['pug', 'jade'] }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'mattn/emmet-vim', { 'for': 'html' }
+Plug 'moll/vim-node', { 'for': 'javascript' }
+Plug 'mustache/vim-mustache-handlebars', { 'for': ['handlebars', 'mustache'] }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+"Plug 'yggdroot/indentline'
+"
+" Markdown
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'junegunn/goyo.vim', { 'for': 'markdown', 'on': 'Goyo' }
+Plug 'junegunn/limelight.vim', { 'for': 'markdown', 'on': 'Goyo' }
+call plug#end()
 
 
 " General
