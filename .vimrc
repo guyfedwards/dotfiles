@@ -1,12 +1,11 @@
 call plug#begin('~/.vim/plugged')
-
 " General Vim
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
-Plug 'matchit.zip'
+Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree' , { 'on':  'NERDTreeToggle' }
@@ -15,7 +14,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
-Plug 'valloric/youcompleteme'
+Plug 'valloric/youcompleteme', { 'do': './install.py' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -23,13 +22,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'digitaltoad/vim-pug', { 'for': ['pug', 'jade'] }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
-Plug 'mattn/emmet-vim', { 'for': 'html' }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby'] }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['handlebars', 'mustache'] }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-"Plug 'yggdroot/indentline'
-"
+
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'junegunn/goyo.vim', { 'for': 'markdown', 'on': 'Goyo' }
@@ -207,7 +205,7 @@ autocmd BufRead,BufNewFile *.hbs set filetype=mustache
 " Commands
 " ----------------------
 nnoremap \ :Ag!<SPACE>
-
+map Q <Nop>
 
 " Leader Shortcuts
 " ----------------------
