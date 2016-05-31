@@ -3,7 +3,8 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files=".bash_profile .bashrc .gitconfig .gitignore .git-completion.bash .hushlogin tmux .tmux.conf .osx .vim/ .vimrc z.sh"        # list of files/folders to symlink in homedir
+# list of files/folders to symlink in homedir without trailing slash
+files=".bash_profile .bashrc .gitconfig .gitignore .git-completion.bash .git_templates .hushlogin tmux .tmux.conf .osx .vim .vimrc z.sh"
 
 ##########
 
