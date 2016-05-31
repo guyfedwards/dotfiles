@@ -23,11 +23,12 @@
   std = "!f() { git stash drop stash@{$1}; }; f"
   stsh = "!f() { git stash show -p stash@{$1}; }; f"
 
+  low = "!f() { echo 'To the window, to the wall'; }; f"
+
   prune = remote prune origin
 
 [branch]
   autosetuprebase = always
-
 [core]
 	# Use custom `.gitignore`
 	excludesfile = ~/.gitignore
@@ -50,12 +51,14 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-[user]
-	name = guyfedwards
-	email = guyfedwards@gmail.com
-[push]
-	default = simple
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
 	required = true
+[init]
+  templatedir = ~/.git_templates
+[push]
+	default = simple
+[user]
+	name = guyfedwards
+	email = guyfedwards@gmail.com
