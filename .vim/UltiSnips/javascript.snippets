@@ -15,11 +15,11 @@ snippet arr "arrow function"
 endsnippet
 
 snippet re "require"
-const $1 = require('$1')
+const $1 = require('$2')
 endsnippet
 
 snippet im "import"
-import $1 from '$1'
+import $1 from '$2'
 endsnippet
 
 snippet us "use strict"
@@ -28,4 +28,24 @@ endsnippet
 
 snippet err "throw err"
 if (err) throw err
+endsnippet
+
+snippet iife "iife"
+(function () {
+	'use strict';
+
+	$0
+}());
+endsnippet
+
+snippet desc "describe"
+describe('$1', function () {
+  $0
+});
+endsnippet
+
+snippet it "it"
+it('should $1', function () {
+	$0
+});
 endsnippet
