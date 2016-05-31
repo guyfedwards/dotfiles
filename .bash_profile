@@ -18,6 +18,9 @@ shopt -s cdspell
 # `$_` takes last parameter of previous command
 test -f ~/.git-completion.bash && . $_
 
+# Shell only exists after the 10th consecutive Ctrl-d. Same as IGNOREEOF=10
+set -o ignoreeof
+
 ### Aliases
 # Nodeschool
 alias funcjs='functional-javascript'
