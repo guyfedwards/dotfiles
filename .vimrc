@@ -14,7 +14,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
-Plug 'valloric/youcompleteme', { 'do': './install.py' }
+Plug 'valloric/youcompleteme', { 'do': './install.py --tern-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
