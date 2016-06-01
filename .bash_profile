@@ -45,6 +45,7 @@ alias docs='cd ~/Documents'
 alias dots='cd ~/dotfiles'
 alias dotfiles='cd ~/dotfiles'
 alias drop='cd ~/Dropbox'
+alias notes='cd ~/notes && v -c "Goyo"'
 
 # Editing dotfiles
 alias bashp='vim ~/.bash_profile && source ~/.bash_profile'
