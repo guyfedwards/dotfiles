@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'chriskempson/base16-vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'tmhedberg/matchit'
@@ -17,16 +18,20 @@ Plug 'tpope/vim-eunuch'
 Plug 'valloric/youcompleteme', { 'do': './install.py --tern-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/vim-peekaboo'
 
 " Filetype specific
 Plug 'digitaltoad/vim-pug', { 'for': ['pug', 'jade'] }
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby'] }
-Plug 'moll/vim-node', { 'for': 'javascript' }
+Plug 'othree/yajs.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache'] }
+Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['handlebars', 'mustache'] }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
+Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
+Plug 'tpope/vim-ragtag', { 'for': ['eruby', 'haml', 'php'] }
 
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -71,8 +76,11 @@ let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=1
 " airline
 let g:airline#extensions#whitespace#enabled = 1
-let g:airline_theme='base16'
+" let g:airline_theme='base16_eighties'
+let g:airline_theme='zenburn'
 let g:airline_powerline_fonts = 1
+let g:airline_section_z = '☲ %l/%L:%c'
+let g:airline_section_warning = ''
 " YouCompleteMe
 let g:ycm_filetype_blacklist = {
   \ 'html' : 1
@@ -88,9 +96,6 @@ let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
 " shortcut from above
 let g:SuperTabDefaultCompletionType = '<C-Tab>'
 let g:delimitMate_expand_cr=1
- "syntastic
-"let g:syntastic_html_tidy_exec = 'tidy5'  use tidy-html5
-"autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard']
 let g:jsx_ext_required = 0
 "neomake
 autocmd! BufWritePost,BufReadPost * Neomake
@@ -98,6 +103,7 @@ let g:neomake_javascript_enabled_makers = ['jshint']
 if filereadable(glob(".eslintrc.*"))
   let g:neomake_javascript_enabled_makers = ['eslint']
 endif
+let g:neomake_airline = 0
 " use ag over grep
 if executable('ag')
   " Use ag over grep
@@ -111,6 +117,14 @@ let g:indentLine_leadingSpaceChar = '.'
 let g:indentLine_bufNameExclude = ['*.jade']
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+" JSDoc
+let g:javascript_plugin_jsdoc = 1
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_input_description = 1
+let g:jsdoc_additional_descriptions = 1
+let g:jsdoc_enable_es6 = 1
+" Yajs
+let g:used_javascript_libs = 'jquery,underscore,react,angularjs,jasmine,handlebars'
 
 
 " Colors
@@ -119,7 +133,9 @@ syntax enable           " enable syntax processing
 let base16colorspace=256
 set background=dark
 "colorscheme Tomorrow-Night
-colorscheme base16-eighties
+" colorscheme base16-eighties
+let g:seoul256_background = 235
+colorscheme seoul256
 set t_ut=
 
 
