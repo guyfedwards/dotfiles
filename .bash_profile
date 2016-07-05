@@ -25,6 +25,13 @@ set -o ignoreeof
 # Nodeschool
 alias funcjs='functional-javascript'
 
+# exercism
+alias cism='exercism'
+cismjs() {
+  path=`exercism fetch javascript | sed -n 3p | awk '{print $4}'`
+  cd $path
+}
+
 # simple server
 alias server='python -m SimpleHTTPServer'
 
@@ -61,23 +68,6 @@ alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cu
 # hub === git
 eval "$(hub alias -s)"
 
-# Deprecated - Use git aliases instead
-du="Do not use non git aliases for git"
-
-alias gs='echo $du'
-alias ga='echo $du'
-alias gc='echo $du' # requires you to type a commit message
-alias gp='echo $du'
-alias gpu='echo $du'
-alias gd='echo $du'
-alias gdc='echo $du'
-alias gb='echo $du'
-alias gbd='echo $du'
-alias gch='echo $du'
-alias gchb='echo $du'
-alias prune='echo $du'
-
-
 # tmux aliases
 alias tm='tmux'
 alias tml='tmux ls'
@@ -89,6 +79,14 @@ alias tmn="tmux new-session \; \
   select-pane -t 0 \; split-window -v -l 24 \; split-window -h -l 84 \; \
   select-pane -t 1 \; split-window -h -l 84 \; select-pane -t 0 \;"
 alias tmfc='./tmux/session-scripts/tmux_fc.sh';
+
+#set tag format string
+export TAG_CMD_FMT_STRING='v {{.Filename}} +{{.LineNumber}}'
+# pick up tag aliases
+if hash ag 2>/dev/null; then
+  tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null ; }
+  alias ag=tag
+fi
 
 
 if [[ $OSTYPE == darwin* ]]; then

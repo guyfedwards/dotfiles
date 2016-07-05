@@ -5,7 +5,7 @@
   aa = add --all
   c = commit
   p = push
-  pu = push -u origin
+  pu = "!f() { git push -u origin `git branch | grep '*' | awk '{print $2}'`; }; f"
   d = diff
   dc = diff --cached
 
