@@ -4,7 +4,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
 Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
@@ -16,8 +18,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'valloric/youcompleteme', { 'do': './install.py --tern-completer' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
 
 " Filetype specific
@@ -77,10 +80,14 @@ let NERDTreeShowHidden=1
 " airline
 let g:airline#extensions#whitespace#enabled = 1
 " let g:airline_theme='base16_eighties'
-let g:airline_theme='zenburn'
-let g:airline_powerline_fonts = 1
-let g:airline_section_z = '☲ %l/%L:%c'
-let g:airline_section_warning = ''
+" let g:airline_theme='zenburn'
+" let g:airline_powerline_fonts = 1
+" let g:airline_section_z = '☲ %l/%L:%c'
+" let g:airline_section_warning = ''
+" lightline
+let g:lightline = {
+    \ 'colorscheme': 'seoul256',
+    \ }
 " YouCompleteMe
 let g:ycm_filetype_blacklist = {
   \ 'html' : 1
@@ -125,7 +132,8 @@ let g:jsdoc_additional_descriptions = 1
 let g:jsdoc_enable_es6 = 1
 " Yajs
 let g:used_javascript_libs = 'jquery,underscore,react,angularjs,jasmine,handlebars'
-
+" fzf
+nmap <C-p> :Files .<CR>
 
 " Colors
 " ----------------------
@@ -134,7 +142,7 @@ let base16colorspace=256
 set background=dark
 "colorscheme Tomorrow-Night
 " colorscheme base16-eighties
-let g:seoul256_background = 235
+let g:seoul256_background = 237
 colorscheme seoul256
 set t_ut=
 
