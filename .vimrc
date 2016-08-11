@@ -26,13 +26,13 @@ Plug 'junegunn/vim-peekaboo'
 " Filetype specific
 Plug 'digitaltoad/vim-pug', { 'for': ['pug', 'jade'] }
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'othree/yajs.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
+" Plug 'othree/yajs.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['handlebars', 'mustache'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
 Plug 'tpope/vim-ragtag', { 'for': ['eruby', 'haml', 'php'] }
 
@@ -230,6 +230,9 @@ autocmd BufRead,BufNewFile *.hbs set filetype=mustache
 " ----------------------
 nnoremap \ :Ag!<SPACE>
 map Q <Nop>
+" paste date for notes
+map <F3> :r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>
+
 
 " Leader Shortcuts
 " ----------------------
@@ -256,4 +259,3 @@ map <leader>nt :NERDTreeToggle<CR>
 
 " select text that was jsut pasted
 nnoremap <leader>v V`]
-
