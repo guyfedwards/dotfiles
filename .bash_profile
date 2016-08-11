@@ -80,6 +80,16 @@ alias tmn="tmux new-session \; \
   select-pane -t 1 \; split-window -h -l 84 \; select-pane -t 0 \;"
 alias tmfc='./tmux/session-scripts/tmux_fc.sh';
 
+# docker
+alias dmstart='docker-machine start default; docker-machine env default && eval `docker-machine env default`'
+
+# volume
+alias vmin='osascript -e "set Volume 0"'
+alias vmax='osascript -e "set Volume 10"'
+function vset() {
+  osascript -e "set Volume $1";
+}
+
 #set tag format string
 export TAG_CMD_FMT_STRING='v {{.Filename}} +{{.LineNumber}}'
 # pick up tag aliases
@@ -231,3 +241,5 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 # init z! (https://github.com/rupa/z)
 . ~/z.sh
+
+source ~/.bashrc

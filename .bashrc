@@ -1,9 +1,5 @@
 # Nothing to see here — Everything's in .bash_profile
 
-# Check ssh-agent running then add
-eval `ssh-agent -s`
-ssh-add
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
