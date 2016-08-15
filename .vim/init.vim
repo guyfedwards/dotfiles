@@ -1,1 +1,1 @@
-/Users/gedwards/.vimrc
+/Users/guyedwards/.vimrc
