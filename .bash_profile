@@ -90,15 +90,6 @@ function vset() {
   osascript -e "set Volume $1";
 }
 
-#set tag format string
-export TAG_CMD_FMT_STRING='v {{.Filename}} +{{.LineNumber}}'
-# pick up tag aliases
-if hash ag 2>/dev/null; then
-  tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null ; }
-  alias ag=tag
-fi
-
-
 if [[ $OSTYPE == darwin* ]]; then
   # Show/Hide hidden files
   alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
