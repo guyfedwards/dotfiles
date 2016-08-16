@@ -1,40 +1,40 @@
 <?xml version="1.0"?>
 <root>
   <item>
-		<name>Remap COMMAND_R + hjkl to arrows</name>
+		<name>Remap FN + hjkl to arrows</name>
 		<item>
-			<name>Command_R + h to Left</name>
+			<name>FN + h to Left</name>
 			<identifier>private.commandRh2Left</identifier>
 			<autogen>
 				--KeyToKey--
-				KeyCode::H, ModifierFlag::COMMAND_R,
+				KeyCode::H, ModifierFlag::FN,
 				KeyCode::CURSOR_LEFT
 			</autogen>
 		</item>
     <item>
-			<name>Command_R + j to Down</name>
+			<name>FN + j to Down</name>
 			<identifier>private.commandRj2Down</identifier>
 			<autogen>
 				--KeyToKey--
-				KeyCode::J, ModifierFlag::COMMAND_R,
+				KeyCode::J, ModifierFlag::FN,
 				KeyCode::CURSOR_DOWN
 			</autogen>
 		</item>
     <item>
-			<name>Command_R + k to Up</name>
+			<name>FN + k to Up</name>
 			<identifier>private.commandRk2up</identifier>
 			<autogen>
 				--KeyToKey--
-				KeyCode::K, ModifierFlag::COMMAND_R,
+				KeyCode::K, ModifierFlag::FN,
 				KeyCode::CURSOR_UP
 			</autogen>
 		</item>
     <item>
-			<name>Command_R + l to Right</name>
+			<name>FN + l to Right</name>
 			<identifier>private.commandRl2right</identifier>
 			<autogen>
 				--KeyToKey--
-				KeyCode::L, ModifierFlag::COMMAND_R,
+				KeyCode::L, ModifierFlag::FN,
 				KeyCode::CURSOR_RIGHT
 			</autogen>
 		</item>
