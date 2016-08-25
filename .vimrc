@@ -151,11 +151,23 @@ set t_ut=
 " ----------------------
 set tabstop=2           " number of visual spaces per TAB
 set softtabstop=2       " number of spaces in tab when editing
-set expandtab           " tabs are spaces
 set shiftwidth=2        " indentation with << and >>
+set expandtab           " tabs are spaces
 set shiftround          " use multiple of shitwidth when indenting with < and >
 set autoindent          " autoindent lines
 set copyindent          " copy the indentation on autoindenting
+
+function! ToggleIndent()
+  if &tabstop == 4
+    set tabstop=2           " number of visual spaces per TAB
+    set softtabstop=2       " number of spaces in tab when editing
+    set shiftwidth=2        " indentation with << and >>
+  else
+    set tabstop=4
+    set softtabstop=4
+    set shiftwidth=4
+  endif
+endfunction
 
 
 " UI Config
@@ -240,6 +252,9 @@ let mapleader=","      " leader is comma
 
 " Switch between last two files
 map <leader><leader> <c-^>
+
+" toggle indent
+nmap <leader>tt :call ToggleIndent()<CR>
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>

@@ -125,6 +125,9 @@ alias .....="cd ../../../.."
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
+# algomi
+alias bkrst="(cd ~/sites/SYN2F/synchronicity-client && bkr run 'git status && pwd')"
+
 # Colored up cat!
 # You must install Pygments first - "sudo easy_install Pygments"
 alias c='pygmentize -O style=monokai -f console256 -g'

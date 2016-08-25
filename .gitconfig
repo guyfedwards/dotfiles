@@ -55,8 +55,6 @@
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
 	required = true
-[init]
-  templatedir = ~/.git_templates
 [push]
 	default = simple
 [user]
