@@ -65,6 +65,14 @@ alias nid='npm install --save-dev'
 # Git
 # Open current repo on github
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
+# Open current repo on stash
+stash() {
+  remote=`git remote -v | grep 'stash.algomi.net' | grep fetch | head -1 | awk '{print $2}' | cut -d@ -f2`
+  url=`echo "$remote" | cut -d\/ -f1`
+  project=`echo "$remote" | cut -d\/ -f2`
+  repo=`echo "$remote" | cut -d\/ -f3 | cut -d. -f1`
+  open "https://$url/projects/$project/repos/$repo"
+}
 # hub === git
 eval "$(hub alias -s)"
 
