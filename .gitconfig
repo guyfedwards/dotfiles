@@ -8,6 +8,7 @@
   pu = "!f() { git push -u origin `git branch | grep '*' | awk '{print $2}'`; }; f"
   d = diff
   dc = diff --cached
+  amend = commit --amend --no-edit
 
   # branch
   b = branch
@@ -24,6 +25,7 @@
   stsh = "!f() { git stash show -p stash@{$1}; }; f"
 
   low = "!f() { echo 'To the window, to the wall'; }; f"
+  l = "log --oneline --graph"
 
   prune = remote prune origin
 
@@ -33,7 +35,7 @@
 	# Use custom `.gitignore`
 	excludesfile = ~/.gitignore
 	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
-	whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	whitespace = space-before-tab,trailing-space
 	editor = vim
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal

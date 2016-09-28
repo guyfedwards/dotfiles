@@ -17,6 +17,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-obsession'
 Plug 'valloric/youcompleteme', { 'do': './install.py --tern-completer' }
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
@@ -65,6 +66,8 @@ set undofile
 set undodir=~/.vimundo/
 " offset scroll few lines before bottom
 set scrolloff=3
+" mouse support
+set mouse=a
 
 
 " Plugin Settings
@@ -95,6 +98,7 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_filetype_specific_completion_to_disable = {
   \ 'html': 1
   \}
+
 " using supertab to allow YCM and UltiSnips to play nice
 " Set shortcuts for ycm
 let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
@@ -104,6 +108,7 @@ let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-Tab>'
 let g:delimitMate_expand_cr=1
 let g:jsx_ext_required = 0
+
 "neomake
 autocmd! BufWritePost,BufReadPost * Neomake
 let g:neomake_javascript_enabled_makers = ['jshint']
@@ -111,6 +116,7 @@ if filereadable(glob(".eslintrc.*"))
   let g:neomake_javascript_enabled_makers = ['eslint']
 endif
 let g:neomake_airline = 0
+
 " use ag over grep
 if executable('ag')
   " Use ag over grep
@@ -118,6 +124,7 @@ if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore "node_modules" -g ""'
 endif
+
 let g:indentLine_char = '.'
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '.'
@@ -149,9 +156,9 @@ set t_ut=
 
 " Spaces & Tabs
 " ----------------------
-set tabstop=2           " number of visual spaces per TAB
-set softtabstop=2       " number of spaces in tab when editing
-set shiftwidth=2        " indentation with << and >>
+set tabstop=4           " number of visual spaces per TAB
+set softtabstop=4       " number of spaces in tab when editing
+set shiftwidth=4        " indentation with << and >>
 set expandtab           " tabs are spaces
 set shiftround          " use multiple of shitwidth when indenting with < and >
 set autoindent          " autoindent lines

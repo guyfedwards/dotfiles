@@ -76,6 +76,8 @@ stash() {
 }
 # hub === git
 eval "$(hub alias -s)"
+# master yoda
+alias yoda="git checkout master && git pull origin master"
 
 # tmux aliases
 alias tm='tmux'
@@ -135,7 +137,10 @@ alias .....="cd ../../../.."
 alias sudo='sudo '
 
 # algomi
-alias bkrst="(cd ~/sites/SYN2F/synchronicity-client && bkr run 'git status && pwd')"
+alias bs="(cd ~/sites/SYN2F/synchronicity-client && bkr run 'git status && pwd')"
+function br() {
+  (cd ~/sites/SYN2F/synchronicity-client && bkr run $@)
+}
 
 # Colored up cat!
 # You must install Pygments first - "sudo easy_install Pygments"
