@@ -69,7 +69,6 @@ set scrolloff=3
 " mouse support
 set mouse=a
 
-
 " Plugin Settings
 " ----------------------
 " ctrlp - fuzzy search
@@ -98,6 +97,17 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_filetype_specific_completion_to_disable = {
   \ 'html': 1
   \}
+" Experimentally integrate YouCompleteMe with vim-multiple-cursors, otherwise
+" the numerous Cursor events cause great slowness
+" (https://github.com/kristijanhusak/vim-multiple-cursors/issues/4)
+function Multiple_cursors_before()
+  let s:old_ycm_whitelist = g:ycm_filetype_whitelist
+  let g:ycm_filetype_whitelist = {}
+endfunction
+
+function Multiple_cursors_after()
+  let g:ycm_filetype_whitelist = s:old_ycm_whitelist
+endfunction
 
 " using supertab to allow YCM and UltiSnips to play nice
 " Set shortcuts for ycm
