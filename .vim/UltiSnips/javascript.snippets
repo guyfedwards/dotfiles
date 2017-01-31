@@ -59,3 +59,135 @@ snippet inj "@inject"
  * @inject $0
  */
 endsnippet
+
+snippet prop "add prop"
+$1={$2}
+endsnippet
+
+snippet dprop "default prop"
+$1={this.props.$1}
+endsnippet
+
+snippet cdm "componentDidMount"
+componentDidMount() {
+	$1
+},
+endsnippet
+
+snippet cwm "componentWillMount"
+componentWillMount() {
+	$1
+},
+endsnippet
+
+snippet cwu "componentWillUpdate"
+componentWillUpdate(nextProps, nextState) {
+	$1
+},
+endsnippet
+
+snippet cdu "componentDidUpdate"
+componentDidUpdate(prevProps, prevState) {
+	$1
+},
+endsnippet
+
+snippet cwun "componentWillUnmount"
+componentWillUnmount() {
+
+},
+endsnippet
+
+snippet imre "import React"
+import React from 'react'
+$0
+endsnippet
+
+snippet imlo "import Lodash"
+import _ from 'lodash'
+$0
+endsnippet
+
+snippet recc "React createClass"
+import _ from 'lodash'
+import React from 'react'
+
+const $1 = React.createClass({
+
+	componentWillMount() {
+
+	},
+
+	render() {
+		return (
+
+		)
+	}
+})
+
+export default $1
+endsnippet
+
+snippet rec "React es6 class"
+import _ from 'lodash'
+import React, { Component } from 'react'
+
+class $1 extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+
+		}
+	}
+
+	componentWillMount() {
+
+	}
+
+	render() {
+		return (
+
+		)
+	}
+}
+
+export default $1
+endsnippet
+
+snippet refu "React functional component"
+import _ from 'lodash'
+import React from 'react'
+
+const $1 = props => {
+	return (
+
+	)
+}
+
+export default $1
+endsnippet
+
+snippet copy "Copy.get()"
+Copy.get('$1')
+endsnippet
+
+snippet state "state$"
+const state$ = Rx.Observable
+	.merge(
+		$0
+	)
+	.scan((acc, update) => _.assign({}, acc, update), {})
+	.shareValue({})
+endsnippet
+
+snippet maps "map state"
+$1$.map($1 => ({$1}))
+endsnippet
+
+snippet mix "mixins"
+mixins: [RxDisposable, RxEvents, RxLifecycle, RxProps, RxStateObserver],
+endsnippet
+
+snippet immix "import mixins"
+import { RxDisposable, RxEvents, RxLifecycle, RxProps, RxStateObserver } from 'rx-mixin'
+endsnippet

@@ -4,7 +4,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
@@ -89,6 +88,12 @@ let g:airline#extensions#whitespace#enabled = 1
 " lightline
 let g:lightline = {
     \ 'colorscheme': 'seoul256',
+    \ 'active': {
+    \   'right': [[ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
+    \ },
+    \ 'component': {
+    \     'lineinfo': '%3l/%L:%-2v'
+    \ }
     \ }
 " YouCompleteMe
 let g:ycm_filetype_blacklist = {
@@ -121,18 +126,16 @@ let g:jsx_ext_required = 0
 
 "neomake
 autocmd! BufWritePost,BufReadPost * Neomake
-let g:neomake_javascript_enabled_makers = ['jshint']
-if filereadable(glob(".eslintrc.*"))
-  let g:neomake_javascript_enabled_makers = ['eslint']
-endif
-let g:neomake_airline = 0
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+let g:neomake_airline = 1
 
 " use ag over grep
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore "node_modules" -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore "node_modules" --ignore "**/docs/**" -g ""'
 endif
 
 let g:indentLine_char = '.'
@@ -248,16 +251,12 @@ set splitright
 " ----------------------
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
-" Liquid read as js/css/html
-autocmd BufRead,BufNewFile *.html.liquid set filetype=html
-autocmd BufRead,BufNewFile *.css/liquid set filetype=css
-autocmd BufRead,BufNewFile *.js.liquid set filetype=javascript
 autocmd BufRead,BufNewFile *.hbs set filetype=mustache
 
 
 " Commands
 " ----------------------
-nnoremap \ :Ag!<SPACE>
+nnoremap \ :Ag! --ignore "**docs**" --ignore "**trader-gui-client**"<SPACE>
 map Q <Nop>
 " paste date for notes
 map <F3> :r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>

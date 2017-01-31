@@ -22,9 +22,8 @@ defaults write com.apple.Finder FXPreferredViewStyle Nlsv
 # Show the ~/Library folder.
 chflags nohidden ~/Library
 
-# Set the Finder prefs for showing a few different volumes on the Desktop.
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+# Hide icons on the desktop
+defaults write com.apple.finder CreateDesktop -bool false
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
