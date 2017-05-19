@@ -10,31 +10,33 @@ Plug 'ervandew/supertab'
 Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'rking/ag.vim'
-Plug 'scrooloose/nerdtree' , { 'on':  'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree' , { 'on':  'NERDTreeToggle' }
 Plug 'sirver/ultisnips'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-surround'
 Plug 'valloric/youcompleteme', { 'do': './install.py --tern-completer' }
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+" try out deocomplete
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
 
 " Filetype specific
-Plug 'digitaltoad/vim-pug', { 'for': ['pug', 'jade'] }
-Plug 'fatih/vim-go', { 'for': 'go' }
-" Plug 'othree/yajs.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs', 'javascript.jsx'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['handlebars', 'mustache'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
 Plug 'tpope/vim-ragtag', { 'for': ['eruby', 'haml', 'php'] }
+Plug 'leshill/vim-json', { 'for': ['json', 'di'] }
+Plug 'chrisbra/Colorizer', { 'for': ['scss', 'css', 'less', 'json']}
 
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -67,6 +69,7 @@ set undodir=~/.vimundo/
 set scrolloff=3
 " mouse support
 set mouse=a
+au FileType scss :vert resize 60
 
 " Plugin Settings
 " ----------------------
@@ -102,16 +105,14 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_filetype_specific_completion_to_disable = {
   \ 'html': 1
   \}
-" Experimentally integrate YouCompleteMe with vim-multiple-cursors, otherwise
-" the numerous Cursor events cause great slowness
-" (https://github.com/kristijanhusak/vim-multiple-cursors/issues/4)
-function Multiple_cursors_before()
-  let s:old_ycm_whitelist = g:ycm_filetype_whitelist
-  let g:ycm_filetype_whitelist = {}
+let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
+" slow multiple_cursors &amp; YCM
+function! Multiple_cursors_before()
+    let g:ycm_auto_trigger = 0
 endfunction
 
-function Multiple_cursors_after()
-  let g:ycm_filetype_whitelist = s:old_ycm_whitelist
+function! Multiple_cursors_after()
+    let g:ycm_auto_trigger = 1
 endfunction
 
 " using supertab to allow YCM and UltiSnips to play nice
@@ -129,13 +130,21 @@ autocmd! BufWritePost,BufReadPost * Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
 let g:neomake_airline = 1
+let g:neomake_open_list = 2
+augroup my_neomake_signs
+    au!
+    autocmd ColorScheme *
+        \ hi NeomakeErrorSign ctermfg=196 |
+        \ hi NeomakeWarningSign ctermfg=226 |
+        \ hi NeomakeErrorDefault ctermfg=196 guisp=#730B00
+augroup END
 
 " use ag over grep
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore "node_modules" --ignore "**/docs/**" -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore "node_modules" --ignore "**/docs/**" --ignore "**/dist/**" -g ""'
 endif
 
 let g:indentLine_char = '.'
@@ -154,18 +163,25 @@ let g:jsdoc_enable_es6 = 1
 let g:used_javascript_libs = 'jquery,underscore,react,angularjs,jasmine,handlebars'
 " fzf
 nmap <C-p> :Files .<CR>
+nnoremap <Leader>P :Files <C-R>=expand('%:h')<CR><CR>
 
 " Colors
 " ----------------------
 syntax enable           " enable syntax processing
 let base16colorspace=256
 set background=dark
-"colorscheme Tomorrow-Night
-" colorscheme base16-eighties
 let g:seoul256_background = 237
 colorscheme seoul256
+set t_Co=16
 set t_ut=
-
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr ctermfg=NONE ctermbg=NONE
+hi VertSplit ctermbg=NONE guibg=NONE
+hi GitGutterAdd guibg=NONE ctermbg=NONE
+hi GitGutterChange guibg=NONE ctermbg=NONE
+hi GitGutterDelete guibg=NONE ctermbg=NONE
+hi GitGutterChangeDelete guibg=NONE ctermbg=NONE
+hi def link jsObjectKey Label
 
 " Spaces & Tabs
 " ----------------------
@@ -173,7 +189,7 @@ set tabstop=4           " number of visual spaces per TAB
 set softtabstop=4       " number of spaces in tab when editing
 set shiftwidth=4        " indentation with << and >>
 set expandtab           " tabs are spaces
-set shiftround          " use multiple of shitwidth when indenting with < and >
+set shiftround          " use multiple of shiftwidth when indenting with < and >
 set autoindent          " autoindent lines
 set copyindent          " copy the indentation on autoindenting
 
@@ -194,6 +210,7 @@ endfunction
 " ----------------------
 set number              " show line numbers
 set cursorline          " highlight current line
+hi CursorLine ctermbg=NONE
 filetype indent plugin on " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set lazyredraw          " redraw only when we need to.
@@ -204,9 +221,12 @@ set colorcolumn=81      " show line at 81 chars, stop before the line
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-if has('nvim')
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-endif
+" if has('nvim')
+"   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" endif
+" auto highlight colors for these filetypes
+let g:colorizer_auto_filetype='css,html,scss,less,json'
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 
 
 " Searching
@@ -256,11 +276,15 @@ autocmd BufRead,BufNewFile *.hbs set filetype=mustache
 
 " Commands
 " ----------------------
-nnoremap \ :Ag! --ignore "**docs**" --ignore "**trader-gui-client**"<SPACE>
+nnoremap \ :Ag! --ignore "**docs**" --ignore "**trader-gui-client**" --ignore "**dist**"<SPACE>
+nnoremap # :Ag! --ignore "**docs**" --ignore "**trader-gui-client**" --ignore "**dist**"<SPACE>
 map Q <Nop>
 " paste date for notes
 map <F3> :r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>
-
+" remap ctrl+c to Esc becuase ctrl+c after typing comma, deletes the comma
+vnoremap <C-c> <Esc>
+nnoremap <C-c> <Esc>
+inoremap <C-c> <Esc>
 
 " Leader Shortcuts
 " ----------------------
@@ -272,6 +296,9 @@ map <leader><leader> <c-^>
 " toggle indent
 nmap <leader>tt :call ToggleIndent()<CR>
 
+" toggle color highlighting
+nmap <leader>c :ColorToggle<CR>
+
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -280,7 +307,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nnoremap <leader><space> :set hlsearch!<CR>
 
 " toggle scrolloff between 999 and 0. 999 keeps line center screen
-:nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
+nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
 
 " toggle paste mode
 set pastetoggle=<leader>p
