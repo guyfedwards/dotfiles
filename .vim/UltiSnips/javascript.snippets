@@ -54,14 +54,14 @@ snippet tap "tap"
 .tap(x => console.log('$0', x))
 endsnippet
 
+snippet do "do"
+.do(x => console.log('$0', x))
+endsnippet
+
 snippet inj "@inject"
 /**
  * @inject $0
  */
-endsnippet
-
-snippet prop "add prop"
-$1={$2}
 endsnippet
 
 snippet dprop "default prop"
@@ -113,6 +113,8 @@ import _ from 'lodash'
 import React from 'react'
 
 const $1 = React.createClass({
+
+	displayName: '$1',
 
 	componentWillMount() {
 
@@ -190,4 +192,8 @@ endsnippet
 
 snippet immix "import mixins"
 import { RxDisposable, RxEvents, RxLifecycle, RxProps, RxStateObserver } from 'rx-mixin'
+endsnippet
+
+snippet propt "proptypes"
+React.PropTypes.$0
 endsnippet
