@@ -98,7 +98,7 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
 # Increase standy delay to 24hrs from one hour
 # http://www.cultofmac.com/221392/quick-hack-speeds-up-retina-macbooks-wake-from-sleep-os-x-tips/
-sudo pmset -a standbydelay 43200 
+sudo pmset -a standbydelay 43200
 
 # Set highlight color to red
 defaults write NSGlobalDomain AppleHighlightColor -string "0.8 0.870588 0.713725"

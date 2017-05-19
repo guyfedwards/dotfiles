@@ -25,7 +25,8 @@
   stsh = "!f() { git stash show -p stash@{$1}; }; f"
 
   low = "!f() { echo 'To the window, to the wall'; }; f"
-  l = "log --oneline --graph"
+  l = log --oneline --graph
+  lp = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 
   prune = remote prune origin
 

@@ -21,17 +21,6 @@ test -f ~/.git-completion.bash && . $_
 # Shell only exists after the 10th consecutive Ctrl-d. Same as IGNOREEOF=10
 set -o ignoreeof
 
-### Aliases
-# Nodeschool
-alias funcjs='functional-javascript'
-
-# exercism
-alias cism='exercism'
-cismjs() {
-  path=`exercism fetch javascript | sed -n 3p | awk '{print $4}'`
-  cd $path
-}
-
 # simple server
 alias server='python -m SimpleHTTPServer'
 
@@ -119,6 +108,8 @@ fi
 
 # General
 alias yt='youtube-dl'
+alias g='googler --count 5'
+alias cin='asciinema rec'
 
 # Color LS
 colorflag="-G"
@@ -142,13 +133,18 @@ function br() {
   (cd ~/sites/SYN2F/synchronicity-client && bkr run $@)
 }
 
+# docker
+alias allimgids="docker images | grep -v REPOSITORY | awk '{print $3}'"
+alias allcontids="docker ps | grep -v CONTAINER | awk '{print $1}'"
+
 # Colored up cat!
 # You must install Pygments first - "sudo easy_install Pygments"
 alias c='pygmentize -O style=monokai -f console256 -g'
 
 ### Prompt Colors
-# Modified version of @gf3’s Sexy Bash Prompt
-# (https://github.com/gf3/dotfiles)
+# Set CLICOLOR if you want Ansi Colors in iTerm2
+export CLICOLOR=1
+
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
 	export TERM=gnome-256color
 elif infocmp xterm-256color >/dev/null 2>&1; then
@@ -159,11 +155,16 @@ if tput setaf 1 &> /dev/null; then
 	tput sgr0
 	if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
 		BLACK=$(tput setaf 190)
-		MAGENTA=$(tput setaf 9)
-		ORANGE=$(tput setaf 172)
-		GREEN=$(tput setaf 190)
+		MAGENTA=$(tput setaf 167)
+		ORANGE=$(tput setaf 209)
+		GREEN=$(tput setaf 83)
 		PURPLE=$(tput setaf 141)
 		WHITE=$(tput setaf 0)
+        CREAM=$(tput setaf 230)
+        GRAY=$(tput setaf 240)
+        LIGHTGRAY=$(tput setaf 244)
+        BLUE=$(tput setaf 75)
+        RED=$(tput setaf 203)
 	else
 		BLACK=$(tput setaf 190)
 		MAGENTA=$(tput setaf 5)
@@ -193,35 +194,41 @@ export PURPLE
 export WHITE
 export BOLD
 export RESET
+export CREAM
+export GRAY
+export LIGHTGRAY
+export BLUE
+export RED
 
 # Git branch details
+function set_git_color() {
+    git_status="$(git status 2> /dev/null)"
+
+    if [[ ${git_status} =~ "working directory clean" ]]; then
+        state="${GREEN}"
+    elif [[ ${git_status} =~ "Changes to be committed" ]]; then
+        state="${YELLOW}"
+    else
+        state="${LIGHT_RED}"
+    fi
+}
 function parse_git_dirty() {
 	[[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
 }
 function parse_git_branch() {
-	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
 # Change this symbol to something sweet.
 # (http://en.wikipedia.org/wiki/Unicode_symbols)
-symbol="\[$ORANGE\]❯\[$RESET\] "
+symbol="\[$GRAY\]└ \[$ORANGE\]❯\[$RESET\] "
 
+prompt_user="\[${BOLD}${LIGHTGRAY}\]\u$host"
+prompt_cwd="\[${GRAY}\]\[$LIGHTGRAY\]\w"
+prompt_git="\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[${BLUE}\]\$(parse_git_branch)"
+prompt_symbol="\n$symbol"
 
-# show host if connected through ssh
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    if [ "$color_prompt" = yes ]; then
-        host="\u@\[\033[1;34m\]\h\[\033[00m\]"
-    else
-        host="\u@\h"
-    fi
-fi
-
-prompt_user="\[${BOLD}${MAGENTA}\]\u$host"
-prompt_cwd="\[$WHITE\]in \[$GREEN\]\w"
-prompt_git="\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)"
-prompt_symbol="\[$WHITE\]\n$symbol"
-
-export PS1="$prompt_user $prompt_cwd\[$WHITE\]$prompt_git$prompt_symbol\[$RESET\]"
+export PS1="\[$GRAY\]┌ $prompt_user $prompt_cwd\[$WHITE\]$prompt_git$prompt_symbol\[$RESET\]"
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 
