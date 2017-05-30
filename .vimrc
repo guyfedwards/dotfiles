@@ -163,7 +163,7 @@ let g:jsdoc_enable_es6 = 1
 let g:used_javascript_libs = 'jquery,underscore,react,angularjs,jasmine,handlebars'
 " fzf
 nmap <C-p> :Files .<CR>
-nnoremap <Leader>P :Files <C-R>=expand('%:h')<CR><CR>
+nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 
 " Colors
 " ----------------------
@@ -311,9 +311,6 @@ nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
 
 " toggle paste mode
 set pastetoggle=<leader>p
-
-" Nerdtree toggle
-map <leader>nt :NERDTreeToggle<CR>
 
 " select text that was jsut pasted
 nnoremap <leader>v V`]
