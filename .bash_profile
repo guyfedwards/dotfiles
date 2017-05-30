@@ -18,44 +18,54 @@ shopt -s cdspell
 # `$_` takes last parameter of previous command
 test -f ~/.git-completion.bash && . $_
 
-# Shell only exists after the 10th consecutive Ctrl-d. Same as IGNOREEOF=10
+# Shell only exits after the 10th consecutive Ctrl-d. Same as IGNOREEOF=10
 set -o ignoreeof
 
-# simple server
-alias server='python -m SimpleHTTPServer'
+# aliases
+### Enable aliases to be sudo’ed
+alias sudo='sudo '
 
-# VIM
 alias v='nvim'
-
+alias yt='youtube-dl'
+alias g='googler --count 5'
+alias cin='asciinema rec'
 alias preview='open -a Preview'
 alias chrome='open -a google\ chrome'
 alias f='open -a Finder'
-alias finder='open -a Finder'
-alias ql='qlmanage -p' # quicklook
-alias sqli='sequelize'
-alias py='python'
 
-# Shortcuts to folders
+### color `ls`
+colorflag="-G"
+alias ls="command ls ${colorflag}"
+alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
+
+### simple server
+alias server='python -m SimpleHTTPServer'
+
+### Shortcuts to folders
 alias sites='cd ~/sites'
-alias docs='cd ~/Documents'
 alias dots='cd ~/dotfiles'
-alias dotfiles='cd ~/dotfiles'
 alias drop='cd ~/Dropbox'
 alias notes='cd ~/Dropbox/Documents/Notes && v -c "Goyo"'
 alias ideas='cd ~/Dropbox/Documents/Notes/ideas && v -c "Goyo" ideas.md'
 
-# Editing dotfiles
 alias bashp='vim ~/.bash_profile && source ~/.bash_profile'
-alias vimrc='vim ~/.vimrc'
 
-# Npm
+# Quicker navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+### npm
 alias nis='npm install --save'
 alias nid='npm install --save-dev'
 
-# Git
-# Open current repo on github
+## git
+alias stpst="git stash && git pull && git stash pop"
+alias yoda="git checkout master && git pull origin master"
+### Open current repo on github
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
-# Open current repo on stash
+### Open current repo on stash
 stash() {
   remote=`git remote -v | grep 'stash.algomi.net' | grep fetch | head -1 | awk '{print $2}' | cut -d@ -f2`
   url=`echo "$remote" | cut -d\/ -f1`
@@ -63,12 +73,10 @@ stash() {
   repo=`echo "$remote" | cut -d\/ -f3 | cut -d. -f1`
   open "https://$url/projects/$project/repos/$repo"
 }
-# hub === git
+### hub === git
 eval "$(hub alias -s)"
-# master yoda
-alias yoda="git checkout master && git pull origin master"
 
-# tmux aliases
+# tmux
 alias tm='tmux'
 alias tml='tmux ls'
 alias tma='tmux attach -t'
@@ -78,26 +86,21 @@ alias tmn="tmux new-session \; \
   select-pane -t 1 \; split-window -h -l 84 \; \
   select-pane -t 0 \; split-window -v -l 24 \; split-window -h -l 84 \; \
   select-pane -t 1 \; split-window -h -l 84 \; select-pane -t 0 \;"
-alias tmfc='./tmux/session-scripts/tmux_fc.sh';
 
-# docker
-alias dmstart='docker-machine start default; docker-machine env default && eval `docker-machine env default`'
-
-# volume
-alias vmin='osascript -e "set Volume 0"'
-alias vmax='osascript -e "set Volume 10"'
-function vset() {
-  osascript -e "set Volume $1";
+### algomi
+alias bs="(cd ~/sites/SYN2F/synchronicity-client && bkr run 'git status && pwd')"
+function br() {
+  (cd ~/sites/SYN2F/synchronicity-client && bkr run $@)
 }
+
+### docker
+alias allimgids='docker images | grep -v REPOSITORY | awk '\''{print $3}'\'''
+alias allcontids='docker ps | grep -v CONTAINER | awk '\''{print $1}'\'''
 
 if [[ $OSTYPE == darwin* ]]; then
   # Show/Hide hidden files
   alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
   alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-
-  # Hide/show all desktop icons (useful when presenting)
-  alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
-  alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
 
   # Lock the screen (when going AFK)
   alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
@@ -106,43 +109,8 @@ if [[ $OSTYPE == darwin* ]]; then
   alias flushdns='sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches;echo "flushed"'
 fi
 
-# General
-alias yt='youtube-dl'
-alias g='googler --count 5'
-alias cin='asciinema rec'
-
-# Color LS
-colorflag="-G"
-alias ls="command ls ${colorflag}"
-alias l="ls -lF ${colorflag}" # all files, in long format
-alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
-alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
-
-# Quicker navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
-
-# algomi
-alias bs="(cd ~/sites/SYN2F/synchronicity-client && bkr run 'git status && pwd')"
-function br() {
-  (cd ~/sites/SYN2F/synchronicity-client && bkr run $@)
-}
-
-# docker
-alias allimgids="docker images | grep -v REPOSITORY | awk '{print $3}'"
-alias allcontids="docker ps | grep -v CONTAINER | awk '{print $1}'"
-
-# Colored up cat!
-# You must install Pygments first - "sudo easy_install Pygments"
-alias c='pygmentize -O style=monokai -f console256 -g'
-
-### Prompt Colors
-# Set CLICOLOR if you want Ansi Colors in iTerm2
+# Prompt Colors
+### Set CLICOLOR if you want Ansi Colors in iTerm2
 export CLICOLOR=1
 
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
@@ -219,8 +187,8 @@ function parse_git_branch() {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
-# Change this symbol to something sweet.
-# (http://en.wikipedia.org/wiki/Unicode_symbols)
+### Change this symbol to something sweet.
+### (http://en.wikipedia.org/wiki/Unicode_symbols)
 symbol="\[$GRAY\]└ \[$ORANGE\]❯\[$RESET\] "
 
 prompt_user="\[${BOLD}${LIGHTGRAY}\]\u$host"
@@ -232,7 +200,7 @@ export PS1="\[$GRAY\]┌ $prompt_user $prompt_cwd\[$WHITE\]$prompt_git$prompt_sy
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 
-# Colored man pages
+### Colored man pages
 man() {
     env \
       LESS_TERMCAP_mb=$(printf "\e[1;31m") \
@@ -246,15 +214,14 @@ man() {
 }
 
 
-### Misc
-
-#fzf
+# Misc
+##fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
-# Only show the current directory's name in the tab
+## Only show the current directory's name in the tab
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
-# init z! (https://github.com/rupa/z)
+## init z! (https://github.com/rupa/z)
 . ~/z.sh
 
 source ~/.bashrc
