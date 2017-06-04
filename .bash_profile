@@ -48,7 +48,9 @@ alias drop='cd ~/Dropbox'
 alias notes='cd ~/Dropbox/Documents/Notes && v -c "Goyo"'
 alias ideas='cd ~/Dropbox/Documents/Notes/ideas && v -c "Goyo" ideas.md'
 
-alias bashp='vim ~/.bash_profile && source ~/.bash_profile'
+alias bashp='v ~/.bash_profile && source ~/.bash_profile'
+alias vimrc='v ~/.vimrc'
+alias i3c='v ~/.config/i3/config'
 
 # Quicker navigation
 alias ..="cd .."
