@@ -11,7 +11,8 @@ endif
 call plug#begin('~/.vim/plugged')
 " General Vim
 Plug 'airblade/vim-gitgutter'
-Plug 'benekastah/neomake'
+" Plug 'benekastah/neomake'
+Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -20,6 +21,7 @@ Plug 'ervandew/supertab'
 Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'rking/ag.vim'
+Plug 'sjl/gundo.vim'
 " Plug 'scrooloose/nerdtree' , { 'on':  'NERDTreeToggle' }
 Plug 'sirver/ultisnips'
 Plug 'terryma/vim-multiple-cursors'
@@ -28,10 +30,11 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
-Plug 'valloric/youcompleteme', { 'do': './install.py --tern-completer' }
+" Plug 'valloric/youcompleteme', { 'do': './install.py --tern-completer' }
 " try out deocomplete
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install'}
 
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
@@ -57,16 +60,13 @@ call plug#end()
 
 " General
 " ----------------------
+" enable deoplete
+let g:deoplete#enable_at_startup = 1
 " disable auto backups and swap files
 set nobackup
 set noswapfile
 " markdown formatting for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" source vimrc on save
-augroup autosourcing
-  autocmd!
-  autocmd BufWritePost .vimrc source %
-augroup END
 set laststatus=2
 set backspace=2
 " trim whitespace
@@ -80,24 +80,20 @@ set scrolloff=3
 " mouse support
 set mouse=a
 au FileType scss :vert resize 60
+" " disable preview scratch window with autocomplete/tern
+" set completeopt-=preview
+
+" Tern
+let g:tern_show_argument_hints = 'on_hold'
+let g:tern_show_signature_in_pum = 1
+autocmd FileType javascript,javascript.jsx setlocal omnifunc=tern#Complete
+
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+autocmd FileType javascript,javascript.jsx nnoremap <silent> <buffer> gb :TernDef<CR>
 
 " Plugin Settings
 " ----------------------
-" ctrlp - fuzzy search
-set wildignore+=*/node_modules/**
-set wildignore+=*/.git/**
-let g:ctrlp_custom_ignore='dist'
 let b:javascript_fold = 0
-" NERDTree
-let g:NERDTreeChDirMode=2
-let NERDTreeShowHidden=1
-" airline
-let g:airline#extensions#whitespace#enabled = 1
-" let g:airline_theme='base16_eighties'
-" let g:airline_theme='zenburn'
-" let g:airline_powerline_fonts = 1
-" let g:airline_section_z = '☲ %l/%L:%c'
-" let g:airline_section_warning = ''
 " lightline
 let g:lightline = {
     \ 'colorscheme': 'seoul256',
@@ -109,45 +105,55 @@ let g:lightline = {
     \ }
     \ }
 " YouCompleteMe
-let g:ycm_filetype_blacklist = {
-  \ 'html' : 1
-  \}
-let g:ycm_filetype_specific_completion_to_disable = {
-  \ 'html': 1
-  \}
-let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
+" let g:ycm_filetype_blacklist = {
+"   \ 'html' : 1
+"   \}
+" let g:ycm_filetype_specific_completion_to_disable = {
+"   \ 'html': 1
+"   \}
+" let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
 " slow multiple_cursors &amp; YCM
-function! Multiple_cursors_before()
-    let g:ycm_auto_trigger = 0
-endfunction
+" function! Multiple_cursors_before()
+"     let g:ycm_auto_trigger = 0
+" endfunction
 
-function! Multiple_cursors_after()
-    let g:ycm_auto_trigger = 1
-endfunction
+" function! Multiple_cursors_after()
+"     let g:ycm_auto_trigger = 1
+" endfunction
 
 " using supertab to allow YCM and UltiSnips to play nice
 " Set shortcuts for ycm
-let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+" let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
 " if tab doesn't expand snippet, its passed to supertab which calls YCM
 " shortcut from above
-let g:SuperTabDefaultCompletionType = '<C-Tab>'
+" let g:SuperTabDefaultCompletionType = '<C-Tab>'
 let g:delimitMate_expand_cr=1
 let g:jsx_ext_required = 0
 
 "neomake
-autocmd! BufWritePost,BufReadPost * Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_jsx_enabled_makers = ['eslint']
-let g:neomake_airline = 1
-let g:neomake_open_list = 2
-augroup my_neomake_signs
-    au!
-    autocmd ColorScheme *
-        \ hi NeomakeErrorSign ctermfg=196 |
-        \ hi NeomakeWarningSign ctermfg=226 |
-        \ hi NeomakeErrorDefault ctermfg=196 guisp=#730B00
-augroup END
+" autocmd! BufWritePost,BufReadPost * Neomake
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_jsx_enabled_makers = ['eslint']
+" let g:neomake_airline = 1
+" let g:neomake_open_list = 2
+" augroup my_neomake_signs
+"     au!
+"     autocmd ColorScheme *
+"         \ hi NeomakeErrorSign ctermfg=196 |
+"         \ hi NeomakeWarningSign ctermfg=226 |
+"         \ hi NeomakeErrorDefault ctermfg=196
+" augroup END
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚠'
+let g:ale_sign_column_always = 1
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+" hi ALEErrorSign ctermfg=196 ctermbg=NONE
+" hi ALEWarningSign ctermfg=226
 
 " use ag over grep
 if executable('ag')

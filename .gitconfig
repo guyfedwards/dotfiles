@@ -60,6 +60,8 @@
 	required = true
 [push]
 	default = simple
+[rebase]
+    stat = true
 [user]
 	name = guyfedwards
 	email = guyfedwards@gmail.com
