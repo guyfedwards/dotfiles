@@ -62,6 +62,7 @@ call plug#end()
 " ----------------------
 " enable deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#file#enable_buffer_path = 1
 " disable auto backups and swap files
 set nobackup
 set noswapfile
