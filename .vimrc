@@ -149,6 +149,7 @@ let g:jsx_ext_required = 0
 " augroup END
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'sh': ['shellcheck'],
 \}
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
