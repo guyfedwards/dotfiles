@@ -99,36 +99,38 @@ let b:javascript_fold = 0
 let g:lightline = {
     \ 'colorscheme': 'seoul256',
     \ 'active': {
-    \   'right': [[ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
+    \   'right': [[ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'linter_warnings', 'linter_errors' ]]
     \ },
     \ 'component': {
     \     'lineinfo': '%3l/%L:%-2v'
+    \ },
+    \ 'component_expand': {
+    \   'linter_warnings': 'LightlineLinterWarnings',
+    \   'linter_errors': 'LightlineLinterErrors'
+    \ },
+    \ 'component_type': {
+    \   'readonly': 'error',
+    \   'linter_warnings': 'warning',
+    \   'linter_errors': 'error'
     \ }
-    \ }
-" YouCompleteMe
-" let g:ycm_filetype_blacklist = {
-"   \ 'html' : 1
-"   \}
-" let g:ycm_filetype_specific_completion_to_disable = {
-"   \ 'html': 1
-"   \}
-" let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
-" slow multiple_cursors &amp; YCM
-" function! Multiple_cursors_before()
-"     let g:ycm_auto_trigger = 0
-" endfunction
+\ }
 
-" function! Multiple_cursors_after()
-"     let g:ycm_auto_trigger = 1
-" endfunction
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return printf('%d ◆', all_non_errors)
+endfunction
 
-" using supertab to allow YCM and UltiSnips to play nice
-" Set shortcuts for ycm
-" let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
-" if tab doesn't expand snippet, its passed to supertab which calls YCM
-" shortcut from above
-" let g:SuperTabDefaultCompletionType = '<C-Tab>'
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return printf('%d ✗', all_errors)
+endfunction
+
+autocmd User ALELint call lightline#update()
+
 let g:delimitMate_expand_cr=1
 let g:jsx_ext_required = 0
 
