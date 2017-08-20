@@ -1,0 +1,10 @@
+#!/bin/bash
+
+folders=(
+    i3,
+    polybar
+)
+
+for f in "${folders[@]}"; do
+    ln -s "$f" "$HOME/.config/$f"
+done
