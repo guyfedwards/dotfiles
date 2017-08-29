@@ -105,10 +105,7 @@ if [[ $OSTYPE == darwin* ]]; then
   alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
   # Lock the screen (when going AFK)
-  alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
-
-  # Flush DNS caches
-  alias flushdns='sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches;echo "flushed"'
+  alias afk='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 fi
 
 # Prompt Colors

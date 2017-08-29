@@ -15,6 +15,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
@@ -35,6 +36,7 @@ Plug 'tpope/vim-surround'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install'}
+Plug 'sheerun/vim-polyglot'
 
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
@@ -97,7 +99,7 @@ autocmd FileType javascript,javascript.jsx nnoremap <silent> <buffer> gb :TernDe
 let b:javascript_fold = 0
 " lightline
 let g:lightline = {
-    \ 'colorscheme': 'seoul256',
+    \ 'colorscheme': 'onedark',
     \ 'active': {
     \   'right': [[ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'linter_warnings', 'linter_errors' ]]
     \ },
@@ -188,10 +190,14 @@ nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 " Colors
 " ----------------------
 syntax enable           " enable syntax processing
+if (has("termguicolors"))
+  set termguicolors
+endif
 let base16colorspace=256
 set background=dark
 let g:seoul256_background = 237
-colorscheme seoul256
+" colorscheme seoul256
+colorscheme onedark
 set t_Co=16
 set t_ut=
 hi Normal guibg=NONE ctermbg=NONE
