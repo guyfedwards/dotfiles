@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in bin/*; do
+    echo "$i";
+    ln -s "$(pwd)/$i" /usr/local/bin/
+done
