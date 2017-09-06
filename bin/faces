@@ -1,15 +1,15 @@
 #!/bin/bash
 # Lifted from https://github.com/lukaszkorecki/DotFiles/blob/master/bins/faces
-faces=('ಠ_ಠ' 'ಠ_ರೃ' '﴾͡๏̯͡๏﴿' '๏_๏' 'ಠ▃ಠ' '(•‿•)' 'Ծ_Ծ' '¯\(°_o)/¯' '(✌ﾟ∀ﾟ)☞' '╚(•⌂•)╝' 't(-_-t)t' '(ツ)_/¯' '◔_◔' '◎⃝ _◎⃝' ';ლ(ಠ_ಠლ)' '(╯°□°）╯︵ ┻━┻' 'ᶘ ᵒᴥᵒᶅ')
+faces=('¯\\_(ツ)_/¯' '┴┬┴┤( ͡° ͜ʖ├┬┴┬' '⊂(▀¯▀⊂)' '( ͡↑ ͜ʖ ͡↑)' '( ͡° ͜ʖ ͡°)' '╰( ⁰ ਊ ⁰ )━☆ﾟ.*･｡ﾟ' 'ಠ_ಠ' 'ಠ_ರೃ' '¯\(°_o)/¯' '(╯°□°）╯︵ ┻━┻')
 
 if [[ -z $1 ]]; then
   echo 'Choose a face and | it to pbcopy'
   i=0
-  for f in ${faces[@]}
+  for f in "${faces[@]}"
   do
-    echo $i $f
-    i=`expr $i + 1`
+    echo "$i" "$f"
+    i=$(($i + 1))
   done
 else
-  echo ${faces[$1]}
+  echo "${faces["$1"]}"
 fi
