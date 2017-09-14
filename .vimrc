@@ -11,7 +11,6 @@ endif
 call plug#begin('~/.vim/plugged')
 " General Vim
 Plug 'airblade/vim-gitgutter'
-" Plug 'benekastah/neomake'
 Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
@@ -23,7 +22,6 @@ Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'rking/ag.vim'
 Plug 'sjl/gundo.vim'
-" Plug 'scrooloose/nerdtree' , { 'on':  'NERDTreeToggle' }
 Plug 'sirver/ultisnips'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
@@ -31,10 +29,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
-" Plug 'valloric/youcompleteme', { 'do': './install.py --tern-completer' }
-" try out deocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install'}
 Plug 'sheerun/vim-polyglot'
 
@@ -83,8 +78,6 @@ set scrolloff=3
 " mouse support
 set mouse=a
 au FileType scss :vert resize 60
-" " disable preview scratch window with autocomplete/tern
-" set completeopt-=preview
 
 " Tern
 let g:tern_show_argument_hints = 'on_hold'
@@ -136,22 +129,13 @@ autocmd User ALELint call lightline#update()
 let g:delimitMate_expand_cr=1
 let g:jsx_ext_required = 0
 
-"neomake
-" autocmd! BufWritePost,BufReadPost * Neomake
-" let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_jsx_enabled_makers = ['eslint']
-" let g:neomake_airline = 1
-" let g:neomake_open_list = 2
-" augroup my_neomake_signs
-"     au!
-"     autocmd ColorScheme *
-"         \ hi NeomakeErrorSign ctermfg=196 |
-"         \ hi NeomakeWarningSign ctermfg=226 |
-"         \ hi NeomakeErrorDefault ctermfg=196
-" augroup END
+" ALE
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['eslint', 'standard'],
 \   'sh': ['shellcheck'],
+\}
+let g:ale_fixers = {
+\   'javascript': ['eslint', 'standard'],
 \}
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
@@ -318,6 +302,9 @@ let mapleader=","      " leader is comma
 
 " Switch between last two files
 map <leader><leader> <c-^>
+
+" open gundo
+nnoremap <leader>u :GundoToggle<CR>
 
 " toggle indent
 nmap <leader>tt :call ToggleIndent()<CR>
