@@ -67,14 +67,6 @@ alias stpst="git stash && git pull && git stash pop"
 alias yoda="git checkout master && git pull origin master"
 ### Open current repo on github
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
-### Open current repo on stash
-stash() {
-  remote=`git remote -v | grep 'stash.algomi.net' | grep fetch | head -1 | awk '{print $2}' | cut -d@ -f2`
-  url=`echo "$remote" | cut -d\/ -f1`
-  project=`echo "$remote" | cut -d\/ -f2`
-  repo=`echo "$remote" | cut -d\/ -f3 | cut -d. -f1`
-  open "https://$url/projects/$project/repos/$repo"
-}
 ### hub === git
 eval "$(hub alias -s)"
 
@@ -90,9 +82,9 @@ alias tmn="tmux new-session \; \
   select-pane -t 1 \; split-window -h -l 84 \; select-pane -t 0 \;"
 
 ### algomi
-alias bs="(cd ~/sites/SYN2F/synchronicity-client && bkr run 'git status && pwd')"
+alias bs="(cd ~/sites/ALFAF/alfaf-shell && ~/sites/SHJS/toolbox/run_deps git status)"
 function br() {
-  (cd ~/sites/SYN2F/synchronicity-client && bkr run $@)
+  (cd ~/sites/ALFAF/alfaf-shell && ~/sites/SHJS/toolbox/run_deps $@)
 }
 
 ### docker

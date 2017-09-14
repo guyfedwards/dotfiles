@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "Must pass script name"
+    exit 0
+fi
+
+touch "$1" \
+    && chmod +x "$1" \
+    && echo "#!/bin/bash" > "$1" \
+    && nvim "$1"

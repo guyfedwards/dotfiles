@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# get current installed version of node package
+
+less "node_modules/$1/package.json" | grep version

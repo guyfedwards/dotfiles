@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# grep node_modules
+
+ls -la node_modules | grep "$1"
