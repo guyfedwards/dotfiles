@@ -22,6 +22,9 @@ Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'rking/ag.vim'
 Plug 'sjl/gundo.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
 Plug 'sirver/ultisnips'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
@@ -67,6 +70,7 @@ set noswapfile
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 set laststatus=2
 set backspace=2
+set encoding=utf8
 " trim whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 " tell it to use an undo file
@@ -78,18 +82,14 @@ set scrolloff=3
 " mouse support
 set mouse=a
 au FileType scss :vert resize 60
-" netrw
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
+
+
 " Plugin Settings
 " ----------------------
+"  NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
 let b:javascript_fold = 0
 " lightline
 let g:lightline = {
@@ -314,6 +314,14 @@ map <leader><leader> <c-^>
 
 " open gundo
 nnoremap <leader>u :GundoToggle<CR>
+
+" open nerdtree
+nmap <leader>nt :NERDTreeToggle<CR>
+" open nerdtree current file
+nmap <leader>n :NERDTreeFind<CR>
+" open nerdtree bookmark
+nmap <leader>nb :NERDTreeFromBookmark<space>
+
 
 " toggle indent
 nmap <leader>tt :call ToggleIndent()<CR>
