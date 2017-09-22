@@ -78,15 +78,16 @@ set scrolloff=3
 " mouse support
 set mouse=a
 au FileType scss :vert resize 60
-
-" Tern
-let g:tern_show_argument_hints = 'on_hold'
-let g:tern_show_signature_in_pum = 1
-autocmd FileType javascript,javascript.jsx setlocal omnifunc=tern#Complete
-
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-autocmd FileType javascript,javascript.jsx nnoremap <silent> <buffer> gb :TernDef<CR>
-
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
 " Plugin Settings
 " ----------------------
 let b:javascript_fold = 0
@@ -128,6 +129,14 @@ autocmd User ALELint call lightline#update()
 
 let g:delimitMate_expand_cr=1
 let g:jsx_ext_required = 0
+
+" Tern
+let g:tern_show_argument_hints = 'on_hold'
+let g:tern_show_signature_in_pum = 1
+autocmd FileType javascript,javascript.jsx setlocal omnifunc=tern#Complete
+
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+autocmd FileType javascript,javascript.jsx nnoremap <silent> <buffer> gb :TernDef<CR>
 
 " ALE
 let g:ale_linters = {
