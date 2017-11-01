@@ -2,18 +2,6 @@ snippet cl
 console.log($1)
 endsnippet
 
-snippet fun "function" i
-function $1 ($2) {
-  $0
-}
-endsnippet
-
-snippet arr "arrow function"
-($1) => {
-  $0
-}
-endsnippet
-
 snippet req "require"
 const $1 = require('$2')
 endsnippet
@@ -30,12 +18,8 @@ snippet err "throw err"
 if (err) throw err
 endsnippet
 
-snippet iife "iife"
-(function () {
-	'use strict';
-
-	$0
-}());
+snippet err "throw new Error(err)"
+if (err) throw new Error(err)
 endsnippet
 
 snippet desc "describe"
@@ -44,10 +28,20 @@ describe('$1', () => {
 })
 endsnippet
 
+snippet bef "beforeEach"
+beforeEach(() => {
+	$0
+})
+endsnippet
+
 snippet it "it"
 it('should $1', () => {
 	$0
 })
+endsnippet
+
+snippet ex "expect"
+expect($1).toBe($0)
 endsnippet
 
 snippet tap "tap"
@@ -62,10 +56,6 @@ snippet inj "@inject"
 /**
  * @inject $0
  */
-endsnippet
-
-snippet dprop "default prop"
-$1={this.props.$1}
 endsnippet
 
 snippet cdm "componentDidMount"

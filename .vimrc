@@ -50,6 +50,7 @@ Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 
 Plug 'tpope/vim-ragtag', { 'for': ['eruby', 'haml', 'php'] }
 Plug 'leshill/vim-json', { 'for': ['json', 'di'] }
 Plug 'chrisbra/Colorizer', { 'for': ['scss', 'css', 'less', 'json']}
+Plug 'fatih/vim-go', { 'for': ['go'] }
 
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }

@@ -16,10 +16,8 @@ stty ixany
 stty ixoff -ixon
 
 # Go
-export GOPATH=$HOME/sites/golang
-export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

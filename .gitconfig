@@ -61,7 +61,9 @@
 [push]
 	default = simple
 [rebase]
-    stat = true
+  stat = true
+[rerere]
+  enabled=true
 [user]
 	name = guyfedwards
 	email = guyfedwards@gmail.com
