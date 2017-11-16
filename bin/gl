@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Open current repo in gitlab
+
+path=$(git remote -v | grep 'gitlab' | head -1 | awk '{print $2}' \
+    | cut -d@ -f2 | sed "s/:/\//g; s/\.git//g")
+url="https://$path"
+
+if [[ "$OSTYPE" == "linux"* ]]; then
+    xdg-open "$url"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    open "$url"
+else
+    start "$url"
+fi
