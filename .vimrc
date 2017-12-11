@@ -12,9 +12,7 @@ call plug#begin('~/.vim/plugged')
 " General Vim
 Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
-Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
@@ -30,7 +28,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install'}
@@ -38,19 +35,18 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'yuratomo/w3m.vim'
 
 " Filetype specific
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs', 'javascript.jsx'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
-Plug 'mustache/vim-mustache-handlebars', { 'for': ['handlebars', 'mustache'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
-Plug 'tpope/vim-ragtag', { 'for': ['eruby', 'haml', 'php'] }
 Plug 'leshill/vim-json', { 'for': ['json', 'di'] }
 Plug 'chrisbra/Colorizer', { 'for': ['scss', 'css', 'less', 'json']}
-Plug 'fatih/vim-go', { 'for': ['go'] }
+Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
 
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -89,12 +85,18 @@ au FileType scss :vert resize 60
 " ----------------------
 "  NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
 
-
+" vim-javascript
 let b:javascript_fold = 0
+
+" vim-go
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+
 " lightline
 let g:lightline = {
-    \ 'colorscheme': 'onedark',
+    \ 'colorscheme': 'seoul256',
     \ 'active': {
     \   'right': [[ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'linter_warnings', 'linter_errors' ]]
     \ },
@@ -128,18 +130,19 @@ endfunction
 
 autocmd User ALELint call lightline#update()
 
+" delimitMate
 let g:delimitMate_expand_cr=1
+
+" vim-jsx
 let g:jsx_ext_required = 0
 
 " Tern
 let g:tern_show_argument_hints = 'on_hold'
 let g:tern_show_signature_in_pum = 1
 autocmd FileType javascript,javascript.jsx setlocal omnifunc=tern#Complete
-
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 autocmd FileType javascript,javascript.jsx nnoremap <silent> <buffer> gb :TernDef<CR>
 
-" ALE
+" Ale
 let g:ale_linters = {
 \   'javascript': ['eslint', 'standard'],
 \   'sh': ['shellcheck'],
@@ -152,10 +155,8 @@ let g:ale_sign_warning = '⚠'
 let g:ale_sign_column_always = 1
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
-" hi ALEErrorSign ctermfg=196 ctermbg=NONE
-" hi ALEWarningSign ctermfg=226
 
-" use ag over grep
+" ag
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -163,35 +164,32 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore "node_modules" --ignore "**/docs/**" --ignore "**/dist/**" -g ""'
 endif
 
-let g:indentLine_char = '.'
-let g:indentLine_leadingSpaceEnabled = 1
-let g:indentLine_leadingSpaceChar = '.'
-let g:indentLine_bufNameExclude = ['*.jade']
+" Goyo
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
 " JSDoc
 let g:javascript_plugin_jsdoc = 1
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_input_description = 1
 let g:jsdoc_additional_descriptions = 1
 let g:jsdoc_enable_es6 = 1
-" Yajs
-let g:used_javascript_libs = 'jquery,underscore,react,angularjs,jasmine,handlebars'
+
 " fzf
 nmap <C-p> :Files .<CR>
 nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 
+
 " Colors
 " ----------------------
-syntax enable           " enable syntax processing
+syntax enable
 if (has("termguicolors"))
   set termguicolors
 endif
 let base16colorspace=256
 set background=dark
 let g:seoul256_background = 237
-" colorscheme seoul256
-colorscheme onedark
+colorscheme seoul256
 set t_Co=16
 set t_ut=
 hi Normal guibg=NONE ctermbg=NONE
@@ -201,7 +199,12 @@ hi GitGutterAdd guibg=NONE ctermbg=NONE
 hi GitGutterChange guibg=NONE ctermbg=NONE
 hi GitGutterDelete guibg=NONE ctermbg=NONE
 hi GitGutterChangeDelete guibg=NONE ctermbg=NONE
+" transparent gutter
+hi SignColumn guibg=NONE ctermbg=NONE
+" transparent line numbers
+hi LineNr guibg=NONE ctermbg=NONE
 hi def link jsObjectKey Label
+
 
 " Spaces & Tabs
 " ----------------------
@@ -238,16 +241,9 @@ set showmatch           " highlight matching [{()}]
 set ruler               " line/character numbers bottom right
 set colorcolumn=81      " show line at 81 chars, stop before the line
 " change cursor in different modes
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-" if has('nvim')
-"   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-" endif
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 " auto highlight colors for these filetypes
 let g:colorizer_auto_filetype='css,html,scss,less,json'
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-
 
 " Searching
 " ----------------------
@@ -255,7 +251,7 @@ set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 set ignorecase          " ignore case when searching
 set smartcase           " ignore case if search pattern is all lowercase,
-                        "   case-sensitive otherwise
+                        " case-sensitive otherwise
 
 
 " Folding
@@ -305,6 +301,7 @@ map <F3> :r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>
 vnoremap <C-c> <Esc>
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
+
 
 " Leader Shortcuts
 " ----------------------

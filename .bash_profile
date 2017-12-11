@@ -5,6 +5,8 @@ if [[ $OSTYPE == darwin* ]]; then
   export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 fi
 
+export EDITOR=nvim
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
