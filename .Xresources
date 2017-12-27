@@ -1,6 +1,6 @@
 /* Xft */
 Xft.lcdfilter: lcddefault
-Xft.dpi: 180
+Xft*dpi: 180
 Xft.antialias: true
 Xft.rgba: rgb
 Xft.hinting: true
@@ -28,10 +28,9 @@ URxvt*cursorColor: #d0d0d0
 URxvt*cursorColor2: #3a3a3a
 URxvt*colorBD: #e4e4e4
 
-
 URxvt.visualBell: true
 URxvt.loginShell: true
 URxvt.scrollBar: false
 URxvt*skipScroll: true
 URxvt*fading:  30
-URxvt: xft:hack:pixelsize=22
+URxvt*font: xft:hack:size=9
