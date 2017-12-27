@@ -34,3 +34,4 @@ URxvt.scrollBar: false
 URxvt*skipScroll: true
 URxvt*fading:  30
 URxvt*font: xft:hack:size=9
+URxvt*boldFont: xft:hack:size=9

@@ -44,7 +44,7 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx']
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
 Plug 'leshill/vim-json', { 'for': ['json', 'di'] }
-Plug 'chrisbra/Colorizer', { 'for': ['scss', 'css', 'less', 'json']}
+Plug 'chrisbra/Colorizer'
 Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
 
 " Markdown
@@ -62,6 +62,7 @@ let g:deoplete#file#enable_buffer_path = 1
 " disable auto backups and swap files
 set nobackup
 set noswapfile
+set nocompatible
 " markdown formatting for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 set laststatus=2
@@ -177,6 +178,25 @@ let g:jsdoc_enable_es6 = 1
 " fzf
 nmap <C-p> :Files .<CR>
 nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
+
+" deoplete
+" Disable Deoplete when selecting multiple cursors starts
+function! Multiple_cursors_before()
+    if exists('*deoplete#disable')
+        exe 'call deoplete#disable()'
+    elseif exists(':NeoCompleteLock') == 2
+        exe 'NeoCompleteLock'
+    endif
+endfunction
+
+" Enable Deoplete when selecting multiple cursors ends
+function! Multiple_cursors_after()
+    if exists('*deoplete#enable')
+        exe 'call deoplete#enable()'
+    elseif exists(':NeoCompleteUnlock') == 2
+        exe 'NeoCompleteUnlock'
+    endif
+endfunction
 
 
 " Colors
