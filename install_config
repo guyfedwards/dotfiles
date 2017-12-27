@@ -1,10 +1,9 @@
 #!/bin/bash
 
-folders=(
-    i3
-    polybar
-)
+[[ ! -d $HOME/.config ]] && mkdir $HOME/.config
 
-for f in "${folders[@]}"; do
-    ln -s "$f" "$HOME/.config/$f"
+for d in ./.config/*; do
+    nom=$(basename $d)
+
+    ln -s "$HOME/dotfiles/.config/$nom/" "$HOME/.config/$nom"
 done
