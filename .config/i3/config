@@ -180,7 +180,7 @@ for_window [class="^.*"] border pixel 2
 
 
 # class                 border  backgr. text indicator child_border
-client.focused          #74313E $bg     $fg  $bg       #74313E
+client.focused          #d75f87 $bg     $fg  $bg       #d75f87
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg
