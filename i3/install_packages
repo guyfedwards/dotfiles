@@ -1,6 +1,0 @@
-#!/bin/bash
-
-yaourt -S compton
-yaourt -S rofi
-yaourt -S feh
-yaourt -S scrot

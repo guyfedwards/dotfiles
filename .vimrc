@@ -35,7 +35,6 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
-Plug 'yuratomo/w3m.vim'
 
 " Filetype specific
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
@@ -183,14 +182,14 @@ nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 " Colors
 " ----------------------
 syntax enable
-if (has("termguicolors"))
-  set termguicolors
-endif
+" if (has("termguicolors"))
+  " set termguicolors
+" endif
 let base16colorspace=256
 set background=dark
 let g:seoul256_background = 237
 colorscheme seoul256
-set t_Co=16
+set t_Co=256
 set t_ut=
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr ctermfg=NONE ctermbg=NONE

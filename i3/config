@@ -1,5 +1,5 @@
-set $mod Mod1
-set $alt Mod4
+set $mod Mod4
+set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -14,19 +14,18 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+space exec rofi -show drun
 
 # list open windows to switch to
 bindsym $mod+Tab exec rofi -show window
 
-bindsym $alt+l exec "$HOME/dotfiles/bin/i3lock-extra \
-    --overlay-image $HOME/dotfiles/lockscreen.png -s -p 10 -b"
+bindsym $alt+l exec "$HOME/dotfiles/bin/lock_screen"
 
 # change focus
 bindsym $mod+h focus left
@@ -70,7 +69,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+d focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -124,7 +123,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -155,13 +154,15 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # bar {
-#         status_command i3status
-#         position top
+        # status_command i3status
+        # position top
 # }
 
 # custom config
+
 exec_always "setxkbmap -layout gb -variant mac"
-exec --no-startup-id feh --bg-fill ~/Dropbox/Pictures/wallpapers/subway.jpg
+exec_always --no-startup-id "sleep 1; xmodmap /home/guy/.Xmodmap"
+exec --no-startup-id "feh --bg-fill ~/Dropbox/Pictures/wallpapers/sea_rocks.jpg"
 exec_always --no-startup-id ~/.config/polybar/start
 exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc
 
@@ -175,7 +176,7 @@ gaps inner 10
 gaps outer 0
 
 # Borders
-for_window [class="^.*"] border pixel 5
+for_window [class="^.*"] border pixel 2
 
 
 # class                 border  backgr. text indicator child_border

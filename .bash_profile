@@ -212,9 +212,13 @@ man() {
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 ## Only show the current directory's name in the tab
-export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
+# export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 ## init z! (https://github.com/rupa/z)
 . ~/z.sh
+
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VNTR" -eq 1 ]; then
+    exec startx
+fi
 
 source ~/.bashrc

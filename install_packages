@@ -1,0 +1,9 @@
+#!/bin/bash
+
+yaourt -S compton
+yaourt -S rofi
+yaourt -S feh
+yaourt -S scrot
+yaourt -S betterlockscreen-git
+yaourt -S imagemagick
+pacman -S the_silver_searcher
