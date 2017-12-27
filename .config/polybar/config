@@ -53,7 +53,7 @@ font-3 = FontAwesome:pixelsize=11:weight=bold;4
 
 modules-left = i3
 modules-center =
-modules-right = temperature cpu memory wireless-network battery date
+modules-right = temperature memory cpu wireless-network battery date
 
 ;override-redirect = true
 wm-restack = i3
@@ -118,7 +118,7 @@ date-alt = " %d"
 time = " %H:%M"
 time-alt =  %H:%M
 
-label = %date%%time%
+label =  %date% %time%
 
 [module/volume]
 type = internal/volume
@@ -151,8 +151,8 @@ bar-volume-empty-foreground =
 type = internal/network
 interface = wlp4s0
 
-format-connected = <label-connected>
-format-disconnected = <label-disconnected>
+format-connected =  <label-connected>
+format-disconnected =  <label-disconnected>
 format-packetloss = <animation-packetloss> <label-connected>
 
 label-connected = %essid% %downspeed:9%
@@ -170,19 +170,19 @@ label = %temperature%
 label-padding = 1
 label-foreground = ${colors.color3}
 
-[module/cpu]
-type = internal/cpu
-format = <label>
-label = CPU %percentage%%
-label-foreground = ${colors.color3}
-
 [module/memory]
 type = internal/memory
 interval = 3
-label = RAM %percentage_used%%
-label-padding-left = 1
-label-padding-right = 2
+label =  %percentage_used%%
 label-foreground = ${colors.color3}
+
+[module/cpu]
+type = internal/cpu
+format = <label>
+label =  %percentage%%
+label-foreground = ${colors.color3}
+label-padding-right = 2
+label-padding-left = 1
 
 [module/powermenu]
 type = custom/menu
