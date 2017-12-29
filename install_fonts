@@ -1,7 +1,7 @@
 #!/bin/bash
 
 yaourt -S ttf-hack
-yaourt -S ttf-font-awesome
+yaourt -S ttf-font-awesome-4
 yaourt -S ttf-unifont
 yaourt -S siji-git
 
