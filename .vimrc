@@ -37,8 +37,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
 
 " Filetype specific
-Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs', 'javascript.jsx'] }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
@@ -155,6 +155,10 @@ let g:ale_sign_warning = '⚠'
 let g:ale_sign_column_always = 1
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
+let g:ale_echo_msg_format = '%linter%: %s'
+" Map keys to navigate between lines with errors and warnings.
+nnoremap <leader>an :ALENextWrap<cr>
+nnoremap <leader>ap :ALEPreviousWrap<cr>
 
 " ag
 if executable('ag')
@@ -339,7 +343,6 @@ nmap <leader>n :NERDTreeFind<CR>
 " open nerdtree bookmark
 nmap <leader>nb :NERDTreeFromBookmark<space>
 
-
 " toggle indent
 nmap <leader>tt :call ToggleIndent()<CR>
 
@@ -359,5 +362,5 @@ nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
 " toggle paste mode
 set pastetoggle=<leader>p
 
-" select text that was jsut pasted
+" select text that was just pasted
 nnoremap <leader>v V`]
