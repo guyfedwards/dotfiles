@@ -46,19 +46,20 @@ Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 
 Plug 'leshill/vim-json', { 'for': ['json', 'di'] }
 Plug 'chrisbra/Colorizer'
 Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
+Plug 'zchee/deoplete-go', { 'for': ['go'], 'do': 'make' }
 
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'junegunn/goyo.vim', { 'for': 'markdown', 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'for': 'markdown', 'on': 'Goyo' }
 call plug#end()
 
 
 " General
 " ----------------------
+call deoplete#custom#set('_', 'converters', ['converter_remove_overlap', 'converter_truncate_abbr', 'converter_truncate_menu', 'converter_auto_paren'])
 " enable deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#file#enable_buffer_path = 1
+" let g:deoplete#file#enable_buffer_path = 1
 " disable auto backups and swap files
 set nobackup
 set noswapfile
@@ -78,7 +79,10 @@ set undodir=~/.vimundo/
 set scrolloff=3
 " mouse support
 set mouse=a
-au FileType scss :vert resize 60
+" shortcuts for quickfix lists
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 
 
 " Plugin Settings
@@ -86,6 +90,12 @@ au FileType scss :vert resize 60
 "  NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+" open by default
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter,TabEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter,TabEnter * wincmd p
 
 " vim-javascript
 let b:javascript_fold = 0
@@ -93,6 +103,16 @@ let b:javascript_fold = 0
 " vim-go
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
+let g:go_auto_sameids = 1
+let g:go_fmt_command = "goimports"
+let g:go_list_type = "locationlist"
+let g:go_fmt_fail_silently = 1
+let g:go_auto_type_info = 1
+let g:go_metalinter_enabled = [
+      \ 'deadcode', 'errcheck', 'gas', 'goconst', 'golint', 'gosimple',
+      \ 'gotype', 'ineffassign', 'interfacer', 'staticcheck', 'structcheck',
+      \ 'unconvert', 'varcheck', 'vet', 'vetshadow',
+      \ ]
 
 " lightline
 let g:lightline = {
@@ -146,6 +166,7 @@ autocmd FileType javascript,javascript.jsx nnoremap <silent> <buffer> gb :TernDe
 let g:ale_linters = {
 \   'javascript': ['eslint', 'standard'],
 \   'sh': ['shellcheck'],
+\   'go': ['gometalinter'],
 \}
 let g:ale_fixers = {
 \   'javascript': ['eslint', 'standard'],
@@ -184,6 +205,7 @@ nmap <C-p> :Files .<CR>
 nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 
 " deoplete
+set completeopt-=preview
 " Disable Deoplete when selecting multiple cursors starts
 function! Multiple_cursors_before()
     if exists('*deoplete#disable')
@@ -201,6 +223,9 @@ function! Multiple_cursors_after()
         exe 'NeoCompleteUnlock'
     endif
 endfunction
+
+" deoplete go
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 
 " Colors
@@ -364,3 +389,7 @@ set pastetoggle=<leader>p
 
 " select text that was just pasted
 nnoremap <leader>v V`]
+
+" golang
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
