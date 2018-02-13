@@ -34,4 +34,12 @@ URxvt.scrollBar: false
 URxvt*skipScroll: true
 URxvt*fading:  30
 URxvt*font: xft:hack:size=9
-URxvt*boldFont: xft:hack:size=9
+URxvt*boldFont: xft:hack:bold:size=9
+URxvt*italicFont: xft:hack:italic:size=9
+
+*URxvt.perl-ext-common:	default,matcher,osc-xterm-clipboard,resize-font
+URxvt.url-launcher: /usr/bin/chromium
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
+

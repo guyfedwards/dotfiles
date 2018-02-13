@@ -26,6 +26,8 @@ bindsym $mod+space exec rofi -show drun
 bindsym $mod+Tab exec rofi -show window
 
 bindsym $alt+l exec "$HOME/dotfiles/bin/lock_screen"
+bindsym --release $alt+s exec scrot $HOME/Dropbox/Screenshots/%Y-%m-%d_%H%M%S.png
+bindsym --release $alt+Shift+s exec scrot -s $HOME/Dropbox/Screenshots/%Y-%m-%d_%H%M%S.png
 
 # change focus
 bindsym $mod+h focus left
@@ -123,7 +125,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
