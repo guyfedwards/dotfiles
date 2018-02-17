@@ -53,7 +53,7 @@ font-3 = FontAwesome:pixelsize=11:weight=bold;4
 
 modules-left = i3
 modules-center =
-modules-right = temperature memory cpu wireless-network battery date
+modules-right = temperature memory cpu wireless-network volume battery date
 
 ;override-redirect = true
 wm-restack = i3
@@ -125,9 +125,10 @@ type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
 label-volume = ""
+format-volume-padding = 2
 label-volume-foreground = ${root.foreground}
 label-muted = muted
-label-padding = 2
+label-muted-padding = 2
 
 bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.color2}
@@ -181,7 +182,6 @@ type = internal/cpu
 format = <label>
 label =  %percentage%%
 label-foreground = ${colors.color3}
-label-padding-right = 2
 label-padding-left = 1
 
 [module/powermenu]
