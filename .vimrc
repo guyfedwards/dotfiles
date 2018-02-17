@@ -50,7 +50,7 @@ Plug 'zchee/deoplete-go', { 'for': ['go'], 'do': 'make' }
 
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'junegunn/limelight.vim', { 'for': 'markdown', 'on': 'Goyo' }
+Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
 call plug#end()
 
 
@@ -189,9 +189,9 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore "node_modules" --ignore "**/docs/**" --ignore "**/dist/**" -g ""'
 endif
 
-" Goyo
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+" Limelight
+autocmd FileType markdown Limelight
+let g:limelight_conceal_ctermfg = 240
 
 " JSDoc
 let g:javascript_plugin_jsdoc = 1
