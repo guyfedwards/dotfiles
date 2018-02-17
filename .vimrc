@@ -22,7 +22,6 @@ Plug 'rking/ag.vim'
 Plug 'sjl/gundo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
 Plug 'sirver/ultisnips'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
@@ -150,6 +149,16 @@ endfunction
 
 autocmd User ALELint call lightline#update()
 
+" NERDTree syntax hi
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+" set the color for files ending with _spec.r
+" this line is needed to avoid errorb
+let g:NERDTreePatternMatchHighlightColor = {}
+let g:NERDTreePatternMatchHighlightColor['.*\.rb$'] = 'a9535b'
+let g:NERDTreePatternMatchHighlightColor['.*\.go$'] = '5485e5'
+
 " delimitMate
 let g:delimitMate_expand_cr=1
 
@@ -190,7 +199,6 @@ if executable('ag')
 endif
 
 " Limelight
-autocmd FileType markdown Limelight
 let g:limelight_conceal_ctermfg = 240
 
 " JSDoc
