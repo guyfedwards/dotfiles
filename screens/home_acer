@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+# look at output of `xrandr` to find resolution for --fb and --panning
+xrandr --output HDMI-1 --scale 2x2 --fb 3840x2160 --panning 3840x2160 --output eDP-1 --off
