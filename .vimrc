@@ -38,6 +38,7 @@ Plug 'junegunn/vim-peekaboo'
 
 " Filetype specific
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs', 'javascript.jsx'] }
+Plug 'tpope/vim-rails', { 'for': ['ruby'] }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
@@ -217,7 +218,7 @@ nmap <C-p> :Files .<CR>
 nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 
 " deoplete
-set completeopt-=preview
+" set completeopt-=preview
 " Disable Deoplete when selecting multiple cursors starts
 function! Multiple_cursors_before()
   let b:deoplete_disable_auto_complete = 1
