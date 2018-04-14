@@ -87,12 +87,6 @@ alias tmn="tmux new-session \; \
   select-pane -t 0 \; split-window -v -l 24 \; split-window -h -l 84 \; \
   select-pane -t 1 \; split-window -h -l 84 \; select-pane -t 0 \;"
 
-### algomi
-alias bs="(cd ~/sites/ALFAF/alfaf-shell && ~/sites/SHJS/toolbox/run_deps git status)"
-function br() {
-  (cd ~/sites/ALFAF/alfaf-shell && ~/sites/SHJS/toolbox/run_deps $@)
-}
-
 ### docker
 alias allimgids='docker images | grep -v REPOSITORY | awk '\''{print $3}'\'''
 alias allcontids='docker ps | grep -v CONTAINER | awk '\''{print $1}'\'''

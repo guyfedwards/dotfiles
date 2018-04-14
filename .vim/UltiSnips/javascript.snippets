@@ -10,10 +10,6 @@ snippet im "import"
 import $1 from '$2'
 endsnippet
 
-snippet us "use strict"
-'use strict'
-endsnippet
-
 snippet err "throw new Error(err)"
 if (err) throw new Error(err)
 endsnippet
@@ -36,22 +32,40 @@ it('should $1', () => {
 })
 endsnippet
 
+snippet enz "enzyme skeleton"
+import React from 'react';
+import enzyme, { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import $1 from '.'
+
+
+enzyme.configure({ adapter: new Adapter() });
+
+describe('<$1 />', () => {
+  let props
+  let wrapper
+
+  beforeEach(() => {
+    props = {
+
+    }
+    wrapper = shallow(<$1 {...props} />)
+  })
+
+  it('should render correctly', () => {
+    expect(wrapper).toMatchSnapshot()
+  })
+})
+
+endsnippet
+
+
 snippet ex "expect"
 expect($1).toBe($0)
 endsnippet
 
-snippet tap "tap"
-.tap(x => console.log('$0', x))
-endsnippet
-
 snippet do "do"
 .do(x => console.log('$0', x))
-endsnippet
-
-snippet inj "@inject"
-/**
- * @inject $0
- */
 endsnippet
 
 snippet cdm "componentDidMount"
@@ -99,92 +113,50 @@ import { promisify } from 'util'
 $0
 endsnippet
 
-snippet recc "React createClass"
-import _ from 'lodash'
-import React from 'react'
-
-const $1 = React.createClass({
-
-	displayName: '$1',
-
-	componentWillMount() {
-
-	},
-
-	render() {
-		return (
-
-		)
-	}
-})
-
-export default $1
-endsnippet
-
 snippet rec "React es6 class"
-import _ from 'lodash'
 import React, { Component } from 'react'
 
+
 class $1 extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
+  static displayName = '$1'
 
-		}
-	}
+  state = {
 
-	componentWillMount() {
+  }
 
-	}
+  componentWillMount() {
 
-	render() {
-		return (
+  }
 
-		)
-	}
+  render() {
+    return (
+      <div>$1</div>
+    )
+  }
 }
 
 export default $1
 endsnippet
 
 snippet refu "React functional component"
-import _ from 'lodash'
 import React from 'react'
 
-const $1 = props => {
-	return (
 
-	)
+const $1 = props => {
+  return (
+    <div>$1</div>
+  )
 }
 
 export default $1
 endsnippet
 
-snippet copy "Copy.get()"
-Copy.get('$1')
+snippet pt "proptypes"
+propTypes.$0
 endsnippet
 
-snippet state "state$"
-const state$ = Rx.Observable
-	.merge(
-		$0
-	)
-	.scan((acc, update) => _.assign({}, acc, update), {})
-	.shareValue({})
-endsnippet
-
-snippet maps "map state"
-$1$.map($1 => ({$1}))
-endsnippet
-
-snippet mix "mixins"
-mixins: [RxDisposable, RxEvents, RxLifecycle, RxProps, RxStateObserver],
-endsnippet
-
-snippet immix "import mixins"
-import { RxDisposable, RxEvents, RxLifecycle, RxProps, RxStateObserver } from 'rx-mixin'
-endsnippet
-
-snippet propt "proptypes"
-React.PropTypes.$0
+snippet div "<div>"
+<div className={$1}>
+  $0
+</div>
 endsnippet

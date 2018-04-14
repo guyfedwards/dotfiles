@@ -28,6 +28,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install'}
 Plug 'sheerun/vim-polyglot'
@@ -46,6 +47,7 @@ Plug 'leshill/vim-json', { 'for': ['json', 'di'] }
 Plug 'chrisbra/Colorizer'
 Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
 Plug 'zchee/deoplete-go', { 'for': ['go'], 'do': 'make' }
+Plug 'tpope/vim-rails', { 'for': ['ruby'] }
 
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -58,7 +60,7 @@ call plug#end()
 call deoplete#custom#set('_', 'converters', ['converter_remove_overlap', 'converter_truncate_abbr', 'converter_truncate_menu', 'converter_auto_paren'])
 " enable deoplete
 let g:deoplete#enable_at_startup = 1
-" let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#file#enable_buffer_path = 1
 " disable auto backups and swap files
 set nobackup
 set noswapfile
@@ -106,7 +108,7 @@ let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "locationlist"
 let g:go_fmt_fail_silently = 1
-let g:go_auto_type_info = 1
+" let g:go_auto_type_info = 1
 let g:go_metalinter_enabled = [
       \ 'deadcode', 'errcheck', 'gas', 'goconst', 'golint', 'gosimple',
       \ 'gotype', 'ineffassign', 'interfacer', 'staticcheck', 'structcheck',
@@ -117,10 +119,11 @@ let g:go_metalinter_enabled = [
 let g:lightline = {
     \ 'colorscheme': 'seoul256',
     \ 'active': {
-    \   'right': [[ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'linter_warnings', 'linter_errors' ]]
+    \   'right': [[ 'lineinfo' ], [ 'percent' ], [ 'filetype' ], [ 'linter_warnings', 'linter_errors' ]]
     \ },
     \ 'component': {
-    \     'lineinfo': '%3l/%L:%-2v'
+    \     'lineinfo': '%3l/%L:%-2v',
+    \     'filename': '%f'
     \ },
     \ 'component_expand': {
     \   'linter_warnings': 'LightlineLinterWarnings',
@@ -180,6 +183,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'javascript': ['eslint', 'standard'],
 \}
+let g:ale_fix_on_save = 1
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
 let g:ale_sign_column_always = 1
@@ -216,20 +220,12 @@ nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 set completeopt-=preview
 " Disable Deoplete when selecting multiple cursors starts
 function! Multiple_cursors_before()
-    if exists('*deoplete#disable')
-        exe 'call deoplete#disable()'
-    elseif exists(':NeoCompleteLock') == 2
-        exe 'NeoCompleteLock'
-    endif
+  let b:deoplete_disable_auto_complete = 1
 endfunction
 
 " Enable Deoplete when selecting multiple cursors ends
 function! Multiple_cursors_after()
-    if exists('*deoplete#enable')
-        exe 'call deoplete#enable()'
-    elseif exists(':NeoCompleteUnlock') == 2
-        exe 'NeoCompleteUnlock'
-    endif
+  let b:deoplete_disable_auto_complete = 0
 endfunction
 
 " deoplete go
@@ -264,9 +260,9 @@ hi def link jsObjectKey Label
 
 " Spaces & Tabs
 " ----------------------
-set tabstop=4           " number of visual spaces per TAB
-set softtabstop=4       " number of spaces in tab when editing
-set shiftwidth=4        " indentation with << and >>
+set tabstop=2           " number of visual spaces per TAB
+set softtabstop=2       " number of spaces in tab when editing
+set shiftwidth=2        " indentation with << and >>
 set expandtab           " tabs are spaces
 set shiftround          " use multiple of shiftwidth when indenting with < and >
 set autoindent          " autoindent lines

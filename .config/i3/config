@@ -167,6 +167,7 @@ exec_always --no-startup-id "sleep 1; xmodmap /home/guy/.Xmodmap"
 exec --no-startup-id "feh --bg-fill ~/Dropbox/Pictures/wallpapers/sea_rocks.jpg"
 exec_always --no-startup-id ~/.config/polybar/start
 exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc
+exec_always --no-startup-id dunst
 
 
 # Set colors from Xresources
