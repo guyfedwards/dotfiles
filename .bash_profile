@@ -91,6 +91,14 @@ alias tmn="tmux new-session \; \
 alias allimgids='docker images | grep -v REPOSITORY | awk '\''{print $3}'\'''
 alias allcontids='docker ps | grep -v CONTAINER | awk '\''{print $1}'\'''
 
+
+### mpv
+mpv() {
+  m=$(which mpv)
+  $m "$@" && echo "mpv $@" >> ~/mpv-history.log
+}
+
+
 if [[ $OSTYPE == darwin* ]]; then
   # Show/Hide hidden files
   alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
