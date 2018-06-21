@@ -43,6 +43,9 @@ Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'j
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
+Plug 'prettier/vim-prettier', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'md', 'markdown'], 'do': 'yarn install' }
+Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
+Plug 'flowtype/vim-flow', { 'for': ['javascript', 'js', 'jsx', 'javascript.jsx']}
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
 Plug 'leshill/vim-json', { 'for': ['json', 'di'] }
 Plug 'chrisbra/Colorizer'
@@ -85,6 +88,8 @@ set mouse=a
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
+" Y copy from cursor to end of line instead of whole line
+noremap Y y$
 
 
 " Plugin Settings
@@ -101,6 +106,8 @@ autocmd VimEnter,TabEnter * wincmd p
 
 " vim-javascript
 let b:javascript_fold = 0
+let g:javascript_plugin_flow = 1
+
 
 " vim-go
 let g:go_highlight_methods = 1
@@ -168,6 +175,10 @@ let g:delimitMate_expand_cr=1
 
 " vim-jsx
 let g:jsx_ext_required = 0
+
+" vim-prettier
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx PrettierAsync
 
 " Tern
 let g:tern_show_argument_hints = 'on_hold'
@@ -345,8 +356,7 @@ autocmd BufRead,BufNewFile *.hbs set filetype=mustache
 
 " Commands
 " ----------------------
-nnoremap \ :Ag! --ignore "**docs**" --ignore "**trader-gui-client**" --ignore "**dist**"<SPACE>
-nnoremap # :Ag! --ignore "**docs**" --ignore "**trader-gui-client**" --ignore "**dist**"<SPACE>
+nnoremap \ :Ag! --ignore "**docs**"  --ignore "**dist**"<SPACE>
 map Q <Nop>
 " paste date for notes
 map <F3> :r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>
