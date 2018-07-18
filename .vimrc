@@ -43,7 +43,6 @@ Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'j
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
-Plug 'prettier/vim-prettier', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'md', 'markdown'], 'do': 'yarn install' }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'flowtype/vim-flow', { 'for': ['javascript', 'js', 'jsx', 'javascript.jsx']}
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
@@ -176,10 +175,6 @@ let g:delimitMate_expand_cr=1
 " vim-jsx
 let g:jsx_ext_required = 0
 
-" vim-prettier
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx PrettierAsync
-
 " Tern
 let g:tern_show_argument_hints = 'on_hold'
 let g:tern_show_signature_in_pum = 1
@@ -188,13 +183,14 @@ autocmd FileType javascript,javascript.jsx nnoremap <silent> <buffer> gb :TernDe
 
 " Ale
 let g:ale_linters = {
-\   'javascript': ['eslint', 'standard'],
+\   'javascript': ['eslint', 'flow', 'standard'],
 \   'sh': ['shellcheck'],
 \   'go': ['gometalinter'],
 \}
 let g:ale_fixers = {
-\   'javascript': ['eslint', 'standard'],
+\   'javascript': ['prettier', 'eslint', 'standard'],
 \}
+let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
@@ -297,7 +293,7 @@ endfunction
 " ----------------------
 set number              " show line numbers
 set cursorline          " highlight current line
-hi CursorLine ctermbg=NONE
+hi CursorLine ctermbg=237
 filetype indent plugin on " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set lazyredraw          " redraw only when we need to.

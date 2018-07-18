@@ -23,7 +23,7 @@ export GEM_HOME=$HOME/.gem
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
 
 # add yarn
 export PATH="$HOME/.yarn/bin:$PATH"
