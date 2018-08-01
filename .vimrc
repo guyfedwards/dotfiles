@@ -18,7 +18,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
 Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
-Plug 'rking/ag.vim'
 Plug 'sjl/gundo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -29,25 +28,26 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-unimpaired'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install'}
 Plug 'sheerun/vim-polyglot'
-
+Plug 'chrisbra/Colorizer'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
+
 
 " Filetype specific
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs', 'javascript.jsx'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby'] }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
+Plug 'ternjs/tern_for_vim', { 'for': ['js', 'javascript', 'javascript.jsx'], 'do': 'npm install'}
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'flowtype/vim-flow', { 'for': ['javascript', 'js', 'jsx', 'javascript.jsx']}
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
-Plug 'leshill/vim-json', { 'for': ['json', 'di'] }
-Plug 'chrisbra/Colorizer'
+Plug 'leshill/vim-json', { 'for': ['json'] }
 Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
 Plug 'zchee/deoplete-go', { 'for': ['go'], 'do': 'make' }
 Plug 'tpope/vim-rails', { 'for': ['ruby'] }
@@ -206,8 +206,6 @@ nnoremap <leader>ap :ALEPreviousWrap<cr>
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore "node_modules" --ignore "**/docs/**" --ignore "**/dist/**" -g ""'
 endif
 
 " Limelight
@@ -352,7 +350,7 @@ autocmd BufRead,BufNewFile *.hbs set filetype=mustache
 
 " Commands
 " ----------------------
-nnoremap \ :Ag! --ignore "**docs**"  --ignore "**dist**"<SPACE>
+nnoremap \ :Ag<SPACE>
 map Q <Nop>
 " paste date for notes
 map <F3> :r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>

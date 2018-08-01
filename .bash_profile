@@ -73,8 +73,6 @@ alias stpst="git stash && git pull && git stash pop"
 alias yoda="git checkout master && git pull origin master"
 ### Open current repo on github
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
-### hub === git
-eval "$(hub alias -s)"
 
 # tmux
 alias tm='tmux'
@@ -97,16 +95,6 @@ mpv() {
   m=$(which mpv)
   $m "$@" && echo "mpv $@" >> ~/mpv-history.log
 }
-
-
-if [[ $OSTYPE == darwin* ]]; then
-  # Show/Hide hidden files
-  alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-  alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-
-  # Lock the screen
-  alias afk='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
-fi
 
 # Prompt Colors
 ### Set CLICOLOR if you want Ansi Colors in iTerm2
@@ -217,14 +205,10 @@ man() {
 ##fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
-## Only show the current directory's name in the tab
-# export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
-
 ## init z! (https://github.com/rupa/z)
 . ~/z.sh
 
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VNTR" -eq 1 ]; then
-    exec startx
-fi
+### hub === git
+eval "$(hub alias -s)"
 
 source ~/.bashrc

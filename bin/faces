@@ -12,4 +12,5 @@ if [[ -z $1 ]]; then
   done
 else
   echo "${faces["$1"]}"
+  echo "${faces["$1"]}" | pbcopy
 fi
