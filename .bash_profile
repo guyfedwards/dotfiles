@@ -57,6 +57,7 @@ alias notes='cd ~/Dropbox/Documents/Notes && v -c "NERDTree"'
 alias bashp='v ~/.bash_profile && source ~/.bash_profile'
 alias vimrc='v ~/.vimrc'
 alias i3c='v ~/.config/i3/config'
+alias p='fc -s'
 
 # Quicker navigation
 alias ..="cd .."
