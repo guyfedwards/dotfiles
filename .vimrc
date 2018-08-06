@@ -402,5 +402,6 @@ set pastetoggle=<leader>p
 nnoremap <leader>v V`]
 
 " golang
+autocmd FileType go nmap <leader>gd  :GoDef<CR>
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)

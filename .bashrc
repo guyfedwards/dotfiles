@@ -27,3 +27,14 @@ export PATH=$PATH:$GOPATH/bin
 
 # add yarn
 export PATH="$HOME/.yarn/bin:$PATH"
+
+# bash completion from brew install bash-completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+# kubectl completion
+hash kubectl && source <(kubectl completion bash)
+
+# git completion
+# `$_` takes last parameter of previous command
+test -f ~/.git-completion.bash && . $_
+

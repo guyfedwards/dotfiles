@@ -16,15 +16,6 @@ shopt -s histappend
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
 
-# bash completion from brew install bash-completion
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-
-# kubectl completion
-hash kubectl && source <(kubectl completion bash)
-# git completion
-# `$_` takes last parameter of previous command
-test -f ~/.git-completion.bash && . $_
-
 # Shell only exits after the 10th consecutive Ctrl-d. Same as IGNOREEOF=10
 set -o ignoreeof
 
