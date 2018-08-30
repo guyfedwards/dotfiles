@@ -48,9 +48,10 @@
 	remote = green
 [color "diff"]
 	meta = yellow
-	frag = magenta
-	old = red
-	new = green
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	commit = yellow bold
 [color "status"]
 	added = yellow
 	changed = green
@@ -68,3 +69,8 @@
 [user]
 	name = guyfedwards
 	email = guyfedwards@gmail.com
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
