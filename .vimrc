@@ -60,14 +60,16 @@ call plug#end()
 
 " General
 " ----------------------
+set nocompatible
 call deoplete#custom#source('_', 'converters', ['converter_remove_overlap', 'converter_truncate_abbr', 'converter_truncate_menu', 'converter_auto_paren'])
 " enable deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 1
 " disable auto backups and swap files
 set nobackup
+" allow unsaved buffers in background, but check on quit
+set confirm
 set noswapfile
-set nocompatible
 " markdown formatting for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 set laststatus=2
@@ -376,8 +378,7 @@ nnoremap <leader>u :GundoToggle<CR>
 nmap <leader>nt :NERDTreeToggle<CR>
 " open nerdtree current file
 nmap <leader>n :NERDTreeFind<CR>
-" open nerdtree bookmark
-nmap <leader>nb :NERDTreeFromBookmark<space>
+nmap <leader>nn :NERDTreeFind<CR>
 
 " toggle indent
 nmap <leader>tt :call ToggleIndent()<CR>

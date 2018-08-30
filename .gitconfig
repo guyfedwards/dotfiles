@@ -38,9 +38,10 @@
 	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
 	whitespace = space-before-tab,trailing-space
 	editor = nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal
-	ui = auto
+	ui = true
 [color "branch"]
 	current = yellow reverse
 	local = yellow

@@ -17,3 +17,7 @@ Thumbs.db
 
 #Ignore session files
 Session.vim
+
+#Ignore ctags
+tags
+
