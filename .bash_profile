@@ -63,8 +63,8 @@ alias nid='npm install --save-dev'
 ## git
 alias stpst="git stash && git pull && git stash pop"
 alias yoda="git checkout master && git pull origin master"
-### Open current repo on github
-alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
+### hub === git
+eval "$(hub alias -s)"
 
 # tmux
 alias tm='tmux'
