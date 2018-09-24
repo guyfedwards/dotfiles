@@ -33,9 +33,10 @@ URxvt.loginShell: true
 URxvt.scrollBar: false
 URxvt*skipScroll: true
 URxvt*fading:  30
-URxvt*font: xft:monaco:size=8
-URxvt*boldFont: xft:monaco:size=8
-URxvt*italicFont: xft:monaco:italic:size=8
+URxvt*font: xft:inconsolata:size=9
+URxvt*boldFont: xft:inconsolata:size=9
+URxvt*italicFont: xft:inconsolata:italic:size=9
+URxvt*lineSpace: 5
 /* URxvt*letterSpace: -6 */
 
 *URxvt.perl-ext-common:	default,matcher,osc-xterm-clipboard,resize-font
