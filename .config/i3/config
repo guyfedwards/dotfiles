@@ -175,7 +175,7 @@ set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
 
 # Gaps
-gaps inner 10
+gaps inner 5
 gaps outer 0
 
 # Borders

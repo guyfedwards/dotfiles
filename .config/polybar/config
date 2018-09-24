@@ -151,6 +151,8 @@ bar-volume-empty-foreground =
 [module/wireless-network]
 type = internal/network
 interface = wlp4s0
+interval = 3.0
+unknown-as-up = true
 
 format-connected =  <label-connected>
 format-disconnected =  <label-disconnected>
