@@ -1,0 +1,199 @@
+let SessionLoad = 1
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd ~/go/src/kathenas
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +22 user/commit.go
+badd +80 user/workflow.go
+badd +0 user/graph.go
+badd +1 user/auth.go
+badd +31 user/fetch.go
+badd +144 messenger/handlers_test.go
+badd +15 seeds/7_add_sucuk_shack_business.go
+badd +15 seeds/8_add_iguanas_business.go
+badd +15 seeds/2_add_nandos_menu.go
+badd +15 seeds/34_update_access_token.go
+badd +152 seeds/38_add_las_igs_live_pages.go
+badd +22 seeds/32_add_full_test_menu.go
+badd +15 seeds/27_add_platform_details_to_identifiers.go
+badd +120 menu/handlers_test.go
+badd +477 platform/httpctx/http_test.go
+badd +25 main.go
+badd +20061 data/big.txt
+badd +1 utils/encoding.go
+badd +12 readme.md
+argglobal
+silent! argdel *
+set stal=2
+edit user/commit.go
+set splitbelow splitright
+wincmd t
+set winminheight=1 winminwidth=1 winheight=1 winwidth=1
+argglobal
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=10
+setlocal fml=1
+setlocal fdn=10
+setlocal fen
+let s:l = 70 - ((47 * winheight(0) + 36) / 73)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+70
+normal! 034|
+tabedit user/graph.go
+set splitbelow splitright
+wincmd t
+set winminheight=1 winminwidth=1 winheight=1 winwidth=1
+argglobal
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=10
+setlocal fml=1
+setlocal fdn=10
+setlocal fen
+51
+normal! zo
+let s:l = 23 - ((22 * winheight(0) + 36) / 73)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+23
+normal! 017|
+tabedit user/workflow.go
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd w
+wincmd w
+wincmd t
+set winminheight=1 winminwidth=1 winheight=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 85 + 90) / 180)
+exe 'vert 2resize ' . ((&columns * 1 + 90) / 180)
+exe 'vert 3resize ' . ((&columns * 92 + 90) / 180)
+argglobal
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=10
+setlocal fml=1
+setlocal fdn=10
+setlocal fen
+let s:l = 89 - ((16 * winheight(0) + 23) / 47)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+89
+normal! 096|
+lcd ~/go/src/kathenas
+wincmd w
+argglobal
+if bufexists('~/go/src/kathenas/user/commit.go') | buffer ~/go/src/kathenas/user/commit.go | else | edit ~/go/src/kathenas/user/commit.go | endif
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=10
+setlocal fml=1
+setlocal fdn=10
+setlocal fen
+let s:l = 85 - ((0 * winheight(0) + 23) / 47)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+85
+normal! 026|
+lcd ~/go/src/kathenas
+wincmd w
+argglobal
+if bufexists('~/go/src/kathenas/user/graph.go') | buffer ~/go/src/kathenas/user/graph.go | else | edit ~/go/src/kathenas/user/graph.go | endif
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=10
+setlocal fml=1
+setlocal fdn=10
+setlocal fen
+let s:l = 70 - ((0 * winheight(0) + 23) / 47)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+70
+normal! 026|
+lcd ~/go/src/kathenas
+wincmd w
+exe 'vert 1resize ' . ((&columns * 85 + 90) / 180)
+exe 'vert 2resize ' . ((&columns * 1 + 90) / 180)
+exe 'vert 3resize ' . ((&columns * 92 + 90) / 180)
+tabedit ~/go/src/kathenas/main.go
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+wincmd t
+set winminheight=1 winminwidth=1 winheight=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 31 + 90) / 180)
+exe 'vert 2resize ' . ((&columns * 148 + 90) / 180)
+argglobal
+enew
+file ~/go/src/kathenas/NERD_tree_3
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=10
+setlocal fml=1
+setlocal fdn=10
+setlocal nofen
+lcd ~/go/src/kathenas
+wincmd w
+argglobal
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=10
+setlocal fml=1
+setlocal fdn=10
+setlocal fen
+let s:l = 26 - ((16 * winheight(0) + 23) / 47)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+26
+normal! 05|
+lcd ~/go/src/kathenas
+wincmd w
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 31 + 90) / 180)
+exe 'vert 2resize ' . ((&columns * 148 + 90) / 180)
+tabnext 4
+set stal=1
+if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=filnxtToO
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
