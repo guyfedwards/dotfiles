@@ -2,7 +2,7 @@
 
 [[ ! -d $HOME/.config ]] && mkdir $HOME/.config
 
-for d in ./.config/*; do
+for d in ../.config/*; do
     nom=$(basename $d)
 
     ln -s "$HOME/dotfiles/.config/$nom/" "$HOME/.config/$nom"

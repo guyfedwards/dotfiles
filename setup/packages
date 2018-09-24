@@ -7,3 +7,4 @@ yaourt -S scrot
 yaourt -S betterlockscreen-git
 yaourt -S imagemagick
 pacman -S the_silver_searcher
+pacman -S diff-so-fancy
