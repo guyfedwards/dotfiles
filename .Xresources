@@ -37,7 +37,6 @@ URxvt*font: xft:inconsolata:size=9
 URxvt*boldFont: xft:inconsolata:size=9
 URxvt*italicFont: xft:inconsolata:italic:size=9
 URxvt*lineSpace: 5
-/* URxvt*letterSpace: -6 */
 
 *URxvt.perl-ext-common:	default,matcher,osc-xterm-clipboard,resize-font
 URxvt*perl-lib:            /usr/lib/urxvt/perl/
