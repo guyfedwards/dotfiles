@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[[ ! -d $HOME/.config ]] && mkdir $HOME/.config
+
+for d in $HOME/dotfiles/.config/*; do
+    nom=$(basename $d)
+    echo $nom
+
+    # ln -s "$HOME/dotfiles/.config/$nom/" "$HOME/.config/$nom"
+done

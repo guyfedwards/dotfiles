@@ -1,0 +1,5 @@
+#!/bin/bash
+# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/8#issuecomment-4134987
+unset cfg
+test "$(uname)" = "Darwin" && cfg=$HOME/.tmux-osx.conf
+exec /path/to/actual/tmux ${cfg+-f "$cfg"} "$@"

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# install neovim?
+
 ln -s ~/dotfiles/.vim/ ~/.config/nvim
 ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
-
