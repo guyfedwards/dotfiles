@@ -6,5 +6,7 @@ yaourt -S feh
 yaourt -S scrot
 yaourt -S betterlockscreen-git
 yaourt -S imagemagick
-pacman -S the_silver_searcher
-pacman -S diff-so-fancy
+yaourt -S the_silver_searcher
+yaourt -S diff-so-fancy
+yaourt -S tldr
+yaourt -S docker
