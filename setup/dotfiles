@@ -10,7 +10,7 @@ fi
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir without trailing slash
-files=".bash_profile .bashrc .ctags .gitconfig .gitignore .git-completion.bash .git_templates .hushlogin .tern-config .tmux .tmux.conf .osx .vim .xbindkeysrc .xinitrc .Xmodmap .Xresources .vimrc z.sh"
+files=".bash_profile .bashrc .ctags .gitconfig .gitignore .git-completion.bash .git_templates .hushlogin .tern-config .tmux.conf .osx .vim .xbindkeysrc .xinitrc .Xmodmap .Xresources .vimrc z.sh"
 
 ##########
 
