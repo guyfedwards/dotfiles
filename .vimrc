@@ -69,6 +69,7 @@ call plug#end()
 set nocompatible
 set nobackup " disable auto backups and swap files
 set confirm " allow unsaved buffers in background, but check on quit
+set hidden
 set noswapfile
 set laststatus=2
 set backspace=2
@@ -79,10 +80,6 @@ set undodir=~/.vimundo/ " set a directory to store the undo history
 set scrolloff=3 " offset scroll few lines before bottom
 set mouse=a " mouse support
 set lazyredraw " Don't redraw while executing macros (good performance config)
-
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
 
 if executable('ag')
   " Use ag over grep
@@ -359,6 +356,7 @@ let g:jsdoc_enable_es6 = 1
 " fzf
 nmap <C-p> :Files .<CR>
 nmap <C-t> :Tags <CR>
+nmap <C-b> :Buffers <CR>
 nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 
 " deoplete
