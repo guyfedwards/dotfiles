@@ -2,5 +2,5 @@
 
 for i in $HOME/dotfiles/bin/*; do
     echo "$i";
-    ln -s "$(pwd)/$i" /usr/local/bin/
+    ln -s "$i" /usr/local/bin/
 done
