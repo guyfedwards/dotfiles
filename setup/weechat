@@ -1,0 +1,5 @@
+#!/bin/bash
+
+### install /edit script
+wget https://raw.githubusercontent.com/keith/edit-weechat/master/edit.py
+mv ./edit.py $HOME/.weechat/python/autoload
