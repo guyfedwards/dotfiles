@@ -43,7 +43,7 @@ alias server='python -m SimpleHTTPServer'
 alias sites='cd ~/sites'
 alias dots='cd ~/dotfiles'
 alias drop='cd ~/Dropbox'
-alias notes='cd ~/Dropbox/Documents/Notes && v -c "NERDTree"'
+alias notes='(cd ~/Dropbox/Documents/Notes && v -c "NERDTree")'
 
 alias bashp='v ~/.bash_profile && source ~/.bash_profile'
 alias vimrc='v ~/.vimrc'
