@@ -1,10 +1,23 @@
 #!/bin/bash
 
-[[ ! -d $HOME/.config ]] && mkdir $HOME/.config
+[[ ! -d "$HOME/.config" ]] && mkdir "$HOME/.config"
 
-for d in $HOME/dotfiles/.config/*; do
-    nom=$(basename $d)
-    echo $nom
+for d in "$HOME"/dotfiles/.config/*; do
+    nom=$(basename "$d")
+    nom_path="$HOME/.config/$nom"
 
-    # ln -s "$HOME/dotfiles/.config/$nom/" "$HOME/.config/$nom"
+    # if directory exists and its not a symbolic link, back it up
+    if [[ -d "$nom_path" || -f "$nom_path" ]] && [ ! -L "$nom_path" ]; then
+        nom_backup="$HOME/.config/"$nom"_backup"
+
+        mv "$HOME/.config/$nom" "$nom_backup"
+
+        echo "Backed up $nom_backup"
+    fi
+
+    # if directory doesn't exist, create symlink
+    if [ ! -d "$nom_path" ] && [ ! -f "$nom_path" ]; then
+        ln -s "$HOME/dotfiles/.config/$nom" "$nom_path"
+        echo "Created $nom_path"
+    fi
 done
