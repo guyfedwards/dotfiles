@@ -116,17 +116,10 @@ snippet rec "React es6 class"
 // @flow
 import React, { Component } from 'react'
 
+type Props = $ReadOnly<{}>
 
-class $1 extends Component {
+class $1 extends Component<Props> {
   static displayName = '$1'
-
-  state = {
-
-  }
-
-  componentWillMount() {
-
-  }
 
   render() {
     return (
