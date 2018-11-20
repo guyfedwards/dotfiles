@@ -197,7 +197,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 nnoremap \ :Ag<SPACE>
 map Q <Nop>
 " paste date for notes
-map <F3> :r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>
+map <F3> :.-1r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>
 " remap ctrl+c to Esc becuase ctrl+c after typing comma, deletes the comma
 vnoremap <C-c> <Esc>
 nnoremap <C-c> <Esc>
