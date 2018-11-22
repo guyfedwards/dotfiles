@@ -12,5 +12,9 @@ if [[ -z $1 ]]; then
   done
 else
   echo "${faces["$1"]}"
-  echo "${faces["$1"]}" | pbcopy
+  if [[ $(uname) = 'Darwin' ]]; then
+    echo "${faces["$1"]}" | pbcopy
+  else
+    echo "${faces["$1"]}" | xclip -selection clipboard
+  fi
 fi
