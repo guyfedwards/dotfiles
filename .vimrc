@@ -27,7 +27,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'scrooloose/nerdtree'
-" Plug 'sheerun/vim-polyglot'
 Plug 'sirver/ultisnips'
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -42,24 +41,26 @@ Plug 'tpope/vim-unimpaired'
 Plug 'w0rp/ale'
 
 " Filetype specific
+" Go
 Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
+Plug 'zchee/deoplete-go', { 'for': ['go'], 'do': 'make' }
+" HTML
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs', 'javascript.jsx'] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
+" JavaScript
 Plug 'flowtype/vim-flow', { 'for': ['javascript', 'js', 'jsx', 'javascript.jsx']}
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
 Plug 'leshill/vim-json', { 'for': ['json'] }
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs', 'javascript.jsx'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'ternjs/tern_for_vim', { 'for': ['js', 'javascript', 'javascript.jsx'], 'do': 'npm install'}
-Plug 'tpope/vim-rails', { 'for': ['ruby'] }
-Plug 'tpope/vim-rails', { 'for': ['ruby'] }
-Plug 'zchee/deoplete-go', { 'for': ['go'], 'do': 'make' }
-
 " Markdown
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Ruby
+Plug 'tpope/vim-rails', { 'for': ['ruby'] }
 call plug#end()
 
 
