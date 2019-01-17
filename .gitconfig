@@ -6,6 +6,7 @@
   c = commit
   p = push
   pu = "!f() { git push -u origin `git branch | grep '*' | awk '{print $2}'`; }; f"
+  pun = "!f() { git push --no-verify -u origin `git branch | grep '*' | awk '{print $2}'`; }; f"
   d = diff
   dc = diff --cached
   amend = commit --amend --no-edit
