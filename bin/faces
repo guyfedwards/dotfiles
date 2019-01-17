@@ -3,7 +3,7 @@
 faces=('¯\\_(ツ)_/¯' '┴┬┴┤( ͡° ͜ʖ├┬┴┬' '⊂(▀¯▀⊂)' '( ͡↑ ͜ʖ ͡↑)' '( ͡° ͜ʖ ͡°)' '╰( ⁰ ਊ ⁰ )━☆ﾟ.*･｡ﾟ' 'ಠ_ಠ' 'ಠ_ರೃ' '¯\(°_o)/¯' '(╯°□°）╯︵ ┻━┻')
 
 if [[ -z $1 ]]; then
-  echo 'Choose a face and | it to pbcopy'
+  echo 'Choose a face to copy to clipboard'
   i=0
   for f in "${faces[@]}"
   do
