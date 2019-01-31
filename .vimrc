@@ -234,7 +234,9 @@ set pastetoggle=<leader>p
 " select text that was just pasted
 nnoremap <leader>v V`]
 " golang go to definition
-autocmd FileType go nmap <leader>gd  :GoDef<CR>
+autocmd FileType go nmap <buffer> <leader>gd  :GoDef<CR>
+autocmd FileType javascript,javascript.jsx nmap <buffer> <leader>gd  :FlowJumpToDef<CR>
+
 
 
 " =====================
@@ -261,6 +263,17 @@ autocmd VimEnter,TabEnter * wincmd p
 " vim-javascript
 let b:javascript_fold = 0
 let g:javascript_plugin_flow = 1
+
+" vim-flow
+"Use locally installed flow
+let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+if matchstr(local_flow, "^\/\\w") == ''
+    let local_flow= getcwd() . "/" . local_flow
+endif
+if executable(local_flow)
+  let g:flow#flowpath = local_flow
+endif
+let g:flow#showquickfix = 0 " disable quickfix as have ALE
 
 " vim-go
 let g:go_highlight_methods = 1
