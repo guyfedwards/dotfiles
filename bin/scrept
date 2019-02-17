@@ -1,11 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ $# -eq 0 ]; then
     echo "Must pass script name"
     exit 0
 fi
 
+
+if [ -z "$2" ]; then
+    prog="bash"
+else
+    prog=$2
+fi
+
 touch "$1" \
     && chmod +x "$1" \
-    && echo "#!/bin/bash" > "$1" \
+    && echo "#!/usr/bin/env $prog" > "$1" \
     && nvim "$1"
