@@ -2,5 +2,5 @@
 
 # install neovim?
 
-ln -s ~/dotfiles/.vim/ ~/.config/nvim
-ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
+ln -s ~/dotfiles/.vim/ "$XDG_CONFIG_HOME/nvim"
+ln -s ~/dotfiles/.vimrc "$XDG_CONFIG_HOME/nvim/init.vim"
