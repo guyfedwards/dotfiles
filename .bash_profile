@@ -1,3 +1,8 @@
+if [ -f "$HOME/.bashrc" ]; then
+  # shellcheck source=/dev/null
+  source "$HOME/.bashrc"
+fi
+
 # check if OSX
 if [[ $OSTYPE == darwin* ]]; then
   export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
@@ -203,5 +208,3 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 ### hub === git
 eval "$(hub alias -s)"
-
-source ~/.bashrc
