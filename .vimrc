@@ -62,6 +62,9 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " Ruby
 Plug 'tpope/vim-rails', { 'for': ['ruby'] }
 call plug#end()
+" SQL
+let g:ftplugin_sql_omni_key = 'C-j'
+
 
 
 " =====================
@@ -335,15 +338,18 @@ autocmd FileType javascript,javascript.jsx nnoremap <silent> <buffer> gb :TernDe
 
 " Ale
 let g:ale_javascript_eslint_executable='eslint_d'
+let g:ale_sql_sqlfmt_executable='sqlfmt'
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_linters = {
 \   'javascript': ['eslint', 'flow', 'standard'],
 \   'sh': ['shellcheck'],
 \   'go': ['gometalinter'],
+\   'sql': ['sqlint']
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint', 'standard'],
-\   'json': ['fixjson']
+\   'json': ['fixjson'],
+\   'sql': ['sqlfmt']
 \}
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_fix_on_save = 1

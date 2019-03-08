@@ -3,3 +3,5 @@
 xrandr --output HDMI-1 --scale 1.5x1.5 --rate 144 --output eDP-1 --off
 # load keyboard config when connecting to home setup
 xmodmap ~/.Xmodmap
+$HOME/dotfiles/scripts/bg
+i3-msg restart

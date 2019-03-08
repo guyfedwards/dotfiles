@@ -1,6 +1,6 @@
 # Nothing to see here — Everything's in .bash_profile
 
-### Added by the Heroku Toolbelt
+# Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 NPM_PACKAGES="${HOME}/.npm-packages"
@@ -14,19 +14,20 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 stty ixany
 stty ixoff -ixon
 
-# add npm
+# npm
 PATH="$NPM_PACKAGES/bin:$PATH"
-# add rubygems
+# add yarn
+export PATH="$HOME/.yarn/bin:$PATH"
+# tj/n
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+# rubygems
 PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export GEM_HOME=$HOME/.gem
-# add Go
+# Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 [ -f "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
-
-# add yarn
-export PATH="$HOME/.yarn/bin:$PATH"
 
 # bash completion from brew install bash-completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion

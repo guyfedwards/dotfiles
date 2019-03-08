@@ -44,16 +44,13 @@ alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
 ### simple server
 alias server='python -m SimpleHTTPServer'
 
-### Shortcuts to folders
-alias sites='cd ~/sites'
-alias dots='cd ~/dotfiles'
-alias drop='cd ~/Dropbox'
+### Notes
 alias notes='(cd ~/Dropbox/Documents/Notes && v -c "NERDTree")'
 
+### Edit dotfiles
 alias bashp='v ~/.bash_profile && source ~/.bash_profile'
 alias vimrc='v ~/.vimrc'
 alias i3c='v ~/.config/i3/config'
-alias p='fc -s'
 
 # Quicker navigation
 alias ..="cd .."
@@ -61,38 +58,20 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-### npm
-alias nis='npm install --save'
-alias nid='npm install --save-dev'
-
 ## git
 alias stpst="git stash && git pull && git stash pop"
 alias yoda="git checkout master && git pull origin master"
-### hub === git
-eval "$(hub alias -s)"
 
 # tmux
 alias tm='tmux'
 alias tml='tmux ls'
 alias tma='tmux attach -t'
 alias tmk='tmux kill-session -t'
-alias tmn="tmux new-session \; \
-  split-window -v -l 24 \; split-window -h -l 84 \; \
-  select-pane -t 1 \; split-window -h -l 84 \; \
-  select-pane -t 0 \; split-window -v -l 24 \; split-window -h -l 84 \; \
-  select-pane -t 1 \; split-window -h -l 84 \; select-pane -t 0 \;"
 
 ### docker
 alias allimgids='docker images | grep -v REPOSITORY | awk '\''{print $3}'\'''
 alias allcontids='docker ps | grep -v CONTAINER | awk '\''{print $1}'\'''
 alias denv='eval $(minikube docker-env)'
-
-
-### mpv
-mpv() {
-  m=$(which mpv)
-  $m "$@" && echo "mpv $@" >> ~/mpv-history.log
-}
 
 # Prompt Colors
 ### Set CLICOLOR if you want Ansi Colors in iTerm2
