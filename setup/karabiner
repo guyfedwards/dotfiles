@@ -1,6 +1,0 @@
-#!/bin/bash
-
-ln -s ~/dotfiles/karabiner/org.pqrs.Karabiner.plist ~/Library/Preferences/org.pqrs.Karabiner.plist
-echo '.plist linked'
-ln -s ~/dotfiles/karabiner/private.xml ~/Library/Application\ Support/Karabiner/private.xml
-echo 'private.xml linked'

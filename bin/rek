@@ -1,8 +1,0 @@
-#!/bin/bash
-
-branch=$(git rev-parse --abbrev-ref HEAD)
-
-git push -u origin "$branch"
-stash pull-request "$branch" master \
-    @samuel.smith @meril.pilon @william.shotton @manuel.garcia \
-    @antony.kwok @nicolas.guiou @alexander.smith

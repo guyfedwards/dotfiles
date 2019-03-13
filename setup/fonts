@@ -1,7 +1,8 @@
 #!/bin/bash
+$pkgmngr=yay
 
-yaourt -S ttf-hack
-yaourt -S ttf-font-awesome-4
-yaourt -S ttf-unifont
-yaourt -S siji-git
+$pkgmngr -S ttf-hack
+$pkgmngr -S ttf-font-awesome-4
+$pkgmngr -S ttf-unifont
+$pkgmngr -S siji-git
 

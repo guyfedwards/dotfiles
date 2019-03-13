@@ -1,18 +1,15 @@
-Dotfiles
-========
+# Dotfiles
 
-### To Install:
+### Install
 ```
-git clone git@github.com:guyfedwards/dotfiles ~/dotfiles
+$ git clone git@github.com:guyfedwards/dotfiles $HOME/dotfiles
 ```
 
-### Setup scripts
 Many setup scripts are available in `setup/`, run them individually like so:
 ```
-~/dotfiles/setup/dotfiles
+$ $HOME/dotfiles/setup/dotfiles
 ```
 
-##### Scripts
 `bin` - install scripts to `/usr/local/bin`
 
 `config` - symlink `~/.config`
@@ -21,8 +18,6 @@ Many setup scripts are available in `setup/`, run them individually like so:
 
 `fonts` - install required fonts (arch only)
 
-`karabiner` - symlink karabiner settings (mac only)
-
 `lockscreen` - install dependencies for lockscreen (arch only)
 
 `neovim` - symlink neovim config and symlink `.vimrc` with `init.vim`
@@ -30,10 +25,3 @@ Many setup scripts are available in `setup/`, run them individually like so:
 `packages` - install variety of packages (arch only)
 
 `tmux` - installs tmux and then tpm
-
-
-### Karabiner settings
-This script will symlink the `.plist` and `private.xml` files for karabiner on OSX
-```
-./setup/karabiner
-```
