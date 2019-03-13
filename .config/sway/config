@@ -73,6 +73,13 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes' 'swaymsg exit'"
 bindsym $alt+l exec "$HOME/dotfiles/bin/lock_screen"
 
+## Function keys volume/brightness
+bindsym XF86AudioRaiseVolume exec "amixer set Master 5%+"
+bindsym XF86AudioLowerVolume exec "amixer set Master 5%-"
+bindsym XF86AudioMute exec "amixer set Master toggle"
+bindsym XF86MonBrightnessDown exec "light -U 5"
+bindsym XF86MonBrightnessUp exec "light -A 5"
+
 ## Screenshots
 # bindsym --release $alt+s exec scrot $HOME/Dropbox/Screenshots/%Y-%m-%d_%H%M%S.png
 # bindsym --release $alt+Shift+s exec scrot -s $HOME/Dropbox/Screenshots/%Y-%m-%d_%H%M%S.png
