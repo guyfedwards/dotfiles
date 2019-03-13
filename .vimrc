@@ -54,7 +54,7 @@ Plug 'leshill/vim-json', { 'for': ['json'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
-Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
+Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'branch': 'main' }
 Plug 'ternjs/tern_for_vim', { 'for': ['js', 'javascript', 'javascript.jsx'], 'do': 'npm install'}
 " Markdown
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
@@ -260,7 +260,7 @@ let g:NERDTreePatternMatchHighlightColor['.*\.rb$'] = 'a9535b'
 let g:NERDTreePatternMatchHighlightColor['.*\.go$'] = '5485e5'
 " open by default
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter,TabEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter,TabEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter,TabEnter * wincmd p
 
 " vim-javascript
