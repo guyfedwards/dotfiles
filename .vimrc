@@ -193,6 +193,7 @@ let g:html_indent_tags = 'li\|p'
 au BufRead,BufNewFile .*rc setfiletype json
 " markdown formatting for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *config set filetype=config
 
 
 " =====================
