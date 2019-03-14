@@ -7,10 +7,6 @@ set $fg #f0f0f0
 font pango:"Meslo LG S" 8
 
 # Custom
-# exec_always "setxkbmap -layout gb -variant mac"
-# exec_always --no-startup-id "sleep 1; xmodmap /home/guy/.Xmodmap"
-# exec_always --no-startup-id ~/.config/polybar/start
-# exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc
 # exec_always --no-startup-id dunst
 
 # Input/Output
@@ -40,8 +36,8 @@ output eDP-1 {
 
 # Status bar
 bar {
-        position top
-        swaybar_command waybar
+  position top
+  swaybar_command waybar
 }
 
 # Gaps
@@ -76,7 +72,7 @@ bindsym $alt+l exec "$HOME/dotfiles/bin/lock_screen"
 ## Function keys volume/brightness
 bindsym XF86AudioRaiseVolume exec "amixer set Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer set Master 5%-"
-bindsym XF86AudioMute exec "amixer set Master toggle"
+bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 bindsym XF86MonBrightnessDown exec "light -U 5"
 bindsym XF86MonBrightnessUp exec "light -A 5"
 
