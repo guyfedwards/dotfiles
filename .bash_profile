@@ -68,7 +68,16 @@ alias tml='tmux ls'
 alias tma='tmux attach -t'
 alias tmk='tmux kill-session -t'
 
-### docker
+function refenv() {
+  if [ -n "$TMUX" ]; then
+    export $(tmux show-environment | grep "^SSH_AUTH_SOCK")
+    export $(tmux show-environment | grep "^SSH_CONNECTION")
+    export $(tmux show-environment | grep "^SWAYSOCK")
+    export $(tmux show-environment | grep "^DISPLAY")
+  fi
+}
+
+# docker
 alias allimgids='docker images | grep -v REPOSITORY | awk '\''{print $3}'\'''
 alias allcontids='docker ps | grep -v CONTAINER | awk '\''{print $1}'\'''
 alias denv='eval $(minikube docker-env)'
