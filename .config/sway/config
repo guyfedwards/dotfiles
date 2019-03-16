@@ -8,15 +8,17 @@ set $bg #f0f0f0
 set $fg #f0f0f0
 font pango:"Meslo LG S" 8
 
-# Custom
-exec_always "python $HOME/dotfiles/scripts/inactive_window_transparency.py"
-exec "mako"
 
-exec swayidle -w \
-  timeout 300 $lockcmd \
-  timeout 600 'swaymsg "output * dpms off"' \
-  resume 'swaymsg "output * dpms on"' \
-  before-sleep $lockcmd
+# Custom
+exec python $HOME/dotfiles/scripts/inactive_window_transparency.py
+exec "mako"
+# disabled until https://github.com/swaywm/sway/issues/3070 is resolved
+# exec swayidle -w \
+#   timeout 300 $lockcmd \
+#   timeout 600 'swaymsg "output * dpms off"' \
+#   resume 'swaymsg "output * dpms on"' \
+#   before-sleep $lockcmd
+
 
 # Input/Output
 input * {
@@ -80,7 +82,7 @@ bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut.
 ## Function keys volume/brightness
 bindsym XF86AudioRaiseVolume exec "amixer set Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer set Master 5%-"
-bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioMute exec "amixer set Master toggle"
 bindsym XF86MonBrightnessDown exec "light -U 5"
 bindsym XF86MonBrightnessUp exec "light -A 5"
 

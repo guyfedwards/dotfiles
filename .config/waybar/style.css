@@ -10,8 +10,12 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0 0 0 3px;
+    padding: 0 0 0 0px;
     color: #636467;
+}
+
+#workspaces button:first-child {
+    padding-left: 3px;
 }
 
 #workspaces button.focused,
@@ -20,7 +24,7 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    padding: 0 0 0 3px;
+    padding: 0 0 0 0px;
     background: transparent;
     border-color: transparent;
     box-shadow: inherit;
