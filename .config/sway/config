@@ -33,6 +33,8 @@ input "1739:0:Synaptics_TM3289-002" {
   tap enabled
   # 1 finger left, 2 fingers right, 3 fingers middle
   tap_button_map lrm
+  # disable physical click
+  click_method none
 }
 
 output "*" background $bgimg fill
@@ -58,7 +60,7 @@ gaps outer 0
 
 # Colors
 # class                 border  backgr. text indicator child_border
-client.focused          #d75f87 $bg     $fg  $bg       #d75f87
+client.focused          #666666 $bg     $fg  $bg       #666666
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg
@@ -74,7 +76,8 @@ default_floating_border pixel 0
 # Keybinds
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
-bindsym $mod+space exec rofi -show drun
+bindsym $mod+space exec $term -d 60 5 --title launcher --class launcher -e "$HOME/dotfiles/scripts/launcher"
+for_window [app_id="^launcher$"] floating enable, border pixel 2
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes' 'swaymsg exit'"

@@ -162,7 +162,7 @@ function parse_git_branch() {
 
 ### Change this symbol to something sweet.
 ### (http://en.wikipedia.org/wiki/Unicode_symbols)
-symbol="\[$GRAY\]└ \[$ORANGE\]❯\[$RESET\] "
+symbol="\[$GRAY\]└ \[$ORANGE\]☲ \[$RESET\] "
 
 prompt_user="\[${BOLD}${LIGHTGRAY}\]\u$host"
 prompt_cwd="\[${GRAY}\]\[$LIGHTGRAY\]\w"
