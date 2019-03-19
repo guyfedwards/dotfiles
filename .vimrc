@@ -47,6 +47,8 @@ Plug 'zchee/deoplete-go', { 'for': ['go'], 'do': 'make' }
 " HTML
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
+" Rust
+Plug 'rust-lang/rust.vim', { 'for': ['rust', 'rs'] }
 " JavaScript
 Plug 'flowtype/vim-flow', { 'for': ['javascript', 'js', 'jsx', 'javascript.jsx']}
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
@@ -350,7 +352,8 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint', 'standard'],
 \   'json': ['fixjson'],
-\   'sql': ['sqlfmt']
+\   'sql': ['sqlfmt'],
+\   'rust': ['rustfmt']
 \}
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_fix_on_save = 1
