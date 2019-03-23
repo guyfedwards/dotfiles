@@ -1,36 +1,22 @@
 {
     "layer": "top",
     "height": 20,
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["custom/spotify"],
-    "modules-right": ["cpu", "memory", "pulseaudio", "battery", "network", "clock"],
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}{icon}",
-        "format-icons": {
-            "urgent": "-",
-            "focused": "",
-            "default": ""
-        }
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "clock": {
-        "format": "{:%Y-%m-%d  %H:%M}"
-    },
-    "cpu": {
-        "format": "{usage}% "
-    },
-    "temperature": {
-      "thermal-zone": 0,
-      "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
-      "critical-threshold": 80
-    },
-    "memory": {
-        "format": "{}% "
-    },
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "custom/spotify"
+    ],
+    "modules-right": [
+        "custom/docker",
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "battery",
+        "network",
+        "clock"
+    ],
     "battery": {
         "states": {
             "good": 95,
@@ -39,7 +25,29 @@
         },
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "clock": {
+        "format": "{:%Y-%m-%d  %H:%M}"
+    },
+    "cpu": {
+        "format": "{usage}% "
+    },
+    "custom/docker": {
+        "format": " {}",
+        "max-length": 5,
+        "interval": 60,
+        "exec": "docker ps -q | wc -l",
+        "exec-if": "pgrep docker"
+    },
+    "memory": {
+        "format": "{}% "
     },
     "network": {
         "format-wifi": "{signalStrength}% ",
@@ -55,8 +63,29 @@
         "format-muted": "",
         "format-icons": {
             "headphones": "",
-            "default": ["", ""]
+            "default": [
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}{icon}",
+        "format-icons": {
+            "urgent": "-",
+            "focused": "",
+            "default": ""
+        }
+    },
+    "temperature": {
+        "thermal-zone": 0,
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "critical-threshold": 80
     }
 }
