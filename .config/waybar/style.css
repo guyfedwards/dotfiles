@@ -23,6 +23,10 @@ window#waybar {
     color: #fdf6e3;
 }
 
+#workspaces button.urgent {
+    color: #f6511d;
+}
+
 #workspaces button:hover {
     background: transparent;
     border-color: transparent;
