@@ -80,7 +80,6 @@ set noswapfile
 set laststatus=2
 set backspace=2
 set encoding=utf8
-autocmd BufWritePre * :%s/\s\+$//e " trim whitespace
 set undofile " tell it to use an undo file
 set undodir=~/.vimundo/ " set a directory to store the undo history
 set scrolloff=3 " offset scroll few lines before bottom
@@ -91,6 +90,16 @@ if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 endif
+
+" trim whitespace
+fun! StripTrailingWhiteSpace()
+  " don't strip on these filetypes
+  if &ft =~ 'markdown'
+    return
+  endif
+  %s/\s\+$//e
+endfun
+autocmd bufwritepre * :call StripTrailingWhiteSpace()
 
 
 " =====================
