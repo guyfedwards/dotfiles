@@ -39,6 +39,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'w0rp/ale'
+Plug 'godlygeek/tabular'
 
 " Filetype specific
 " Go
