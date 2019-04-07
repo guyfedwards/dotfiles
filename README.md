@@ -1,5 +1,7 @@
 # Dotfiles
 
+![Screenshot](./screenshot.png?raw=true)
+
 ### Install
 ```
 $ git clone git@github.com:guyfedwards/dotfiles $HOME/dotfiles
