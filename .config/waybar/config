@@ -46,6 +46,11 @@
         "exec": "docker ps -q | wc -l",
         "exec-if": "pgrep docker"
     },
+    "custom/spotify": {
+        "format": "  {}",
+        "exec": "$HOME/.config/waybar/spotify 2> /dev/null",
+        "exec-if": "pgrep spotify"
+    },
     "memory": {
         "format": "  {}%"
     },

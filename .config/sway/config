@@ -10,7 +10,8 @@ font pango:"Meslo LG S" 8
 
 
 # Custom
-exec python $HOME/dotfiles/scripts/inactive_window_transparency.py
+exec python $HOME/dotfiles/scripts/inactive_windows_transparency.py
+
 exec "mako"
 # disabled until https://github.com/swaywm/sway/issues/3070 is resolved
 # exec swayidle -w \

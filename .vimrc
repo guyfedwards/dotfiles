@@ -47,10 +47,12 @@ Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
 Plug 'zchee/deoplete-go', { 'for': ['go'], 'do': 'make' }
 " HTML
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs', 'javascript.jsx'] }
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
+" Docker
+Plug 'honza/dockerfile.vim', { 'for': ['dockerfile'] }
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': ['rust', 'rs'] }
 " JavaScript
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'javascript.typescript'] }
 Plug 'flowtype/vim-flow', { 'for': ['javascript', 'js', 'jsx', 'javascript.jsx']}
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
 Plug 'leshill/vim-json', { 'for': ['json'] }
@@ -59,6 +61,8 @@ Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'branch': 'main' }
 Plug 'ternjs/tern_for_vim', { 'for': ['js', 'javascript', 'javascript.jsx'], 'do': 'npm install'}
+" TypeScript
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'typescript', 'tsx', 'javascript.typescript'] }
 " Markdown
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -125,6 +129,7 @@ hi SignColumn guibg=NONE ctermbg=NONE
 " transparent line numbers
 hi LineNr guibg=NONE ctermbg=NONE
 hi def link jsObjectKey Label
+hi def link typescriptEndColons Normal
 
 
 " =====================
@@ -360,7 +365,8 @@ let g:ale_linters = {
 \   'sql': ['sqlint']
 \}
 let g:ale_fixers = {
-\   'javascript': ['prettier', 'eslint', 'standard'],
+\   'javascript': ['eslint', 'standard'],
+\   'typescript': ['eslint'],
 \   'json': ['fixjson'],
 \   'sql': ['sqlfmt'],
 \   'rust': ['rustfmt']
@@ -372,7 +378,7 @@ let g:ale_sign_warning = '⚠'
 let g:ale_sign_column_always = 1
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
-let g:ale_echo_msg_format = '%linter%: %s'
+let g:ale_echo_msg_format = '%linter%:%code%: %s'
 " Map keys to navigate between lines with errors and warnings.
 nnoremap <leader>an :ALENextWrap<cr>
 nnoremap <leader>ap :ALEPreviousWrap<cr>
