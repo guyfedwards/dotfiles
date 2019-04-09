@@ -68,11 +68,10 @@ Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " Ruby
 Plug 'tpope/vim-rails', { 'for': ['ruby'] }
+" Terraform
+Plug 'hashivim/vim-terraform'
+
 call plug#end()
-" SQL
-let g:ftplugin_sql_omni_key = 'C-j'
-
-
 
 " =====================
 " General
@@ -355,9 +354,7 @@ autocmd FileType javascript,javascript.jsx setlocal omnifunc=tern#Complete
 autocmd FileType javascript,javascript.jsx nnoremap <silent> <buffer> gb :TernDef<CR>
 
 " Ale
-let g:ale_javascript_eslint_executable='eslint_d'
-let g:ale_sql_sqlfmt_executable='sqlfmt'
-let g:ale_javascript_eslint_use_global = 1
+let g:ale_fix_on_save = 1
 let g:ale_linters = {
 \   'javascript': ['eslint', 'flow', 'standard'],
 \   'sh': ['shellcheck'],
@@ -369,10 +366,13 @@ let g:ale_fixers = {
 \   'typescript': ['eslint'],
 \   'json': ['fixjson'],
 \   'sql': ['sqlfmt'],
-\   'rust': ['rustfmt']
+\   'rust': ['rustfmt'],
+\   'terraform': ['terraform']
 \}
+let g:ale_javascript_eslint_executable='eslint_d'
+let g:ale_javascript_eslint_use_global = 1
 let g:ale_javascript_prettier_use_local_config = 1
-let g:ale_fix_on_save = 1
+let g:ale_sql_sqlfmt_executable='sqlfmt'
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
 let g:ale_sign_column_always = 1
@@ -418,4 +418,7 @@ let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 " colorizer
 " auto highlight colors for these filetypes
 let g:colorizer_auto_filetype='css,html,scss,less,json'
+
+" SQL
+let g:ftplugin_sql_omni_key = 'C-j'
 
