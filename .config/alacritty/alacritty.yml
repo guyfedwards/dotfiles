@@ -43,8 +43,11 @@ window:
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   decorations: full
 
-  # When true, alacritty starts maximized.
-  startup_mode: Maximized
+  # Values for `startup_mode`:
+  #   - Windowed
+  #   - Maximized
+  #   - Fullscreen
+  startup_mode: Windowed
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
