@@ -49,6 +49,7 @@
     "custom/spotify": {
         "format": "  {}",
         "max-length": 50,
+        "escape": true,
         "exec": "$HOME/.config/waybar/spotify 2> /dev/null",
         "exec-if": "pgrep spotify"
     },
