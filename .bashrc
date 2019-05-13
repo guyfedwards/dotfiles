@@ -1,8 +1,4 @@
 # Nothing to see here — Everything's in .bash_profile
-
-# Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 # Unset manpath so we can inherit from /etc/manpath via the `manpath`
@@ -13,6 +9,8 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 ### Disable ctrl-s sending XOFF
 stty ixany
 stty ixoff -ixon
+
+export PATH="$PATH:$HOME/.bin"
 
 # npm
 PATH="$NPM_PACKAGES/bin:$PATH"

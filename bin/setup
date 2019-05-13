@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+screen_script="$HOME/dotfiles/screens/home_asus"
+
+if [ $1 = "work" ]; then
+    screen_script="$HOME/dotfiles/screens/work_dell"
+fi
+
+"$screen_script"
+ps aux  | grep waybar | grep -v 'grep' | awk '{print $2}' | xargs kill -9
+nohup waybar &

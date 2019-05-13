@@ -3,13 +3,6 @@ if [ -f "$HOME/.bashrc" ]; then
   source "$HOME/.bashrc"
 fi
 
-# check if OSX
-if [[ $OSTYPE == darwin* ]]; then
-  export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
-  # Use gnu tools instead
-  export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
-fi
-
 export EDITOR=nvim
 
 # Case-insensitive globbing (used in pathname expansion)
