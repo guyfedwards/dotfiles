@@ -15,7 +15,7 @@ if (err) throw new Error(err)
 endsnippet
 
 snippet desc "describe"
-describe('$1', () => {
+describe('$1', (): void => {
   $0
 })
 endsnippet
@@ -27,7 +27,7 @@ beforeEach(() => {
 endsnippet
 
 snippet it "it"
-it('should $1', () => {
+it('should $1', async (): Promise<void> => {
 	$0
 })
 endsnippet
@@ -63,52 +63,13 @@ snippet ex "expect"
 expect($1).toBe($0)
 endsnippet
 
-snippet do "do"
-.do(x => console.log('$0', x))
-endsnippet
-
-snippet cdm "componentDidMount"
-componentDidMount() {
-	$1
-}
-endsnippet
-
-snippet cwm "componentWillMount"
-componentWillMount() {
-	$1
-}
-endsnippet
-
-snippet cwu "componentWillUpdate"
-componentWillUpdate(nextProps, nextState) {
-	$1
-}
-endsnippet
-
-snippet cdu "componentDidUpdate"
-componentDidUpdate(prevProps, prevState) {
-	$1
-}
-endsnippet
-
-snippet cwun "componentWillUnmount"
-componentWillUnmount() {
-
-}
-endsnippet
-
 snippet imre "import React"
 import React from 'react'
 $0
 endsnippet
 
 snippet imlo "import Lodash"
-import _ from 'lodash'
-$0
-endsnippet
-
-snippet impr "import { promisify }"
-import { promisify } from 'util'
+import fp from 'lodash/fp'
 $0
 endsnippet
 
@@ -143,10 +104,6 @@ const $1 = props => {
 }
 
 export default $1
-endsnippet
-
-snippet pt "proptypes"
-propTypes.$0
 endsnippet
 
 snippet div "<div>"

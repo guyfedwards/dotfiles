@@ -113,7 +113,10 @@ syntax enable
 let base16colorspace=256
 set background=dark
 let g:seoul256_background = 237
+" Inside
 colorscheme seoul256
+" Outside
+" colorscheme seoul256-light
 set t_Co=256
 set t_ut=
 hi Normal guibg=NONE ctermbg=NONE
@@ -148,7 +151,6 @@ set copyindent          " copy the indentation on autoindenting
 " =====================
 set number              " show line numbers
 set cursorline          " highlight current line
-hi CursorLine ctermbg=237
 filetype indent plugin on " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set lazyredraw          " redraw only when we need to.
@@ -205,7 +207,7 @@ set splitright
 " =====================
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
-" custom filetype for .*rc files if no filetype detected
+" custom file type for .*rc files if no file type detected
 au BufRead,BufNewFile .*rc setfiletype json
 " markdown formatting for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -219,7 +221,7 @@ nnoremap \ :Ag<SPACE>
 map Q <Nop>
 " paste date for notes
 map <F3> :.-1r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>
-" remap ctrl+c to Esc becuase ctrl+c after typing comma, deletes the comma
+" remap ctrl+c to Esc because ctrl+c after typing comma, deletes the comma
 vnoremap <C-c> <Esc>
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
@@ -399,19 +401,28 @@ nmap <C-t> :Tags <CR>
 nmap <C-b> :Buffers <CR>
 nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 
+"CoC.vim
+
 " deoplete
 call deoplete#custom#source('_', 'converters', ['converter_remove_overlap', 'converter_truncate_abbr', 'converter_truncate_menu', 'converter_auto_paren'])
 " enable deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 1
 " Disable Deoplete when selecting multiple cursors starts
-function! Multiple_cursors_before()
-  let b:deoplete_disable_auto_complete = 1
-endfunction
-" Enable Deoplete when selecting multiple cursors ends
-function! Multiple_cursors_after()
-  let b:deoplete_disable_auto_complete = 0
-endfunction
+func! Multiple_cursors_before()
+  if deoplete#is_enabled()
+    call deoplete#disable()
+    let g:deoplete_is_enable_before_multi_cursors = 1
+  else
+    let g:deoplete_is_enable_before_multi_cursors = 0
+  endif
+endfunc
+" Enable Deoplete when selecting multiple cursors starts
+func! Multiple_cursors_after()
+  if g:deoplete_is_enable_before_multi_cursors
+    call deoplete#enable()
+  endif
+endfunc
 " deoplete go
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
