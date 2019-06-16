@@ -31,7 +31,7 @@ export PATH=$PATH:$GOPATH/bin
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # kubectl completion
-hash kubectl && source <(kubectl completion bash)
+# hash kubectl && source <(kubectl completion bash)
 
 # git completion
 # `$_` takes last parameter of previous command

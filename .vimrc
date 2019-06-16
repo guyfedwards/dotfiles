@@ -17,17 +17,18 @@ endif
 " =====================
 call plug#begin('~/.vim/plugged')
 Plug 'Raimondi/delimitMate'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/Colorizer'
-Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'scrooloose/nerdtree'
-Plug 'sirver/ultisnips'
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -39,38 +40,28 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'w0rp/ale'
-Plug 'godlygeek/tabular'
 
-" Filetype specific
-" Go
-Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
-Plug 'zchee/deoplete-go', { 'for': ['go'], 'do': 'make' }
-" HTML
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'mustache', 'handlebars', 'hbs', 'javascript.jsx'] }
+" File type specific
 " Docker
 Plug 'honza/dockerfile.vim', { 'for': ['dockerfile'] }
-" Rust
-Plug 'rust-lang/rust.vim', { 'for': ['rust', 'rs'] }
+" Go
+Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'javascript.typescript'] }
-Plug 'flowtype/vim-flow', { 'for': ['javascript', 'js', 'jsx', 'javascript.jsx']}
-Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'on': 'JsDoc' }
-Plug 'leshill/vim-json', { 'for': ['json'] }
+Plug 'elzr/vim-json', { 'for': ['json'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'branch': 'main' }
-Plug 'ternjs/tern_for_vim', { 'for': ['js', 'javascript', 'javascript.jsx'], 'do': 'npm install'}
-" TypeScript
-Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'typescript', 'tsx', 'javascript.typescript'] }
 " Markdown
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-" Ruby
-Plug 'tpope/vim-rails', { 'for': ['ruby'] }
+" Rust
+Plug 'rust-lang/rust.vim', { 'for': ['rust', 'rs'] }
 " Terraform
 Plug 'hashivim/vim-terraform'
-
+" TypeScript
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'typescript', 'tsx', 'javascript.typescript'] }
 call plug#end()
 
 " =====================
@@ -110,16 +101,12 @@ autocmd bufwritepre * :call StripTrailingWhiteSpace()
 " Colors
 " =====================
 syntax enable
-let base16colorspace=256
 set background=dark
 let g:seoul256_background = 237
 " Inside
 colorscheme seoul256
 " Outside
 " colorscheme seoul256-light
-set t_Co=256
-set t_ut=
-hi Normal guibg=NONE ctermbg=NONE
 hi LineNr ctermfg=NONE ctermbg=NONE
 hi VertSplit ctermbg=NONE guibg=NONE
 hi GitGutterAdd guibg=NONE ctermbg=NONE
@@ -264,53 +251,78 @@ autocmd FileType javascript,javascript.jsx nmap <buffer> <leader>gd  :FlowJumpTo
 " =====================
 " Plugin Settings
 " =====================
-"  NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeShowHidden=1
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-" set the color for files ending with _spec.r
-" this line is needed to avoid errorb
-let g:NERDTreePatternMatchHighlightColor = {}
-let g:NERDTreePatternMatchHighlightColor['.*\.rb$'] = 'a9535b'
-let g:NERDTreePatternMatchHighlightColor['.*\.go$'] = '5485e5'
-" open by default
-autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter,TabEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd VimEnter,TabEnter * wincmd p
+" Ale
+" =====================
+let g:ale_fix_on_save = 1
+let g:ale_linters = {
+\   'javascript': ['eslint', 'flow', 'standard'],
+\   'sh': ['shellcheck'],
+\   'go': ['gometalinter'],
+\   'sql': ['sqlint']
+\}
+let g:ale_fixers = {
+\   'javascript': ['eslint', 'standard'],
+\   'typescript': ['eslint'],
+\   'json': ['fixjson'],
+\   'sql': ['sqlfmt'],
+\   'rust': ['rustfmt'],
+\   'terraform': ['terraform']
+\}
+let g:ale_javascript_eslint_executable='eslint_d'
+let g:ale_javascript_eslint_use_global = 1
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_sql_sqlfmt_executable='sqlfmt'
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚠'
+let g:ale_sign_column_always = 1
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+let g:ale_echo_msg_format = '%linter%:%code%: %s'
+" Map keys to navigate between lines with errors and warnings.
+nnoremap <leader>an :ALENextWrap<cr>
+nnoremap <leader>ap :ALEPreviousWrap<cr>
 
-" vim-javascript
-let b:javascript_fold = 0
-let g:javascript_plugin_flow = 1
+" CoC.nvim
+" =====================
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 
-" vim-flow
-"Use locally installed flow
-let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
-if matchstr(local_flow, "^\/\\w") == ''
-    let local_flow= getcwd() . "/" . local_flow
-endif
-if executable(local_flow)
-  let g:flow#flowpath = local_flow
-endif
-let g:flow#showquickfix = 0 " disable quickfix as have ALE
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-" vim-go
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_auto_sameids = 1
-let g:go_fmt_command = "goimports"
-let g:go_list_type = "locationlist"
-let g:go_fmt_fail_silently = 1
-let g:go_metalinter_enabled = [
-      \ 'deadcode', 'errcheck', 'gas', 'goconst', 'golint', 'gosimple',
-      \ 'gotype', 'ineffassign', 'interfacer', 'staticcheck', 'structcheck',
-      \ 'unconvert', 'varcheck', 'vet', 'vetshadow',
-      \ ]
+let g:coc_snippet_next = '<tab>'
+call coc#config('diagnostic.displayByAle', 1)
+call coc#config('snippets.loadFromExtensions', 0)
+call coc#config('snippets.priority', 100)
+call coc#config('suggest.maxCompleteItemCount', 20)
+
+" colorizer
+" =====================
+" auto highlight colors for these filetypes
+let g:colorizer_auto_filetype='css,html,scss,less,json'
+
+" delimitMate
+" =====================
+let g:delimitMate_expand_cr=1
+
+" fzf
+" =====================
+nmap <C-p> :Files .<CR>
+nmap <C-t> :Tags <CR>
+nmap <C-b> :Buffers <CR>
+nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 
 " lightline
+" =====================
 let g:lightline = {
     \ 'colorscheme': 'seoul256',
     \ 'active': {
@@ -344,92 +356,54 @@ function! LightlineLinterErrors() abort
 endfunction
 autocmd User ALELint call lightline#update() " refresh after lint
 
-" delimitMate
-let g:delimitMate_expand_cr=1
-
-" vim-jsx
-let g:jsx_ext_required = 0
-
-" Tern
-let g:tern_show_signature_in_pum = 1
-autocmd FileType javascript,javascript.jsx setlocal omnifunc=tern#Complete
-autocmd FileType javascript,javascript.jsx nnoremap <silent> <buffer> gb :TernDef<CR>
-
-" Ale
-let g:ale_fix_on_save = 1
-let g:ale_linters = {
-\   'javascript': ['eslint', 'flow', 'standard'],
-\   'sh': ['shellcheck'],
-\   'go': ['gometalinter'],
-\   'sql': ['sqlint']
-\}
-let g:ale_fixers = {
-\   'javascript': ['eslint', 'standard'],
-\   'typescript': ['eslint'],
-\   'json': ['fixjson'],
-\   'sql': ['sqlfmt'],
-\   'rust': ['rustfmt'],
-\   'terraform': ['terraform']
-\}
-let g:ale_javascript_eslint_executable='eslint_d'
-let g:ale_javascript_eslint_use_global = 1
-let g:ale_javascript_prettier_use_local_config = 1
-let g:ale_sql_sqlfmt_executable='sqlfmt'
-let g:ale_sign_error = '✖'
-let g:ale_sign_warning = '⚠'
-let g:ale_sign_column_always = 1
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-let g:ale_echo_msg_format = '%linter%:%code%: %s'
-" Map keys to navigate between lines with errors and warnings.
-nnoremap <leader>an :ALENextWrap<cr>
-nnoremap <leader>ap :ALEPreviousWrap<cr>
-
 " Limelight
+" =====================
 let g:limelight_conceal_ctermfg = 240
 
-" JSDoc
-let g:javascript_plugin_jsdoc = 1
-let g:jsdoc_allow_input_prompt = 1
-let g:jsdoc_input_description = 1
-let g:jsdoc_additional_descriptions = 1
-let g:jsdoc_enable_es6 = 1
-
-" fzf
-nmap <C-p> :Files .<CR>
-nmap <C-t> :Tags <CR>
-nmap <C-b> :Buffers <CR>
-nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
-
-"CoC.vim
-
-" deoplete
-call deoplete#custom#source('_', 'converters', ['converter_remove_overlap', 'converter_truncate_abbr', 'converter_truncate_menu', 'converter_auto_paren'])
-" enable deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#file#enable_buffer_path = 1
-" Disable Deoplete when selecting multiple cursors starts
-func! Multiple_cursors_before()
-  if deoplete#is_enabled()
-    call deoplete#disable()
-    let g:deoplete_is_enable_before_multi_cursors = 1
-  else
-    let g:deoplete_is_enable_before_multi_cursors = 0
-  endif
-endfunc
-" Enable Deoplete when selecting multiple cursors starts
-func! Multiple_cursors_after()
-  if g:deoplete_is_enable_before_multi_cursors
-    call deoplete#enable()
-  endif
-endfunc
-" deoplete go
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-
-" colorizer
-" auto highlight colors for these filetypes
-let g:colorizer_auto_filetype='css,html,scss,less,json'
+"  NERDTree
+" =====================
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+" set the color for files ending with _spec.r
+" this line is needed to avoid error
+let g:NERDTreePatternMatchHighlightColor = {}
+let g:NERDTreePatternMatchHighlightColor['.*\.rb$'] = 'a9535b'
+let g:NERDTreePatternMatchHighlightColor['.*\.go$'] = '5485e5'
+" autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter,TabEnter * wincmd p
 
 " SQL
+" =====================
 let g:ftplugin_sql_omni_key = 'C-j'
+
+" vim-go
+" =====================
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_auto_sameids = 1
+let g:go_fmt_command = "goimports"
+let g:go_list_type = "locationlist"
+let g:go_fmt_fail_silently = 1
+let g:go_metalinter_enabled = [
+      \ 'deadcode', 'errcheck', 'gas', 'goconst', 'golint', 'gosimple',
+      \ 'gotype', 'ineffassign', 'interfacer', 'staticcheck', 'structcheck',
+      \ 'unconvert', 'varcheck', 'vet', 'vetshadow',
+      \ ]
+
+" vim-javascript
+" =====================
+let b:javascript_fold = 0
+
+" vim-json
+" =====================
+let g:vim_json_syntax_conceal = 0
+
+" vim-jsx
+" =====================
+let g:jsx_ext_required = 0
 
