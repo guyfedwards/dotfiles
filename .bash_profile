@@ -79,6 +79,20 @@ alias denv='eval $(minikube docker-env)'
 ### Set CLICOLOR if you want Ansi Colors in iTerm2
 export CLICOLOR=1
 
+function ccm() {
+  echo "build
+ci
+chore
+docs
+feat
+fix
+perf
+refactor
+revert
+style
+test"
+}
+
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
 	export TERM=gnome-256color
 elif infocmp xterm-256color >/dev/null 2>&1; then
