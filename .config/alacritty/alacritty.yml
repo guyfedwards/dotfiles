@@ -160,12 +160,9 @@ draw_bold_text_with_bright_colors: false
 
 # Colors (Seoul256)
 colors:
-  # Default colors
   primary:
     background: '0x3a3a3a'
     foreground: '0xd0d0d0'
-
-  # Normal colors
   normal:
     black:   '0x4e4e4e'
     red:     '0xd68787'
@@ -175,8 +172,6 @@ colors:
     magenta: '0xd7afaf'
     cyan:    '0x87afaf'
     white:   '0xd0d0d0'
-
-  # Bright colors
   bright:
     black:   '0x626262'
     red:     '0xd75f87'
@@ -187,34 +182,61 @@ colors:
     cyan:    '0x87d7d7'
     white:   '0xe4e4e4'
 
-# Colors (Solarized Light)
+# Colors (Pencil Light)
 # colors:
-#   # Default colors
+#   # Default Colors
 #   primary:
-#     background: '0xfdf6e3'
-#     foreground: '0x586e75'
-
+#     background: '0xf1f1f1'
+#     foreground: '0x424242'
 #   # Normal colors
 #   normal:
-#     black:   '0xeee8d5'
-#     red:     '0xdc322f'
-#     green:   '0x859900'
-#     yellow:  '0xb58900'
-#     blue:    '0x268bd2'
-#     magenta: '0xd33682'
-#     cyan:    '0x2aa198'
-#     white:   '0x073642'
-
+#     black:   '0x212121'
+#     red:     '0xc30771'
+#     green:   '0x10a778'
+#     yellow:  '0xa89c14'
+#     blue:    '0x008ec4'
+#     magenta: '0x523c79'
+#     cyan:    '0x20a5ba'
+#     white:   '0xe0e0e0'
 #   # Bright colors
 #   bright:
-#     black:   '0xfdf6e3'
-#     red:     '0xcb4b16'
-#     green:   '0x93a1a1'
-#     yellow:  '0x839496'
-#     blue:    '0x657b83'
-#     magenta: '0x6c71c4'
-#     cyan:    '0x586e75'
-#     white:   '0x002b36'
+#     black:   '0x212121'
+#     red:     '0xfb007a'
+#     green:   '0x5fd7af'
+#     yellow:  '0xf3e430'
+#     blue:    '0x20bbfc'
+#     magenta: '0x6855de'
+#     cyan:    '0x4fb8cc'
+#     white:   '0xf1f1f1'
+
+# Colors (Solarized Light)
+# colors:
+  # Default colors
+  # primary:
+  #   background: '0xfdf6e3'
+  #   foreground: '0x586e75'
+
+  # # Normal colors
+  # normal:
+  #   black:   '0xeee8d5'
+  #   red:     '0xdc322f'
+  #   green:   '0x859900'
+  #   yellow:  '0xb58900'
+  #   blue:    '0x268bd2'
+  #   magenta: '0xd33682'
+  #   cyan:    '0x2aa198'
+  #   white:   '0x073642'
+
+  # # Bright colors
+  # bright:
+  #   black:   '0xfdf6e3'
+  #   red:     '0xcb4b16'
+  #   green:   '0x93a1a1'
+  #   yellow:  '0x839496'
+  #   blue:    '0x657b83'
+  #   magenta: '0x6c71c4'
+  #   cyan:    '0x586e75'
+  #   white:   '0x002b36'
 
   # Dim colors
   #
