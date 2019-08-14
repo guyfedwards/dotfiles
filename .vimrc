@@ -16,7 +16,6 @@ endif
 " Plugins
 " =====================
 call plug#begin('~/.vim/plugged')
-Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/Colorizer'
 Plug 'godlygeek/tabular'
@@ -25,9 +24,13 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-peekaboo'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'lokaltog/vim-monotone'
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'raimondi/delimitMate'
+Plug 'reedes/vim-colors-pencil'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -44,17 +47,19 @@ Plug 'w0rp/ale'
 " File type specific
 " Docker
 Plug 'honza/dockerfile.vim', { 'for': ['dockerfile'] }
+" Elixir
+Plug 'elixir-editors/vim-elixir', { 'for': ['elixir'] }
 " Go
 Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'javascript.typescript'] }
 Plug 'elzr/vim-json', { 'for': ['json'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
-Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'jsx', 'javascript.jsx']}
+Plug 'mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'branch': 'main' }
 " Markdown
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': ['rust', 'rs'] }
@@ -101,12 +106,19 @@ autocmd bufwritepre * :call StripTrailingWhiteSpace()
 " Colors
 " =====================
 syntax enable
-set background=dark
-let g:seoul256_background = 237
+"
 " Inside
+let g:seoul256_background = 237
 colorscheme seoul256
+"
 " Outside
-" colorscheme seoul256-light
+" colorscheme pencil
+" set background=light
+" let g:pencil_higher_contrast_ui = 1
+
+" colorscheme hybrid_material
+" set background=light
+
 hi LineNr ctermfg=NONE ctermbg=NONE
 hi VertSplit ctermbg=NONE guibg=NONE
 hi GitGutterAdd guibg=NONE ctermbg=NONE
@@ -244,7 +256,6 @@ set pastetoggle=<leader>p
 nnoremap <leader>v V`]
 " golang go to definition
 autocmd FileType go nmap <buffer> <leader>gd  :GoDef<CR>
-autocmd FileType javascript,javascript.jsx nmap <buffer> <leader>gd  :FlowJumpToDef<CR>
 
 
 
@@ -288,6 +299,7 @@ nnoremap <leader>ap :ALEPreviousWrap<cr>
 set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
+let g:coc_snippet_next = '<tab>'
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -298,8 +310,7 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-let g:coc_snippet_next = '<tab>'
+autocmd FileType javascript,javascript.jsx,typescript,typescript.tsx nmap <buffer> <leader>gd  <Plug>(coc-type-definition)<CR>
 call coc#config('diagnostic.displayByAle', 1)
 call coc#config('snippets.loadFromExtensions', 0)
 call coc#config('snippets.priority', 100)
@@ -405,5 +416,5 @@ let g:vim_json_syntax_conceal = 0
 
 " vim-jsx
 " =====================
-let g:jsx_ext_required = 0
+let g:jsx_ext_required = 1
 
