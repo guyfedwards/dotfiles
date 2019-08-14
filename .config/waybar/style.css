@@ -111,3 +111,8 @@ window#waybar {
 #custom-spotify {
     color: #1DB954;
 }
+
+#custom-yay {
+    font-family: "Meslo LG S, font-logos";
+    color: #1793d1;
+}

@@ -9,6 +9,7 @@
         "custom/spotify"
     ],
     "modules-right": [
+        "custom/yay",
         "custom/docker",
         "cpu",
         "memory",
@@ -40,18 +41,25 @@
         "format": "  {usage}%"
     },
     "custom/docker": {
-        "format": "  {}",
-        "max-length": 5,
-        "interval": 60,
         "exec": "docker ps -q | wc -l",
-        "exec-if": "pgrep docker"
+        "exec-if": "pgrep docker",
+        "format": "  {}",
+        "interval": 60,
+        "max-length": 5
     },
     "custom/spotify": {
-        "format": "  {}",
-        "max-length": 50,
         "escape": true,
         "exec": "$HOME/.config/waybar/spotify 2> /dev/null",
-        "exec-if": "pgrep spotify"
+        "exec-if": "pgrep spotify",
+        "format": "  {}",
+        "max-length": 50
+    },
+    "custom/yay": {
+        "exec": "yay -Qu | wc -l",
+        "exec-if": "[[ $(yay -Qu | wc -l) -gt 0 ]] && exit 0 || exit 1",
+        "format": " {}",
+        "escape": true,
+        "interval": 7200
     },
     "memory": {
         "format": "  {}%"
