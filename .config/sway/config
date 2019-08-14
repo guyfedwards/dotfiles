@@ -13,13 +13,6 @@ font pango:"Meslo LG S" 8
 exec python $HOME/dotfiles/scripts/inactive_windows_transparency.py
 
 exec "mako"
-# disabled until https://github.com/swaywm/sway/issues/3070 is resolved
-# exec swayidle -w \
-#   timeout 300 $lockcmd \
-#   timeout 600 'swaymsg "output * dpms off"' \
-#   resume 'swaymsg "output * dpms on"' \
-#   before-sleep $lockcmd
-
 
 # Input/Output
 input * {

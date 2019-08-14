@@ -123,3 +123,7 @@ try {
   $1
 }
 endsnippet
+
+snippet sleep "sleep"
+await new Promise(res => setTimeout(res, $0))
+endsnippet
