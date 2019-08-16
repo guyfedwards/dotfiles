@@ -59,7 +59,7 @@
         "exec-if": "[[ $(yay -Qu | wc -l) -gt 0 ]] && exit 0 || exit 1",
         "format": " {}",
         "escape": true,
-        "interval": 7200
+        "interval": 300
     },
     "memory": {
         "format": "  {}%"
