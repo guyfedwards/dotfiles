@@ -35,13 +35,13 @@
         ]
     },
     "clock": {
-        "format": "{:%Y-%m-%d %H:%M}"
+        "format": "{:%H:%M %d-%m-%Y}"
     },
     "cpu": {
         "format": "  {usage}%"
     },
     "custom/docker": {
-        "exec": "docker ps -q | wc -l",
+        "exec": "count=$(docker ps -q | wc -l); [[ $count -gt 0 ]] && echo $count",
         "exec-if": "pgrep docker",
         "format": "  {}",
         "interval": 60,
@@ -55,8 +55,7 @@
         "max-length": 50
     },
     "custom/yay": {
-        "exec": "yay -Qu | wc -l",
-        "exec-if": "[[ $(yay -Qu | wc -l) -gt 0 ]] && exit 0 || exit 1",
+        "exec": "count=$(yay -Qu | wc -l); [[ $count -gt 0 ]] && echo $count",
         "format": " {}",
         "escape": true,
         "interval": 300
