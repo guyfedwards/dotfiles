@@ -10,7 +10,7 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0;
+    padding: 1px 0 0;
     color: #636467;
 }
 
@@ -41,22 +41,19 @@ window#waybar {
 #backlight,
 #battery,
 #clock,
+#cpu,
 #custom-docker,
+#custom-yay,
 #memory,
+#network,
 #pulseaudio,
 #temp {
-    padding: 0 10px;
+    padding: 1px 0 0 10px;
 }
 
-#memory,
-#pulseaudio {
-    padding: 0 0 0 10px;
+#clock {
+    padding-right: 10px;
 }
-
-#cpu {
-    padding: 0;
-}
-
 
 #pulseaudio {
     color: #268bd2;
