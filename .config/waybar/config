@@ -24,8 +24,8 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}  {capacity}%",
-        "format-charging": "  {capacity}%",
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
         "format-icons": [
             "",
             "",
@@ -38,12 +38,12 @@
         "format": "{:%H:%M %d-%m-%Y}"
     },
     "cpu": {
-        "format": "  {usage}%"
+        "format": " {usage}%"
     },
     "custom/docker": {
         "exec": "count=$(docker ps -q | wc -l); [[ $count -gt 0 ]] && echo $count",
         "exec-if": "pgrep docker",
-        "format": "  {}",
+        "format": " {}",
         "interval": 60,
         "max-length": 5
     },
@@ -61,19 +61,19 @@
         "interval": 300
     },
     "memory": {
-        "format": "  {}%"
+        "format": " {}%"
     },
     "network": {
-        "format-wifi": "  {signalStrength}%",
-        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
-        "format-disconnected": "⚠  Disconnected",
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "⚠ Disconnected",
         "max-length": 20,
         "tooltip-format-wifi": "{essid}"
     },
     "pulseaudio": {
         "scroll-step": 0,
-        "format": "{icon}  {volume}%",
-        "format-bluetooth": "  {volume}%",
+        "format": "{icon} {volume}%",
+        "format-bluetooth": " {volume}%",
         "format-muted": "",
         "format-icons": {
             "headphones": "",
