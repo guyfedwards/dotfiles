@@ -72,7 +72,7 @@ function refenv() {
 
 # docker
 alias allimgids='docker images | grep -v REPOSITORY | awk '\''{print $3}'\'''
-alias allcontids='docker ps | grep -v CONTAINER | awk '\''{print $1}'\'''
+alias allcontids="docker ps | grep -v CONTAINER | awk '\''{print $1}'\''"
 alias denv='eval $(minikube docker-env)'
 
 # Prompt Colors
