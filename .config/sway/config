@@ -40,6 +40,16 @@ output eDP-1 {
   scale 2
 }
 
+## Asus home
+output HDMI-A-1 {
+  mode 2560x1440
+  scale 1
+}
+
+## Disable laptop screen on close lid
+set $laptop eDP-1
+bindswitch lid:on output $laptop disable
+bindswitch lid:off output $laptop enable
 
 # Status bar
 bar {
