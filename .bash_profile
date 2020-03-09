@@ -75,6 +75,9 @@ alias allimgids='docker images | grep -v REPOSITORY | awk '\''{print $3}'\'''
 alias allcontids="docker ps | grep -v CONTAINER | awk '\''{print $1}'\''"
 alias denv='eval $(minikube docker-env)'
 
+# eslintd
+alias killeslint='ps aux | grep eslint_d | grep -v grep | awk '{print $2}' | xargs kill -9'
+
 # Prompt Colors
 ### Set CLICOLOR if you want Ansi Colors in iTerm2
 export CLICOLOR=1
