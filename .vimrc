@@ -292,6 +292,7 @@ let g:ale_echo_msg_format = '%linter%:%code%: %s'
 " Map keys to navigate between lines with errors and warnings.
 nnoremap <leader>an :ALENextWrap<cr>
 nnoremap <leader>ap :ALEPreviousWrap<cr>
+nnoremap <leader>ad :ALEDetail<cr>
 
 " CoC.nvim
 " =====================
@@ -310,11 +311,23 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-autocmd FileType javascript,javascript.jsx,typescript,typescript.tsx nmap <buffer> <leader>gd  <Plug>(coc-type-definition)<CR>
 call coc#config('diagnostic.displayByAle', 1)
 call coc#config('snippets.loadFromExtensions', 0)
 call coc#config('snippets.priority', 100)
 call coc#config('suggest.maxCompleteItemCount', 20)
+let s:languageserver = {}
+if executable('gopls')
+  let s:languageserver["golang"] = {
+        \   "command": "gopls",
+        \   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+        \   "filetypes": ["go"]
+        \ }
+endif
+call coc#config('languageserver', s:languageserver)
+nmap <leader>gt  <Plug>(coc-type-definition)<CR>
+nmap <leader>gd  <Plug>(coc-definition)<CR>
+nmap <leader>gr  <Plug>(coc-reference)<CR>
+nmap <leader>rn  <Plug>(coc-rename)
 
 " colorizer
 " =====================

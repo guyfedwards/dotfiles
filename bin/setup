@@ -2,11 +2,11 @@
 
 screen_script="$HOME/dotfiles/screens/laptop"
 
-if [ $1 = "work" ]; then
+if [ "$1" = "work" ]; then
     screen_script="$HOME/dotfiles/screens/work_dell"
 fi
 
-if [ $1 = "home" ]; then
+if [ "$1" = "home" ]; then
     screen_script="$HOME/dotfiles/screens/home_asus"
 fi
 
