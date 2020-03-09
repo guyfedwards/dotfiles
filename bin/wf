@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+name=""
+
+if [ "$1" = "home" ]; then
+    name="waifu"
+fi
+
+if [ "$1" = "hotspot" ]; then
+    name="The hottest spot in town"
+fi
+
+nmcli con up id "$name"
