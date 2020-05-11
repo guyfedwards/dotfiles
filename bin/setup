@@ -12,4 +12,4 @@ fi
 
 "$screen_script"
 ps aux  | grep waybar | grep -v 'grep' | awk '{print $2}' | xargs kill -9
-nohup waybar &
+nohup waybar > /dev/null 2>&1 &

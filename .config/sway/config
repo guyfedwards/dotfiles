@@ -94,7 +94,8 @@ bindsym XF86MonBrightnessDown exec "light -U 5"
 bindsym XF86MonBrightnessUp exec "light -A 5"
 
 ## Screenshot
-bindsym $alt+s exec grim -g "$(slurp)" $HOME/Dropbox/Screenshots/$(date +'%Y-%m-%d_%H%M%S.png')
+bindsym $alt+s exec grim -g "$(slurp -d)" $HOME/Dropbox/Screenshots/$(date +'%Y-%m-%d_%H%M%S.png')
+bindsym $alt+Shift+s exec grim -g "$(slurp -d)" - | wl-copy
 ## Lock screen
 bindsym $alt+l exec $lockcmd
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -z "$SWAYSOCK" ]]; then
-    xrandr --output HDMI-1 --scale 1.5x1.5 --rate 144 --output eDP-1 --off
+    xrandr --output HDMI-1 --scale 1x1 --rate 144 --output eDP-1 --off
     # load keyboard config when connecting to home setup
     xmodmap ~/.Xmodmap
     $HOME/dotfiles/scripts/bg

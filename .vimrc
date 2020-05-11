@@ -315,6 +315,7 @@ call coc#config('diagnostic.displayByAle', 1)
 call coc#config('snippets.loadFromExtensions', 0)
 call coc#config('snippets.priority', 100)
 call coc#config('suggest.maxCompleteItemCount', 20)
+call coc#config('tsserver.enable', 0)
 let s:languageserver = {}
 if executable('gopls')
   let s:languageserver["golang"] = {
