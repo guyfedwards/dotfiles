@@ -18,6 +18,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/Colorizer'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -28,7 +29,7 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'lokaltog/vim-monotone'
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'raimondi/delimitMate'
 Plug 'reedes/vim-colors-pencil'
 Plug 'scrooloose/nerdtree'
