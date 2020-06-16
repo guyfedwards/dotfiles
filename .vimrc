@@ -32,10 +32,10 @@ Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'raimondi/delimitMate'
 Plug 'reedes/vim-colors-pencil'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
@@ -43,7 +43,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " File type specific
 " Docker
@@ -225,6 +225,7 @@ map <F3> :.-1r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>
 vnoremap <C-c> <Esc>
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 
 " =====================
@@ -267,13 +268,13 @@ autocmd FileType go nmap <buffer> <leader>gd  :GoDef<CR>
 " =====================
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
-\   'javascript': ['eslint', 'flow', 'standard'],
+\   'javascript': ['eslint'],
 \   'sh': ['shellcheck'],
 \   'go': ['gometalinter'],
 \   'sql': ['sqlint']
 \}
 let g:ale_fixers = {
-\   'javascript': ['eslint', 'standard'],
+\   'javascript': ['eslint'],
 \   'typescript': ['eslint'],
 \   'json': ['fixjson'],
 \   'sql': ['sqlfmt'],
@@ -301,6 +302,7 @@ nnoremap <leader>ad :ALEDetail<cr>
 set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
+" jump to next placeholder
 let g:coc_snippet_next = '<tab>'
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
