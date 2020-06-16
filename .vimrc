@@ -87,9 +87,9 @@ set scrolloff=3 " offset scroll few lines before bottom
 set mouse=a " mouse support
 set lazyredraw " Don't redraw while executing macros (good performance config)
 
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+if executable('rg')
+  " Use rg over grep
+  set grepprg=rg\ --vimgrep
 endif
 
 " trim whitespace
@@ -217,7 +217,7 @@ autocmd BufNewFile,BufReadPost *config set filetype=config
 " =====================
 " Commands
 " =====================
-nnoremap \ :Ag<SPACE>
+nnoremap \ :Rg<SPACE>
 map Q <Nop>
 " paste date for notes
 map <F3> :.-1r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>
