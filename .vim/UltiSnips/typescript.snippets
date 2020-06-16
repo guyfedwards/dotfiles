@@ -1,1 +1,13 @@
-javascript.snippets
+extends javascript
+
+snippet desc "describe"
+describe('$1', (): void => {
+  $0
+})
+endsnippet
+
+snippet it "it"
+it('should $1', async (): Promise<void> => {
+	$0
+})
+endsnippet

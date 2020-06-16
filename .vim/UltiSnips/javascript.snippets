@@ -15,7 +15,7 @@ if (err) throw new Error(err)
 endsnippet
 
 snippet desc "describe"
-describe('$1', (): void => {
+describe('$1', () => {
   $0
 })
 endsnippet
@@ -27,83 +27,9 @@ beforeEach(() => {
 endsnippet
 
 snippet it "it"
-it('should $1', async (): Promise<void> => {
+it('should $1', async () => {
 	$0
 })
-endsnippet
-
-snippet enz "enzyme skeleton"
-import React from 'react';
-import enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import $1 from '.'
-
-
-enzyme.configure({ adapter: new Adapter() });
-
-describe('<$1 />', () => {
-  let props
-  let wrapper
-
-  beforeEach(() => {
-    props = {
-
-    }
-    wrapper = shallow(<$1 {...props} />)
-  })
-
-  it('should render correctly', () => {
-    expect(wrapper).toMatchSnapshot()
-  })
-})
-
-endsnippet
-
-snippet ex "expect"
-expect($1).toBe($0)
-endsnippet
-
-snippet imre "import React"
-import React from 'react'
-$0
-endsnippet
-
-snippet imlo "import Lodash"
-import fp from 'lodash/fp'
-$0
-endsnippet
-
-snippet rec "React es6 class"
-// @flow
-import React, { Component } from 'react'
-
-type Props = $ReadOnly<{}>
-
-class $1 extends Component<Props> {
-  static displayName = '$1'
-
-  render() {
-    return (
-      <div>$1</div>
-    )
-  }
-}
-
-export default $1
-endsnippet
-
-snippet refu "React functional component"
-// @flow
-import React from 'react'
-
-
-const $1 = props => {
-  return (
-    <div>$1</div>
-  )
-}
-
-export default $1
 endsnippet
 
 snippet div "<div>"
@@ -124,6 +50,14 @@ try {
 }
 endsnippet
 
-snippet sleep "sleep"
-await new Promise(res => setTimeout(res, $0))
+snippet alterTable "knex.schema.alterTable"
+knex.schema.alterTable('$1', function (table) {
+  $0
+})
+endsnippet
+
+snippet createTable "knex.schema.createTable"
+knex.schema.createTable('$1', function (table) {
+  $0
+})
 endsnippet
