@@ -96,6 +96,9 @@ bindsym XF86MonBrightnessUp exec "light -A 5"
 ## Screenshot
 bindsym $alt+s exec grim -g "$(slurp -d)" $HOME/Dropbox/Screenshots/$(date +'%Y-%m-%d_%H%M%S.png')
 bindsym $alt+Shift+s exec grim -g "$(slurp -d)" - | wl-copy
+bindsym $alt+r exec wf-recorder -g "$(slurp -d)" -f $HOME/Movies/$(date +'%Y-%m-%d_%H%M%S_recording.mp4')
+bindsym $alt+Shift+r exec killall -s SIGINT wf-recorder
+
 ## Lock screen
 bindsym $alt+l exec $lockcmd
 
