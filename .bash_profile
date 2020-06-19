@@ -39,6 +39,7 @@ alias server='python -m SimpleHTTPServer'
 
 ### Notes
 alias notes='(cd ~/Dropbox/Documents/Notes && v -c "NERDTree")'
+alias todo='v -c "Goyo" ~/Dropbox/Documents/Notes/medicspot/todo.md'
 
 ### Edit dotfiles
 alias bashp='v ~/.bash_profile && source ~/.bash_profile'
