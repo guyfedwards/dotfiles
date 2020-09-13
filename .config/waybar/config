@@ -9,6 +9,7 @@
         "custom/spotify"
     ],
     "modules-right": [
+        "custom/mullvad",
         "custom/yay",
         "custom/docker",
         "cpu",
@@ -58,7 +59,13 @@
         "exec": "count=$(yay -Qu | wc -l); [[ $count -gt 0 ]] && echo $count",
         "format": " {}",
         "escape": true,
-        "interval": 300
+        "interval": 60
+    },
+    "custom/mullvad": {
+        "exec": "mullvad status | awk '{print \"VPN: \" $3}'",
+        "format": "{}",
+        "escape": true,
+        "interval": 61
     },
     "memory": {
         "format": " {}%"
