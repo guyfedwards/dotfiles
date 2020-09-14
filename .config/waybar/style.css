@@ -47,12 +47,17 @@ window#waybar {
 #memory,
 #network,
 #pulseaudio,
-#temp {
+#temp,
+#tray {
     padding: 1px 0 0 10px;
 }
 
 #clock {
     padding-right: 10px;
+}
+
+#tray {
+    padding-right: 0;
 }
 
 #pulseaudio {

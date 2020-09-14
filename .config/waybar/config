@@ -9,13 +9,13 @@
         "custom/spotify"
     ],
     "modules-right": [
-        "custom/mullvad",
         "custom/yay",
         "custom/docker",
         "cpu",
         "memory",
         "pulseaudio",
         "battery",
+        "tray",
         "network",
         "clock"
     ],
@@ -61,12 +61,6 @@
         "escape": true,
         "interval": 60
     },
-    "custom/mullvad": {
-        "exec": "mullvad status | awk '{print \"VPN: \" $3}'",
-        "format": "{}",
-        "escape": true,
-        "interval": 61
-    },
     "memory": {
         "format": " {}%"
     },
@@ -108,5 +102,9 @@
         "thermal-zone": 0,
         "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
         "critical-threshold": 80
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
     }
 }
