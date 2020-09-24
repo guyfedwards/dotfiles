@@ -343,6 +343,7 @@ let g:delimitMate_expand_cr=1
 
 " fzf
 " =====================
+let g:fzf_layout = { 'down': '40%' }
 nmap <C-p> :Files .<CR>
 nmap <C-t> :Tags <CR>
 nmap <C-b> :Buffers <CR>
