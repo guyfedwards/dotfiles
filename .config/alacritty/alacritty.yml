@@ -75,15 +75,15 @@ font:
     style: Regular
 
   # Bold font face
-  # bold:
-    # Font family
-    #
-    # If the bold family is not specified, it will fall back to the
-    # value specified for the normal font.
-    # family: inconsolata
+  bold:
+     # Font family
 
-    # The `style` can be specified to pick a specific face.
-    # style: Bold
+     # If the bold family is not specified, it will fall back to the
+     # value specified for the normal font.
+     # family: Droidsans
+
+     # The `style` can be specified to pick a specific face.
+     style: Regular
 
   # Italic font face
   italic:
