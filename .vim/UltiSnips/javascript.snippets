@@ -61,3 +61,95 @@ knex.schema.createTable('$1', function (table) {
   $0
 })
 endsnippet
+
+
+snippet Model "MS Model"
+const Model = require('lib/configurators/model');
+
+module.exports = class $1 extends Model {
+  static get tableName () {
+    return '$2';
+  }
+
+  static get schema () {
+    return {
+      type: 'object',
+      schema: {
+
+      }
+    };
+  }
+};
+endsnippet
+
+snippet ho "Hannibal object"
+$1: {
+  type: 'object',
+  schema: {
+    $2
+  }
+},
+endsnippet
+
+snippet hs "Hannibal string"
+$0: {
+  type: 'string'
+},
+endsnippet
+
+snippet hn "Hannibal number"
+$0: {
+  type: 'number',
+  transforms: ['toInteger']
+},
+endsnippet
+
+snippet hb "Hannibal boolean"
+$0: {
+  type: 'boolean'
+},
+endsnippet
+
+snippet hd "Hannibal date"
+$0: {
+  type: 'date',
+  transforms: ['toDate']
+},
+endsnippet
+
+snippet he "Hannibal enum"
+$1: {
+  type: 'string',
+  validators: {
+    enum: ['$2']
+  }
+},
+endsnippet
+
+snippet rtest "Route test"
+{
+  name: '$1',
+  method: '${2:get}',
+  path: '/$3',
+  seeds: [
+
+  ],
+  pathAttrs: (seedModel) => ({id: seedModel.getSeed('').id}),
+  reqAttrs: () => {
+    return {
+      data: {
+
+      }
+    }
+  },
+  asUser: '$4',
+  asserts: {
+    ...assertions.checkStatus(${5:200}),
+    ...assertions.checkBody((res, seedModel) => {
+      return
+    }),
+    ...assertions.rowsModified({})
+  }
+}
+endsnippet
+
