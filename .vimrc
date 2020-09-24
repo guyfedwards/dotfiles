@@ -384,10 +384,6 @@ function! LightlineLinterErrors() abort
 endfunction
 autocmd User ALELint call lightline#update() " refresh after lint
 
-" Limelight
-" =====================
-let g:limelight_conceal_ctermfg = 240
-
 "  NERDTree
 " =====================
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
