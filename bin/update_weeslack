@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+curdir=$(pwd)
+
+cd "$HOME/.weechat/python/autoload" || exit 1
+
+curl -O https://raw.githubusercontent.com/wee-slack/wee-slack/master/wee_slack.py
+
+cd "$curdir" || exit 1
