@@ -21,6 +21,16 @@ input * {
   xkb_options ctrl:nocaps
 }
 
+input "5426:92:Razer_Razer_DeathAdder_Elite" {
+    accel_profile "flat"
+    pointer_accel -0.3
+}
+
+input "1133:50489:Logitech_USB_Receiver_Mouse" {
+    accel_profile "flat"
+    pointer_accel -0.3
+}
+
 ## Thinkpad touchpad
 input "1739:0:Synaptics_TM3289-002" {
   # tap to click
@@ -80,7 +90,7 @@ default_floating_border pixel 0
 # Keybinds
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
-bindsym $mod+space exec $term -d 60 5 --title launcher --class launcher -e "$HOME/dotfiles/scripts/launcher"
+bindsym $mod+space exec $term --option window.dimensions.columns=60 --option window.dimensions.lines=5 --title launcher --class launcher -e "$HOME/dotfiles/scripts/launcher"
 for_window [app_id="^launcher$"] floating enable, border pixel 2
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
