@@ -5,6 +5,7 @@ NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 # command
 unset MANPATH
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+XDG_CURRENT_DESKTOP=sway
 
 ### Disable ctrl-s sending XOFF
 stty ixany
