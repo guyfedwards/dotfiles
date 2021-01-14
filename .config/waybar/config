@@ -9,7 +9,6 @@
         "custom/spotify"
     ],
     "modules-right": [
-        "custom/yay",
         "custom/docker",
         "cpu",
         "memory",
@@ -54,12 +53,6 @@
         "exec-if": "pgrep spotify",
         "format": "  {}",
         "max-length": 50
-    },
-    "custom/yay": {
-        "exec": "count=$(yay -Qu | wc -l); [[ $count -gt 0 ]] && echo $count",
-        "format": " {}",
-        "escape": true,
-        "interval": 60
     },
     "memory": {
         "format": " {}%"
