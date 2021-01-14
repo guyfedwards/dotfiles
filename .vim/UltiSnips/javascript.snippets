@@ -1,5 +1,5 @@
 snippet cl
-console.log($1)
+console.log('$1', $1)
 endsnippet
 
 snippet req "require"
@@ -153,3 +153,14 @@ snippet rtest "Route test"
 }
 endsnippet
 
+snippet refu "React component"
+import React from 'react'
+
+const $1 = () => {
+  return (
+
+  );
+}
+
+export default $1;
+endsnippet
