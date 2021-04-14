@@ -17,6 +17,7 @@ endif
 " =====================
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
+Plug 'cespare/vim-toml'
 Plug 'chrisbra/Colorizer'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'godlygeek/tabular'
