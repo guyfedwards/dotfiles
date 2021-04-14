@@ -15,6 +15,7 @@ exec python $HOME/dotfiles/scripts/inactive_windows_transparency.py
 exec "mako"
 
 # Input/Output
+## use `swaymsg -t get_inputs` to get input name
 input * {
   xkb_layout gb
   xkb_variant mac
@@ -26,7 +27,7 @@ input "5426:92:Razer_Razer_DeathAdder_Elite" {
     pointer_accel -0.3
 }
 
-input "1133:50489:Logitech_USB_Receiver_Mouse" {
+input "1133:16505:Logitech_G_Pro" {
     accel_profile "flat"
     pointer_accel -0.3
 }
