@@ -14,7 +14,7 @@ exec python $HOME/dotfiles/scripts/inactive_windows_transparency.py
 
 # Required to get `XDG_CURRENT_DESKTOP` from .bash_profile for
 # xdg-desktop-portal-wlr and screensharing to work
-exec systemctl --user import-environment
+exec "systemctl --user import-environment"
 
 exec "mako"
 
