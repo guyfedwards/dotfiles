@@ -17,9 +17,12 @@ endif
 " =====================
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
+Plug 'andymass/vim-matchup'
+Plug 'arzg/vim-substrata'
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/Colorizer'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'dense-analysis/ale'
+" Plug 'fannheyward/coc-deno', {'do': 'yarn install --frozen-lockfile'}
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -31,12 +34,11 @@ Plug 'lokaltog/vim-monotone'
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
 Plug 'raimondi/delimitMate'
 Plug 'reedes/vim-colors-pencil'
-Plug 'preservim/nerdtree'
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
@@ -44,21 +46,23 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'dense-analysis/ale'
 
 " File type specific
 " Docker
 Plug 'honza/dockerfile.vim', { 'for': ['dockerfile'] }
-" Elixir
-Plug 'elixir-editors/vim-elixir', { 'for': ['elixir'] }
 " Go
 Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'javascript.typescript'] }
 Plug 'elzr/vim-json', { 'for': ['json'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] }
+Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
+Plug 'alvan/vim-closetag', { 'for': ['html', 'jsx', 'javascript', 'javascript.jsx']}
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'branch': 'main' }
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
+  \ 'do': 'make install'
+\}
 " Markdown
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -75,6 +79,7 @@ call plug#end()
 " =====================
 set nocompatible
 set nobackup " disable auto backups and swap files
+set backupcopy=yes "make a copy of the file and overwrite the original one
 set confirm " allow unsaved buffers in background, but check on quit
 set hidden
 set noswapfile
@@ -110,7 +115,10 @@ syntax enable
 "
 " Inside
 let g:seoul256_background = 237
-colorscheme seoul256
+" colorscheme seoul256
+set termguicolors
+let g:substrata_italic_functions = 0
+colorscheme substrata
 "
 " Outside
 " colorscheme pencil
@@ -273,14 +281,15 @@ let g:ale_linters = {
 \   'go': ['gometalinter'],
 \   'sql': ['sqlint']
 \}
+" \   'typescript': ['deno'],
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
 \   'json': ['fixjson'],
 \   'sql': ['sqlfmt'],
 \   'rust': ['rustfmt'],
 \   'terraform': ['terraform']
 \}
+" \   'typescript': ['deno'],
 let g:ale_javascript_eslint_executable='eslint_d'
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_javascript_prettier_use_local_config = 1
@@ -318,7 +327,9 @@ call coc#config('diagnostic.displayByAle', 1)
 call coc#config('snippets.loadFromExtensions', 0)
 call coc#config('snippets.priority', 100)
 call coc#config('suggest.maxCompleteItemCount', 20)
-call coc#config('tsserver.enable', 0)
+" call coc#config('deno.enable', v:false)
+" call coc#config('deno.importMap', '/home/guy/projects/slp/import_map.json')
+call coc#config('tsserver.enable', 1)
 let s:languageserver = {}
 if executable('gopls')
   let s:languageserver["golang"] = {
@@ -341,6 +352,7 @@ let g:colorizer_auto_filetype='css,html,scss,less,json'
 " delimitMate
 " =====================
 let g:delimitMate_expand_cr=1
+au FileType xml,html,phtml,php,xhtml,js,jsx,ts,tsx,javascript,javascript.jsx let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " fzf
 " =====================
@@ -431,4 +443,10 @@ let g:vim_json_syntax_conceal = 0
 " vim-jsx
 " =====================
 let g:jsx_ext_required = 1
+
+" vim-closetag
+" =====================
+let g:closetag_emptyTags_caseSensitive = 1
+" let g:closetag_xhtml_filetypes = 'html,xhtml,javascript.jsx,jsx,javascript'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx,*.ts,*.tsx'
 
