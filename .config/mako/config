@@ -1,0 +1,10 @@
+max-visible=3
+background-color=#292b2e
+text-color=#a1a19a
+border-color=#d8af5f
+
+[urgency=low]
+border-color=#d0d0d0
+
+[urgency=high]
+border-color=#d68787
