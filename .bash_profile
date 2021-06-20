@@ -204,7 +204,7 @@ man() {
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -S --line-number --ignore --glob "!.git/*"'
 
 ## init z! (https://github.com/rupa/z)
-. ~/z.sh
+. $HOME/z.sh
 
 ### hub === git
 eval "$(hub alias -s)"

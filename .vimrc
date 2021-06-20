@@ -339,9 +339,9 @@ if executable('gopls')
         \ }
 endif
 call coc#config('languageserver', s:languageserver)
-nmap <leader>gt  <Plug>(coc-type-definition)<CR>
-nmap <leader>gd  <Plug>(coc-definition)<CR>
-nmap <leader>gr  <Plug>(coc-reference)<CR>
+nmap <leader>gt  <Plug>(coc-type-definition)
+nmap <leader>gd  <Plug>(coc-definition)
+nmap <leader>gr  <Plug>(coc-reference)
 nmap <leader>rn  <Plug>(coc-rename)
 
 " colorizer
@@ -396,6 +396,7 @@ function! LightlineLinterErrors() abort
   return printf('%d ✗', all_errors)
 endfunction
 autocmd User ALELint call lightline#update() " refresh after lint
+au Filetype ts,tsx let b:ale_disable_lsp = 1
 
 "  NERDTree
 " =====================
@@ -448,5 +449,5 @@ let g:jsx_ext_required = 1
 " =====================
 let g:closetag_emptyTags_caseSensitive = 1
 " let g:closetag_xhtml_filetypes = 'html,xhtml,javascript.jsx,jsx,javascript'
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx,*.ts,*.tsx'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx,*.tsx'
 

@@ -3,7 +3,7 @@
 name=""
 
 if [ "$1" = "home" ]; then
-    name="waifu"
+    name="BT-9QAHJ9"
 fi
 
 if [ "$1" = "hotspot" ]; then
