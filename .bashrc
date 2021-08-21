@@ -11,7 +11,7 @@ XDG_CURRENT_DESKTOP=sway
 stty ixany
 stty ixoff -ixon
 
-export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin"
 
 # npm
 PATH="$NPM_PACKAGES/bin:$PATH"
