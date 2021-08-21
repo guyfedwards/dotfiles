@@ -27,7 +27,6 @@ Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'lokaltog/vim-monotone'
@@ -46,6 +45,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+
+" colorschemes
+" Plug 'junegunn/seoul256.vim'
+" Plug 'pradyungn/Mountain', {'rtp': 'vim'}
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " File type specific
 " Docker
@@ -114,11 +118,13 @@ autocmd bufwritepre * :call StripTrailingWhiteSpace()
 syntax enable
 "
 " Inside
-let g:seoul256_background = 237
+let g:seoul256_background = 235
+let g:tokyonight_style = "night"
 " colorscheme seoul256
+colorscheme tokyonight
 set termguicolors
-let g:substrata_italic_functions = 0
-colorscheme substrata
+" let g:substrata_italic_functions = 0
+" colorscheme substrata
 "
 " Outside
 " colorscheme pencil
@@ -365,9 +371,9 @@ nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 " lightline
 " =====================
 let g:lightline = {
-    \ 'colorscheme': 'seoul256',
+    \ 'colorscheme': 'tokyonight',
     \ 'active': {
-    \   'right': [[ 'lineinfo' ], [ 'percent' ], [ 'filetype' ], [ 'linter_warnings', 'linter_errors' ]]
+    \   'right': [[ 'filetype' ], [ 'linter_warnings', 'linter_errors' ]]
     \ },
     \ 'component': {
     \     'lineinfo': '%3l/%L:%-2v',

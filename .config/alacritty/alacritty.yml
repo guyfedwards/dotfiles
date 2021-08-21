@@ -69,7 +69,8 @@ font:
     #   - (Linux) monospace
     #   - (Windows) Consolas
     # family: inconsolata
-    family: DroidSansMono
+    # family: DroidSansMono
+    family: JetBrainsMono
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -83,7 +84,7 @@ font:
      # family: Droidsans
 
      # The `style` can be specified to pick a specific face.
-     style: Regular
+     style: Bold
 
   # Italic font face
   italic:
@@ -97,7 +98,7 @@ font:
     style: Italic
 
   # Point size
-  size: 8.0
+  size: 9.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -137,85 +138,102 @@ debug.persistent_logging: true
 # If `true`, bold text ir drawn using the bright color variants.
 draw_bold_text_with_bright_colors: false
 
+schemes:
+  seoul256: &seoul256
+    primary:
+      background: '0x3a3a3a'
+      foreground: '0xd0d0d0'
+    normal:
+      black:   '0x4e4e4e'
+      red:     '0xd68787'
+      green:   '0x5f865f'
+      yellow:  '0xd8af5f'
+      blue:    '0x85add4'
+      magenta: '0xd7afaf'
+      cyan:    '0x87afaf'
+      white:   '0xd0d0d0'
+    bright:
+      black:   '0x626262'
+      red:     '0xd75f87'
+      green:   '0x87af87'
+      yellow:  '0xffd787'
+      blue:    '0xadd4fb'
+      magenta: '0xffafaf'
+      cyan:    '0x87d7d7'
+      white:   '0xe4e4e4'
+  mountain: &mountain
+    primary:
+      background: '0x0f0f0f'
+      foreground: '0xf0f0f0'
+    normal:
+      black:   '0x262626'
+      red:     '0xac8a8c'
+      green:   '0x8aac8b'
+      yellow:  '0xaca98a'
+      blue:    '0x8f8aac'
+      magenta: '0xac8aac'
+      cyan:    '0x8aabac'
+      white:   '0xe7e7e7'
+      orange:  '0xc6a679'
+    bright:
+      black:   '0x4c4c4c'
+      red:     '0xc49ea0'
+      green:   '0x9ec49f'
+      yellow:  '0xc4c19e'
+      blue:    '0xa39ec4'
+      magenta: '0xc49ec4'
+      cyan:    '0x9ec3c4'
+      white:   '0xf5f5f5'
+      orange:  '0xceb188'
+
+  tokyo-night: &tokyo-night
+    primary:
+      background: '0x1a1b26'
+      foreground: '0xa9b1d6'
+    normal:
+      black:   '0x32344a'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xad8ee6'
+      cyan:    '0x449dab'
+      white:   '0x787c99'
+    bright:
+      black:   '0x444b6a'
+      red:     '0xff7a93'
+      green:   '0xb9f27c'
+      yellow:  '0xff9e64'
+      blue:    '0x7da6ff'
+      magenta: '0xbb9af7'
+      cyan:    '0x0db9d7'
+      white:   '0xacb0d0'
+
+  tokyo-night-storm: &tokyo-night-storm
+    primary:
+      background: '0x24283b'
+      foreground: '0xa9b1d6'
+    normal:
+      black:   '0x32344a'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xad8ee6'
+      cyan:    '0x449dab'
+      white:   '0x9699a8'
+    bright:
+      black:   '0x444b6a'
+      red:     '0xff7a93'
+      green:   '0xb9f27c'
+      yellow:  '0xff9e64'
+      blue:    '0x7da6ff'
+      magenta: '0xbb9af7'
+      cyan:    '0x0db9d7'
+      white:   '0xacb0d0'
+
 # Colors (Seoul256)
-colors:
-  primary:
-    background: '0x3a3a3a'
-    foreground: '0xd0d0d0'
-  normal:
-    black:   '0x4e4e4e'
-    red:     '0xd68787'
-    green:   '0x5f865f'
-    yellow:  '0xd8af5f'
-    blue:    '0x85add4'
-    magenta: '0xd7afaf'
-    cyan:    '0x87afaf'
-    white:   '0xd0d0d0'
-  bright:
-    black:   '0x626262'
-    red:     '0xd75f87'
-    green:   '0x87af87'
-    yellow:  '0xffd787'
-    blue:    '0xadd4fb'
-    magenta: '0xffafaf'
-    cyan:    '0x87d7d7'
-    white:   '0xe4e4e4'
-
-# Colors (Pencil Light)
-# colors:
-#   # Default Colors
-#   primary:
-#     background: '0xf1f1f1'
-#     foreground: '0x424242'
-#   # Normal colors
-#   normal:
-#     black:   '0x212121'
-#     red:     '0xc30771'
-#     green:   '0x10a778'
-#     yellow:  '0xa89c14'
-#     blue:    '0x008ec4'
-#     magenta: '0x523c79'
-#     cyan:    '0x20a5ba'
-#     white:   '0xe0e0e0'
-#   # Bright colors
-#   bright:
-#     black:   '0x212121'
-#     red:     '0xfb007a'
-#     green:   '0x5fd7af'
-#     yellow:  '0xf3e430'
-#     blue:    '0x20bbfc'
-#     magenta: '0x6855de'
-#     cyan:    '0x4fb8cc'
-#     white:   '0xf1f1f1'
-
-# Colors (Solarized Light)
-# colors:
-  # Default colors
-  # primary:
-  #   background: '0xfdf6e3'
-  #   foreground: '0x586e75'
-
-  # # Normal colors
-  # normal:
-  #   black:   '0xeee8d5'
-  #   red:     '0xdc322f'
-  #   green:   '0x859900'
-  #   yellow:  '0xb58900'
-  #   blue:    '0x268bd2'
-  #   magenta: '0xd33682'
-  #   cyan:    '0x2aa198'
-  #   white:   '0x073642'
-
-  # # Bright colors
-  # bright:
-  #   black:   '0xfdf6e3'
-  #   red:     '0xcb4b16'
-  #   green:   '0x93a1a1'
-  #   yellow:  '0x839496'
-  #   blue:    '0x657b83'
-  #   magenta: '0x6c71c4'
-  #   cyan:    '0x586e75'
-  #   white:   '0x002b36'
+colors: *tokyo-night
 
   # Dim colors
   #
@@ -239,7 +257,8 @@ colors:
   # Example:
   #   `- { index: 16, color: '0xff00ff' }`
   #
-  indexed_colors: []
+  # indexed_colors: []
+
 
 # Visual Bell
 #
