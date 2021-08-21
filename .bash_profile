@@ -38,7 +38,10 @@ alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
 alias server='python -m SimpleHTTPServer'
 
 ### Notes
-alias notes='(cd ~/Dropbox/Documents/Notes && v -c "NERDTree")'
+function notes() {
+  # echo $1
+  (cd "$HOME/Dropbox/Documents/Notes/$1" && v -c "NERDTree")
+}
 alias todo='v -c "Goyo" ~/Dropbox/Documents/Notes/medicspot/todo.md'
 
 ### Edit dotfiles
