@@ -80,6 +80,8 @@ alias allcontids="docker ps | grep -v CONTAINER | awk '\''{print $1}'\''"
 alias denv='eval $(minikube docker-env)'
 alias dc='docker-compose'
 
+alias k="kubectl"
+
 # eslintd
 alias killeslint="ps aux | grep eslint_d | grep -v grep | awk '{print $2}' | xargs kill -9"
 
