@@ -11,6 +11,8 @@
   dc = diff --cached
   amend = commit --amend --no-edit
 
+  dbs = !git diff --stat $(git merge-base HEAD develop)
+
   # branch
   b = branch
   bd = branch -D
@@ -39,7 +41,16 @@
   # Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
   whitespace = space-before-tab,trailing-space
   editor = nvim
-  pager = diff-so-fancy | less --tabs=4 -RFX
+
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+
+[delta]
+  side-by-side = true
+
 [color]
   # Use colors in Git commands that are capable of colored output when outputting to the terminal
   ui = true
