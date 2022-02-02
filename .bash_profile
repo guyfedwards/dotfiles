@@ -4,6 +4,7 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 
 export EDITOR=nvim
+export DELTA_PAGER=bat
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
