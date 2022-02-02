@@ -73,7 +73,7 @@ bar {
 }
 
 # Gaps
-gaps inner 5
+gaps inner 0
 gaps outer 0
 
 
