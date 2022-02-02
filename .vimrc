@@ -19,27 +19,25 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'andymass/vim-matchup'
 Plug 'arzg/vim-substrata'
-Plug 'cespare/vim-toml'
 Plug 'chrisbra/Colorizer'
 Plug 'dense-analysis/ale'
 " Plug 'fannheyward/coc-deno', {'do': 'yarn install --frozen-lockfile'}
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
 Plug 'junegunn/vim-peekaboo'
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'lokaltog/vim-monotone'
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'raimondi/delimitMate'
-Plug 'reedes/vim-colors-pencil'
 Plug 'sjl/gundo.vim'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
@@ -52,11 +50,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " File type specific
-" Docker
+Plug 'cespare/vim-toml', { 'for': ['toml']}
 Plug 'honza/dockerfile.vim', { 'for': ['dockerfile'] }
-" Go
 Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
-" JavaScript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'javascript.typescript'] }
 Plug 'elzr/vim-json', { 'for': ['json'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
@@ -88,6 +84,7 @@ set confirm " allow unsaved buffers in background, but check on quit
 set hidden
 set noswapfile
 set laststatus=2
+set exrc
 set backspace=2
 set encoding=utf8
 set undofile " tell it to use an undo file
@@ -95,6 +92,7 @@ set undodir=~/.vimundo/ " set a directory to store the undo history
 set scrolloff=3 " offset scroll few lines before bottom
 set mouse=a " mouse support
 set lazyredraw " Don't redraw while executing macros (good performance config)
+set timeoutlen=500
 
 if executable('rg')
   " Use rg over grep
@@ -231,7 +229,8 @@ autocmd BufNewFile,BufReadPost *config set filetype=config
 " =====================
 " Commands
 " =====================
-nnoremap \ :Rg<SPACE>
+nnoremap \ :Telescope live_grep<CR>
+nnoremap <C-\> :Telescope grep_string<CR>
 map Q <Nop>
 " paste date for notes
 map <F3> :.-1r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>
@@ -362,11 +361,9 @@ au FileType xml,html,phtml,php,xhtml,js,jsx,ts,tsx,javascript,javascript.jsx let
 
 " fzf
 " =====================
-let g:fzf_layout = { 'down': '40%' }
-nmap <C-p> :Files .<CR>
-nmap <C-t> :Tags <CR>
-nmap <C-b> :Buffers <CR>
-nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
+" let g:fzf_layout = { 'down': '40%' }
+nmap <C-p> :Telescope find_files <CR>
+nmap <C-b> :Telescope buffers <CR>
 
 " lightline
 " =====================
@@ -457,3 +454,9 @@ let g:closetag_emptyTags_caseSensitive = 1
 " let g:closetag_xhtml_filetypes = 'html,xhtml,javascript.jsx,jsx,javascript'
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx,*.tsx'
 
+" vim-markdown
+" =====================
+let g:vim_markdown_new_list_item_indent = 0
+
+" lua
+lua require("guyfedwards")

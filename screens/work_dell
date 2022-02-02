@@ -1,4 +1,4 @@
 #!/bin/bash
 
-swaymsg output HDMI-A-1 mode 1920x1080 scale 1
+swaymsg output HDMI-A-1 mode 2560x1440 scale 1
 swaymsg output eDP-1 disable
