@@ -48,7 +48,8 @@ window#waybar {
 #network,
 #pulseaudio,
 #temp,
-#tray {
+#tray,
+#custom-omo {
     padding: 1px 0 0 10px;
 }
 

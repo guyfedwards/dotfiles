@@ -10,6 +10,7 @@
     ],
     "modules-right": [
         "custom/docker",
+        "custom/omo",
         "cpu",
         "memory",
         "pulseaudio",
@@ -39,6 +40,10 @@
     },
     "cpu": {
         "format": " {usage}%"
+    },
+    "custom/omo": {
+        "exec": "omo get --notify 'EYES'",
+        "interval": 1,
     },
     "custom/docker": {
         "exec": "count=$(docker ps -q | wc -l); [[ $count -gt 0 ]] && echo $count",
