@@ -283,18 +283,26 @@ let g:ale_fix_on_save = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'sh': ['shellcheck'],
-\   'go': ['gometalinter'],
-\   'sql': ['sqlint']
+\   'go': ['golangci-lint'],
+\   'sql': ['sqlint'],
+\   'typescript': ['eslint'],
+\   'rust': ['analyzer']
 \}
 " \   'typescript': ['deno'],
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'json': ['fixjson'],
-\   'sql': ['sqlfmt'],
+\   'sql': ['pgformatter'],
 \   'rust': ['rustfmt'],
-\   'terraform': ['terraform']
+\   'terraform': ['terraform'],
+\   'typescript': ['eslint']
 \}
-" \   'typescript': ['deno'],
+let g:ale_rust_analyzer_config = {
+\ 'diagnostics': { 'disabled': ['unresolved-import'] },
+\ 'cargo': { 'loadOutDirsFromCheck': v:true },
+\ 'procMacro': { 'enable': v:true },
+\ 'checkOnSave': { 'command': 'clippy', 'enable': v:true }
+\ }
 let g:ale_javascript_eslint_executable='eslint_d'
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_javascript_prettier_use_local_config = 1
@@ -418,23 +426,15 @@ let g:NERDTreePatternMatchHighlightColor['.*\.go$'] = '5485e5'
 " autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter,TabEnter * wincmd p
 
-" SQL
-" =====================
-let g:ftplugin_sql_omni_key = 'C-j'
-
 " vim-go
 " =====================
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
-let g:go_auto_sameids = 1
+let g:go_auto_sameids = 0
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "locationlist"
 let g:go_fmt_fail_silently = 1
-let g:go_metalinter_enabled = [
-      \ 'deadcode', 'errcheck', 'gas', 'goconst', 'golint', 'gosimple',
-      \ 'gotype', 'ineffassign', 'interfacer', 'staticcheck', 'structcheck',
-      \ 'unconvert', 'varcheck', 'vet', 'vetshadow',
-      \ ]
+let g:ale_go_golangci_lint_package = 1
 
 " vim-javascript
 " =====================
