@@ -12,21 +12,23 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 
+
 " =====================
 " Plugins
 " =====================
 call plug#begin('~/.vim/plugged')
-Plug 'airblade/vim-gitgutter'
+" Plug 'fannheyward/coc-deno', {'do': 'yarn install --frozen-lockfile'}
 Plug 'andymass/vim-matchup'
-Plug 'arzg/vim-substrata'
 Plug 'chrisbra/Colorizer'
 Plug 'danymat/neogen', {'branch': 'main'}
 Plug 'dense-analysis/ale'
-" Plug 'fannheyward/coc-deno', {'do': 'yarn install --frozen-lockfile'}
+Plug 'folke/todo-comments.nvim', {'branch': 'main'}
+Plug 'folke/trouble.nvim', {'branch': 'main'}
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'lewis6991/gitsigns.nvim', {'branch': 'main'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -227,7 +229,7 @@ autocmd BufNewFile,BufReadPost *config set filetype=config
 " =====================
 " Commands
 " =====================
-nnoremap \ :Telescope live_grep<CR>
+nnoremap \ :Telescope grep_string search=
 nnoremap <C-\> :Telescope grep_string<CR>
 map Q <Nop>
 " paste date for notes
@@ -457,4 +459,4 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx,*.tsx'
 let g:vim_markdown_new_list_item_indent = 0
 
 " lua
-lua require("guyfedwards")
+lua require("config")

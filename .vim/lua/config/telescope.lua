@@ -1,4 +1,4 @@
-local telescope = require('telescope')
+local telescope = require("telescope")
 local actions = require("telescope.actions")
 local themes = require("telescope.themes")
 
@@ -29,9 +29,9 @@ telescope.setup {
     }
   },
   pickers = {
-    find_files = with_theme(),
-    live_grep = with_theme(),
-    grep_string = with_theme(),
+    find_files = with_theme({ hidden = true }),
+    live_grep = with_theme({ additional_args = "--hidden" }),
+    grep_string = with_theme({ additional_args = "--hidden" }),
     buffers = with_theme()
   }
 }
