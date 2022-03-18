@@ -1,5 +1,4 @@
 require('config/neogen')
-require('config/telescope')
 require('config/todo')
 require('config/treesitter')
 require('config/gitsigns')

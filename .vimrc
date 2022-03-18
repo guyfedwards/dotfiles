@@ -26,6 +26,8 @@ Plug 'folke/todo-comments.nvim', {'branch': 'main'}
 Plug 'folke/trouble.nvim', {'branch': 'main'}
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc '}
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'lewis6991/gitsigns.nvim', {'branch': 'main'}
@@ -33,8 +35,6 @@ Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
-Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'preservim/nerdtree'
 Plug 'raimondi/delimitMate'
@@ -229,8 +229,7 @@ autocmd BufNewFile,BufReadPost *config set filetype=config
 " =====================
 " Commands
 " =====================
-nnoremap \ :Telescope grep_string search=
-nnoremap <C-\> :Telescope grep_string<CR>
+nnoremap \ :Rg<SPACE>
 map Q <Nop>
 " paste date for notes
 map <F3> :.-1r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>
@@ -369,9 +368,11 @@ au FileType xml,html,phtml,php,xhtml,js,jsx,ts,tsx,javascript,javascript.jsx let
 
 " fzf
 " =====================
-" let g:fzf_layout = { 'down': '40%' }
-nmap <C-p> :Telescope find_files <CR>
-nmap <C-b> :Telescope buffers <CR>
+let g:fzf_layout = { 'down': '40%' }
+nmap <C-p> :Files .<CR>
+nmap <C-t> :Tags <CR>
+nmap <C-b> :Buffers <CR>
+nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 
 " lightline
 " =====================
