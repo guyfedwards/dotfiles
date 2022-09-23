@@ -3,7 +3,7 @@
 " =====================
 if empty(glob('~/.vim/autoload/plug.vim'))
     if has('nvim')
-        silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        silent !curl -fLo ~/.local/share/nvim/site/autoload/jlug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     else
         silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

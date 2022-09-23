@@ -8,3 +8,7 @@ border-color=#d0d0d0
 
 [urgency=high]
 border-color=#d68787
+
+# not released yet
+# [mode=dnd]
+# invisible=1
