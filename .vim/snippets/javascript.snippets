@@ -1,0 +1,183 @@
+snippet cl
+  console.log('${0}')
+
+snippet req
+  const ${1} = require('${2}')
+
+snippet im
+  import ${1} from '${2}'
+
+snippet desc
+  describe('${1}', () => {
+    ${0}
+  })
+
+snippet it
+  it('should ${1}', async () => {
+          ${0}
+  })
+
+# snippet try "try/catch"
+# try {
+#   $0
+# } catch(e) {
+#   $1
+# }
+# endsnippet
+
+# snippet alterTable "knex.schema.alterTable"
+# knex.schema.alterTable('$1', function (table) {
+#   $0
+# })
+# endsnippet
+
+# snippet createTable "knex.schema.createTable"
+# knex.schema.createTable('$1', function (table) {
+#   $0
+# })
+# endsnippet
+
+
+# snippet Model "MS Model"
+# const Model = require('lib/configurators/model');
+
+# module.exports = class $1 extends Model {
+#   static get tableName () {
+#     return '$2';
+#   }
+
+#   static get schema () {
+#     return {
+#       type: 'object',
+#       schema: {
+
+#       }
+#     };
+#   }
+# };
+# endsnippet
+
+# snippet ho "Hannibal object"
+# $1: {
+#   type: 'object',
+#   schema: {
+#     $2
+#   }
+# },
+# endsnippet
+
+# snippet hs "Hannibal string"
+# $0: {
+#   type: 'string'
+# },
+# endsnippet
+
+# snippet hn "Hannibal number"
+# $0: {
+#   type: 'number',
+#   transforms: ['toInteger']
+# },
+# endsnippet
+
+# snippet hb "Hannibal boolean"
+# $0: {
+#   type: 'boolean'
+# },
+# endsnippet
+
+# snippet hd "Hannibal date"
+# $0: {
+#   type: 'date',
+#   transforms: ['toDate']
+# },
+# endsnippet
+
+# snippet he "Hannibal enum"
+# $1: {
+#   type: 'string',
+#   validators: {
+#     enum: ['$2']
+#   }
+# },
+# endsnippet
+
+# snippet rtest "Route test"
+# {
+#   name: '$1',
+#   method: '${2:get}',
+#   path: '/$3',
+#   seeds: [
+
+#   ],
+#   pathAttrs: (seedModel) => ({id: seedModel.getSeed('').id}),
+#   reqAttrs: () => {
+#     return {
+#       data: {
+
+#       }
+#     }
+#   },
+#   asUser: '$4',
+#   asserts: {
+#     ...assertions.checkStatus(${5:200}),
+#     ...assertions.checkBody((res, seedModel) => {
+#       return
+#     }),
+#     ...assertions.rowsModified({})
+#   }
+# }
+# endsnippet
+
+# snippet refu "React component"
+# import React from 'react'
+
+# const $1 = () => {
+#   return (
+
+#   );
+# }
+
+# export default $1;
+# endsnippet
+
+# snippet state "React hook"
+# const [$1, $1] = useState($2)
+# endsnippet
+
+# snippet cont "container"
+# import React, {useState, useEffect} from 'react';
+# import {useNavigate, useParams} from 'react-router-dom';
+# import useDashboard from '../../../hooks/useDashboard';
+# import useQuery from '../../../hooks/useQuery';
+# import Loading from '../../Loading';
+# import $1 from './$1';
+# import api from 'src/util/request';
+
+# const $1Container = () => {
+#   const [componentData, setComponentData] = useState();
+#   const {id} = useParams()
+#   const navigate = useNavigate();
+#   const dashboard = useDashboard();
+#   const [currentQuery, setCurrentQuery] = useQuery();
+#   const basePath = \`/\$\{dashboard\}\`;
+
+# useEffect(() => {
+#     (async () => {
+
+#       setComponentData({
+#         consumableOrders: consumableOrdersRes.data,
+#         schema
+#       });
+#     })();
+#   }, [currentQuery]);
+
+#   if (!componentData) return <Loading />;
+
+#   return (
+#     <$1
+#     />
+#   );
+# };
+
+# export default $1Container;
+# endsnippet

@@ -17,5 +17,8 @@ configs.setup {
   },
   highlight = {
     enable = true
+  },
+  playground = {
+    enabled = true
   }
 }

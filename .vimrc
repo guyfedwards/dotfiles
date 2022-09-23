@@ -31,11 +31,20 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'lewis6991/gitsigns.nvim', {'branch': 'main'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
+Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
+Plug 'hrsh7th/cmp-path', {'branch': 'main'}
+Plug 'hrsh7th/cmp-cmdline', {'branch': 'main'}
+Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'preservim/nerdtree'
 Plug 'raimondi/delimitMate'
 Plug 'sjl/gundo.vim'
@@ -75,7 +84,6 @@ Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'typescript', 'tsx', 'javas
 call plug#end()
 
 " =====================
-" General
 " =====================
 set nocompatible
 set nobackup " disable auto backups and swap files
@@ -116,21 +124,9 @@ autocmd bufwritepre * :call StripTrailingWhiteSpace()
 syntax enable
 "
 " Inside
-let g:seoul256_background = 235
-let g:tokyonight_style = "night"
-" colorscheme seoul256
-colorscheme tokyonight
+" colorscheme tokyonight-day
+" colorscheme tokyonight-night
 set termguicolors
-" let g:substrata_italic_functions = 0
-" colorscheme substrata
-"
-" Outside
-" colorscheme pencil
-" set background=light
-" let g:pencil_higher_contrast_ui = 1
-
-" colorscheme hybrid_material
-" set background=light
 
 hi LineNr ctermfg=NONE ctermbg=NONE
 hi VertSplit ctermbg=NONE guibg=NONE
@@ -171,6 +167,8 @@ set ruler               " line/character numbers bottom right
 set colorcolumn=81      " show line at 81 chars, stop before the line
 " change cursor in different modes
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+set updatetime=300 " Smaller updatetime for CursorHold & CursorHoldI
+set shortmess+=c " don't give |ins-completion-menu| messages.
 
 " =====================
 " Searching
@@ -269,7 +267,7 @@ set pastetoggle=<leader>p
 " select text that was just pasted
 nnoremap <leader>v V`]
 " golang go to definition
-autocmd FileType go nmap <buffer> <leader>gd  :GoDef<CR>
+" autocmd FileType go nmap <buffer> <leader>gd  :GoDef<CR>
 
 
 
@@ -280,21 +278,24 @@ autocmd FileType go nmap <buffer> <leader>gd  :GoDef<CR>
 " =====================
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['eslint', 'standard'],
+\   'lua': ['luacheck'],
 \   'sh': ['shellcheck'],
 \   'go': ['golangci-lint'],
 \   'sql': ['sqlint'],
 \   'typescript': ['eslint'],
 \   'rust': ['analyzer']
 \}
-" \   'typescript': ['deno'],
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
+\   'javascript': ['prettier', 'eslint', 'standard'],
+\   'javascriptreact': ['prettier', 'eslint', 'standard'],
+\   'typescriptreact': ['prettier', 'eslint', 'standard'],
+\   'typescript': ['prettier', 'eslint', 'standard'],
+\   'lua': ['stylua'],
 \   'json': ['fixjson'],
 \   'sql': ['pgformatter'],
 \   'rust': ['rustfmt'],
 \   'terraform': ['terraform'],
-\   'typescript': ['eslint']
 \}
 let g:ale_rust_analyzer_config = {
 \ 'diagnostics': { 'disabled': ['unresolved-import'] },
@@ -306,60 +307,25 @@ let g:ale_javascript_eslint_executable='eslint_d'
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_sql_sqlfmt_executable='sqlfmt'
-let g:ale_sign_error = '✖'
-let g:ale_sign_warning = '⚠'
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '●'
 let g:ale_sign_column_always = 1
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
+let g:ale_completion_autoimport = 0
 let g:ale_echo_msg_format = '%linter%:%code%: %s'
+" we are using nvim-lsp
+let g:ale_disable_lsp = 1
 " Map keys to navigate between lines with errors and warnings.
 nnoremap <leader>an :ALENextWrap<cr>
 nnoremap <leader>ap :ALEPreviousWrap<cr>
 nnoremap <leader>ad :ALEDetail<cr>
 
-" CoC.nvim
-" =====================
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-" jump to next placeholder
-let g:coc_snippet_next = '<tab>'
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-call coc#config('diagnostic.displayByAle', 1)
-call coc#config('snippets.loadFromExtensions', 0)
-call coc#config('snippets.priority', 100)
-call coc#config('suggest.maxCompleteItemCount', 20)
-" call coc#config('deno.enable', v:false)
-" call coc#config('deno.importMap', '/home/guy/projects/slp/import_map.json')
-call coc#config('tsserver.enable', 1)
-let s:languageserver = {}
-if executable('gopls')
-  let s:languageserver["golang"] = {
-        \   "command": "gopls",
-        \   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        \   "filetypes": ["go"]
-        \ }
-endif
-call coc#config('languageserver', s:languageserver)
-nmap <leader>gt  <Plug>(coc-type-definition)
-nmap <leader>gd  <Plug>(coc-definition)
-nmap <leader>gr  <Plug>(coc-reference)
-nmap <leader>rn  <Plug>(coc-rename)
-
 " colorizer
 " =====================
 " auto highlight colors for these filetypes
 let g:colorizer_auto_filetype='css,html,scss,less,json'
+
 
 " delimitMate
 " =====================

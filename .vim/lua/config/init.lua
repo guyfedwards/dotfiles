@@ -1,4 +1,8 @@
+require('config/theme')
 require('config/neogen')
 require('config/todo')
 require('config/treesitter')
+require('config/trouble')
 require('config/gitsigns')
+require('config/completion')
+require('config/snippets')
