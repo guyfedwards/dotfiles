@@ -29,6 +29,7 @@ alias cin='asciinema rec -c "/bin/bash -l"'
 alias preview='open -a Preview'
 alias chrome='open -a google\ chrome'
 alias f='open -a Finder'
+alias u='units'
 
 ### color `ls`
 colorflag="-G"
@@ -80,8 +81,22 @@ alias allimgids='docker images | grep -v REPOSITORY | awk '\''{print $3}'\'''
 alias allcontids="docker ps | grep -v CONTAINER | awk '\''{print $1}'\''"
 alias denv='eval $(minikube docker-env)'
 alias dc='docker-compose'
+dclean(){
+    docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
+    docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+    docker image prune -a --filter "until=$(date +'%Y-%m-%dT%H:%M:%S' --date='-15 days')" 2>/dev/null
+}
+
+alias deno='docker run --network host -v $(pwd):/app -w /app denoland/deno:1.22.3'
 
 alias k="kubectl"
+function kx() {
+  if [ -z $1 ]; then
+    kubectl config current-context
+  else
+    kubectl config use-context $1
+  fi
+}
 
 # eslintd
 alias killeslint="ps aux | grep eslint_d | grep -v grep | awk '{print $2}' | xargs kill -9"
