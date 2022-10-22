@@ -1,8 +1,0 @@
-#!/bin/bash
-$pkgmngr=yay
-
-$pkgmngr -S ttf-hack
-$pkgmngr -S ttf-font-awesome-4
-$pkgmngr -S ttf-unifont
-$pkgmngr -S siji-git
-

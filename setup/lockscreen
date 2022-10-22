@@ -1,4 +1,0 @@
-#!/bin/bash
-
-pacman -S imagemagick
-pacman -S i3lock
