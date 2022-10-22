@@ -193,16 +193,29 @@ function parse_git_branch() {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
+function get_k8s_context() {
+  ctx=$(kubectl config current-context 2> /dev/null)
+
+  if [[ "$ctx" = error* || "$ctx" = "" ]]; then
+    true
+  elif [[ $ctx = prod* ]]; then
+    echo "$RED$ctx"
+  else
+    echo "$GRAY$ctx"
+  fi
+}
+
 ### Change this symbol to something sweet.
 ### (http://en.wikipedia.org/wiki/Unicode_symbols)
 symbol="\[$GRAY\]└ \[$ORANGE\]☲ \[$RESET\] "
 
 prompt_user="\[${BOLD}${LIGHTGRAY}\]\u$host"
 prompt_cwd="\[${GRAY}\]\[$LIGHTGRAY\]\w"
-prompt_git="\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[${BLUE}\]\$(parse_git_branch)"
+prompt_k8s="\$(get_k8s_context)"
+prompt_git="\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[${BLUE}\]\$(parse_git_branch)\[$WHITE\] at $prompt_k8s"
 prompt_symbol="\n$symbol"
 
-export PS1="\[$GRAY\]┌ $prompt_user $prompt_cwd\[$WHITE\]$prompt_git$prompt_symbol\[$RESET\]"
+export PS1="\[$GRAY\]┌ $prompt_cwd\[$WHITE\]$prompt_git$prompt_symbol\[$RESET\]"
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 
