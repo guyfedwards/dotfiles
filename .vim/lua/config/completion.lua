@@ -69,7 +69,7 @@ require'cmp'.setup.cmdline(':', {
 })
 
 -- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
 vim.diagnostic.config({
@@ -113,7 +113,6 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  vim.keymap.set('n', 'gt', vim.lsp.buf.declaration, bufopts) -- unused
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts) -- look for how to make float
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -125,6 +124,7 @@ local on_attach = function(client, bufnr)
 end
 
 lspconfig.tsserver.setup {
+  on_attach = on_attach,
   capabilities = capabilities
 }
 
@@ -134,21 +134,21 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
   callback = vim.lsp.buf.formatting_sync,
 })
 
-lspconfig.gopls.setup {
-  cmd = {'gopls'},
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    gopls = {
-      experimentalPostfixCompletions = true,
-      analyses = {
-        unusedparams = true,
-        shadow = true,
-      },
-      staticcheck = true,
-    },
-  },
-  init_options = {
-    usePlaceholders = true,
-  }
-}
+-- lspconfig.gopls.setup {
+--   cmd = {'gopls'},
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     gopls = {
+--       experimentalPostfixCompletions = true,
+--       analyses = {
+--         unusedparams = true,
+--         shadow = true,
+--       },
+--       staticcheck = true,
+--     },
+--   },
+--   init_options = {
+--     usePlaceholders = true,
+--   }
+-- }

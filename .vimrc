@@ -17,7 +17,6 @@ endif
 " Plugins
 " =====================
 call plug#begin('~/.vim/plugged')
-" Plug 'fannheyward/coc-deno', {'do': 'yarn install --frozen-lockfile'}
 Plug 'andymass/vim-matchup'
 Plug 'chrisbra/Colorizer'
 Plug 'danymat/neogen', {'branch': 'main'}
@@ -38,12 +37,17 @@ Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
 Plug 'hrsh7th/cmp-path', {'branch': 'main'}
 Plug 'hrsh7th/cmp-cmdline', {'branch': 'main'}
 Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
-Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'ray-x/go.nvim'
+Plug 'simrat39/symbols-outline.nvim'
+" Plug 'ray-x/navigator.lua'
+" Plug 'ray-x/lsp_signature.nvim'
 
 Plug 'nvim-lua/plenary.nvim'
+Plug 'sindrets/diffview.nvim', {'branch': 'main'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvim-treesitter/playground'
 Plug 'preservim/nerdtree'
 Plug 'raimondi/delimitMate'
@@ -65,7 +69,6 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " File type specific
 Plug 'cespare/vim-toml', { 'for': ['toml']}
 Plug 'honza/dockerfile.vim', { 'for': ['dockerfile'] }
-Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoInstallBinaries' }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'javascript.typescript'] }
 Plug 'elzr/vim-json', { 'for': ['json'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
@@ -101,6 +104,7 @@ set scrolloff=3 " offset scroll few lines before bottom
 set mouse=a " mouse support
 set lazyredraw " Don't redraw while executing macros (good performance config)
 set timeoutlen=500
+set relativenumber
 
 if executable('rg')
   " Use rg over grep
@@ -316,6 +320,8 @@ let g:ale_completion_autoimport = 0
 let g:ale_echo_msg_format = '%linter%:%code%: %s'
 " we are using nvim-lsp
 let g:ale_disable_lsp = 1
+" enable linting package not just file
+let g:ale_go_golangci_lint_package = 1
 " Map keys to navigate between lines with errors and warnings.
 nnoremap <leader>an :ALENextWrap<cr>
 nnoremap <leader>ap :ALEPreviousWrap<cr>
@@ -382,6 +388,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let NERDTreeShowHidden=1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
+let g:NERDTreeMinimalMenu=1
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
@@ -392,16 +399,6 @@ let g:NERDTreePatternMatchHighlightColor['.*\.rb$'] = 'a9535b'
 let g:NERDTreePatternMatchHighlightColor['.*\.go$'] = '5485e5'
 " autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter,TabEnter * wincmd p
-
-" vim-go
-" =====================
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_auto_sameids = 0
-let g:go_fmt_command = "goimports"
-let g:go_list_type = "locationlist"
-let g:go_fmt_fail_silently = 1
-let g:ale_go_golangci_lint_package = 1
 
 " vim-javascript
 " =====================

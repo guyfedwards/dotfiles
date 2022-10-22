@@ -1,2 +1,12 @@
 snippet p
   fmt.Println("${0}")
+
+snippet err
+  if err != nil {
+    return fmt.Errorf("${0}: %w", err)
+  }
+
+snippet test
+  func Test${1}(t *testing.T) {
+    ${2}
+  }

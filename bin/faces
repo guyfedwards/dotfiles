@@ -3,7 +3,7 @@
 faces=('¯\\_(ツ)_/¯' '┴┬┴┤( ͡° ͜ʖ├┬┴┬' '⊂(▀¯▀⊂)' '( ͡↑ ͜ʖ ͡↑)' '( ͡° ͜ʖ ͡°)' '╰( ⁰ ਊ ⁰ )━☆ﾟ.*･｡ﾟ' 'ಠ_ಠ' 'ಠ_ರೃ' '¯\(°_o)/¯' '(╯°□°）╯︵ ┻━┻')
 
 if [[ -z $1 ]]; then
-  echo 'Choose a face to copy to clipboard'
+  echo 'Choose a face'
   i=0
   for f in "${faces[@]}"
   do
@@ -12,9 +12,4 @@ if [[ -z $1 ]]; then
   done
 else
   echo "${faces["$1"]}"
-  if [[ $(uname) = 'Darwin' ]]; then
-    echo "${faces["$1"]}" | pbcopy
-  else
-    echo "${faces["$1"]}" | xclip -selection clipboard
-  fi
 fi
