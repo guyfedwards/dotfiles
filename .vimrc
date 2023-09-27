@@ -23,7 +23,6 @@ Plug 'danymat/neogen', {'branch': 'main'}
 Plug 'dense-analysis/ale'
 Plug 'folke/todo-comments.nvim', {'branch': 'main'}
 Plug 'folke/trouble.nvim', {'branch': 'main'}
-Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc '}
 Plug 'junegunn/fzf.vim'
@@ -40,21 +39,16 @@ Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'ray-x/go.nvim'
-Plug 'simrat39/symbols-outline.nvim'
-" Plug 'ray-x/navigator.lua'
-" Plug 'ray-x/lsp_signature.nvim'
-
 Plug 'nvim-lua/plenary.nvim'
-Plug 'sindrets/diffview.nvim', {'branch': 'main'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvim-treesitter/playground'
+
+Plug 'sindrets/diffview.nvim', {'branch': 'main'}
 Plug 'preservim/nerdtree'
 Plug 'raimondi/delimitMate'
 Plug 'sjl/gundo.vim'
-Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
@@ -67,23 +61,12 @@ Plug 'tpope/vim-unimpaired'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " File type specific
-Plug 'cespare/vim-toml', { 'for': ['toml']}
-Plug 'honza/dockerfile.vim', { 'for': ['dockerfile'] }
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'javascript.typescript'] }
-Plug 'elzr/vim-json', { 'for': ['json'] }
-Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
-Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
+" Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'javascript.typescript'] }
+" Plug 'elzr/vim-json', { 'for': ['json'] }
+" Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
+" Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'alvan/vim-closetag', { 'for': ['html', 'jsx', 'javascript', 'javascript.jsx']}
-Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'jsx', 'javascript.jsx'], 'branch': 'main' }
-" Markdown
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-" Rust
-Plug 'rust-lang/rust.vim', { 'for': ['rust', 'rs'] }
-" Terraform
-Plug 'hashivim/vim-terraform'
-" TypeScript
-Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'typescript', 'tsx', 'javascript.typescript'] }
 call plug#end()
 
 " =====================
@@ -270,8 +253,6 @@ nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
 set pastetoggle=<leader>p
 " select text that was just pasted
 nnoremap <leader>v V`]
-" golang go to definition
-" autocmd FileType go nmap <buffer> <leader>gd  :GoDef<CR>
 
 
 
@@ -295,6 +276,7 @@ let g:ale_fixers = {
 \   'javascriptreact': ['prettier', 'eslint', 'standard'],
 \   'typescriptreact': ['prettier', 'eslint', 'standard'],
 \   'typescript': ['prettier', 'eslint', 'standard'],
+\   'go': ['gopls'],
 \   'lua': ['stylua'],
 \   'json': ['fixjson'],
 \   'sql': ['pgformatter'],
