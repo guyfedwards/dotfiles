@@ -31,6 +31,8 @@ alias chrome='open -a google\ chrome'
 alias f='open -a Finder'
 alias u='units'
 
+alias makoclear='makoctl dismiss -a'
+
 ### color `ls`
 colorflag="-G"
 alias ls="command ls ${colorflag}"
@@ -207,7 +209,8 @@ function get_k8s_context() {
 
 ### Change this symbol to something sweet.
 ### (http://en.wikipedia.org/wiki/Unicode_symbols)
-symbol="\[$GRAY\]└ \[$ORANGE\]☲ \[$RESET\] "
+# symbol="\[$GRAY\]└ \[$ORANGE\]☲ \[$RESET\] "
+symbol="\[$GRAY\]└ \[$ORANGE\]☠️ \[$RESET\] "
 
 prompt_user="\[${BOLD}${LIGHTGRAY}\]\u$host"
 prompt_cwd="\[${GRAY}\]\[$LIGHTGRAY\]\w"
