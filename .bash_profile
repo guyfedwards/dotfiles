@@ -209,8 +209,8 @@ function get_k8s_context() {
 
 ### Change this symbol to something sweet.
 ### (http://en.wikipedia.org/wiki/Unicode_symbols)
-# symbol="\[$GRAY\]└ \[$ORANGE\]☲ \[$RESET\] "
-symbol="\[$GRAY\]└ \[$ORANGE\]☠️ \[$RESET\] "
+symbol="\[$GRAY\]└ \[$ORANGE\]☲ \[$RESET\]"
+# symbol="\[$GRAY\]└ \[$ORANGE\]☠️ \[$RESET\] "
 
 prompt_user="\[${BOLD}${LIGHTGRAY}\]\u$host"
 prompt_cwd="\[${GRAY}\]\[$LIGHTGRAY\]\w"
@@ -243,5 +243,3 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -S --line-number --igno
 ## init z! (https://github.com/rupa/z)
 . $HOME/z.sh
 
-### hub === git
-eval "$(hub alias -s)"

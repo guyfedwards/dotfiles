@@ -14,6 +14,7 @@ Thumbs.db
 
 # ignore plugged folder
 .vim/plugged
+.config/nvim/plugged
 
 #Ignore session files
 Session.vim

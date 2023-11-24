@@ -19,12 +19,11 @@ PATH="$NPM_PACKAGES/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 # tj/n
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-# rubygems
-PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-export GEM_HOME=$HOME/.gem
 # Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+if [ -f "$HOME/custom_env" ]; then source "$HOME/custom_env"; fi
 
 [ -f "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
 
@@ -43,3 +42,5 @@ if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then source "$HOME/google-clou
 
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
+
+source $HOME/.bash_profile

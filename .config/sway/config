@@ -1,16 +1,18 @@
 set $mod Mod4
 set $alt Mod1
-set $term alacritty
+set $term foot
 set $bgimg $HOME/Pictures/bg.jpg
 set $lockcmd "swaylock -f -i $bgimg -s fill"
 
+exec swayidle -w \
+	timeout 600 $lockcmd \
+	# timeout 600 'swaymsg "output * power off"' \
+	# 	resume 'swaymsg "output * power on"' \
+	# timeout 900 'systemctl suspend' \
+	# before-sleep $lockcmd
+
 set $bg #f0f0f0
 set $fg #f0f0f0
-font pango:"Meslo LG S" 8
-
-
-# Custom
-exec python $HOME/dotfiles/scripts/inactive_windows_transparency.py
 
 # Required to get `XDG_CURRENT_DESKTOP` from .bash_profile for
 # xdg-desktop-portal-wlr and screensharing to work

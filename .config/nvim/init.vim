@@ -1,29 +1,14 @@
 " =====================
-" Plug Auto-Update
-" =====================
-if empty(glob('~/.vim/autoload/plug.vim'))
-    if has('nvim')
-        silent !curl -fLo ~/.local/share/nvim/site/autoload/jlug.vim --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    else
-        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    endif
-endif
-
-
-
-" =====================
 " Plugins
 " =====================
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'andymass/vim-matchup'
 Plug 'chrisbra/Colorizer'
 Plug 'danymat/neogen', {'branch': 'main'}
 Plug 'dense-analysis/ale'
 Plug 'folke/todo-comments.nvim', {'branch': 'main'}
 Plug 'folke/trouble.nvim', {'branch': 'main'}
-Plug 'itchyny/lightline.vim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc '}
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
@@ -58,6 +43,7 @@ Plug 'tpope/vim-unimpaired'
 " colorschemes
 " Plug 'junegunn/seoul256.vim'
 " Plug 'pradyungn/Mountain', {'rtp': 'vim'}
+Plug 'neanias/everforest-nvim', { 'branch': 'main' }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " File type specific
@@ -327,42 +313,6 @@ nmap <C-p> :Files .<CR>
 nmap <C-t> :Tags <CR>
 nmap <C-b> :Buffers <CR>
 nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
-
-" lightline
-" =====================
-let g:lightline = {
-    \ 'colorscheme': 'tokyonight',
-    \ 'active': {
-    \   'right': [[ 'filetype' ], [ 'linter_warnings', 'linter_errors' ]]
-    \ },
-    \ 'component': {
-    \     'lineinfo': '%3l/%L:%-2v',
-    \     'filename': '%f'
-    \ },
-    \ 'component_expand': {
-    \   'linter_warnings': 'LightlineLinterWarnings',
-    \   'linter_errors': 'LightlineLinterErrors'
-    \ },
-    \ 'component_type': {
-    \   'readonly': 'error',
-    \   'linter_warnings': 'warning',
-    \   'linter_errors': 'error'
-    \ }
-\ }
-function! LightlineLinterWarnings() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return printf('%d ◆', all_non_errors)
-endfunction
-function! LightlineLinterErrors() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return printf('%d ✗', all_errors)
-endfunction
-autocmd User ALELint call lightline#update() " refresh after lint
-au Filetype ts,tsx let b:ale_disable_lsp = 1
 
 "  NERDTree
 " =====================

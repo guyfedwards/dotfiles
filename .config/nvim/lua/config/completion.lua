@@ -12,6 +12,12 @@ luasnip.config.setup({
     delete_check_events = "TextChanged,InsertEnter",
 })
 
+-- Show all diagnostics on current line in floating window
+vim.api.nvim_set_keymap(
+  'n', '<Leader>d', ':lua vim.diagnostic.open_float()<CR>',
+  { noremap = true, silent = true }
+)
+
 cmp.setup({
   enabled = function()
       -- disable completion in comments

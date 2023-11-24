@@ -6,11 +6,9 @@
         "sway/mode"
     ],
     "modules-center": [
-        "custom/spotify"
     ],
     "modules-right": [
         "custom/docker",
-        "custom/omo",
         "cpu",
         "memory",
         "pulseaudio",
@@ -41,23 +39,12 @@
     "cpu": {
         "format": " {usage}%"
     },
-    "custom/omo": {
-        "exec": "omo get --notify 'EYES'",
-        "interval": 1,
-    },
     "custom/docker": {
         "exec": "count=$(docker ps -q | wc -l); [[ $count -gt 0 ]] && echo $count",
         "exec-if": "pgrep docker",
         "format": " {}",
         "interval": 60,
         "max-length": 5
-    },
-    "custom/spotify": {
-        "escape": true,
-        "exec": "$HOME/.config/waybar/spotify 2> /dev/null",
-        "exec-if": "pgrep spotify",
-        "format": "  {}",
-        "max-length": 50
     },
     "memory": {
         "format": " {}%"

@@ -1,5 +1,5 @@
 snippet p
-  fmt.Println("${0}")
+  fmt.Printf("%s\n", ${0})
 
 snippet err
   if err != nil {
@@ -10,3 +10,8 @@ snippet test
   func Test${1}(t *testing.T) {
     ${2}
   }
+
+snippet go
+  go func() {
+    ${1}
+  }()
