@@ -31,6 +31,7 @@ Plug 'nvim-treesitter/playground'
 
 Plug 'sindrets/diffview.nvim', {'branch': 'main'}
 Plug 'preservim/nerdtree'
+Plug 'stevearc/oil.nvim'
 Plug 'raimondi/delimitMate'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-commentary'
@@ -42,7 +43,6 @@ Plug 'tpope/vim-unimpaired'
 
 " colorschemes
 " Plug 'junegunn/seoul256.vim'
-" Plug 'pradyungn/Mountain', {'rtp': 'vim'}
 Plug 'neanias/everforest-nvim', { 'branch': 'main' }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
@@ -102,7 +102,7 @@ syntax enable
 set termguicolors
 
 hi LineNr ctermfg=NONE ctermbg=NONE
-hi VertSplit ctermbg=NONE guibg=NONE
+hi VertSplit ctermbg=NONE guibg=#191E21 guifg=#293136
 hi GitGutterAdd guibg=NONE ctermbg=NONE
 hi GitGutterChange guibg=NONE ctermbg=NONE
 hi GitGutterDelete guibg=NONE ctermbg=NONE
