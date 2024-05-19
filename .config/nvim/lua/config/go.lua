@@ -1,5 +1,10 @@
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 require('go').setup({
+  tag_transform = "camelcase",
+  tag_options = 'json=omitempty',
   lsp_cfg = {
+    capabilities = capabilities,
     settings = {
       gopls = {
         experimentalPostfixCompletions = true,
@@ -14,9 +19,12 @@ require('go').setup({
       }
     }
   },
-   lsp_inlay_hints = {
-     enable = false
-   }
+  lsp_inlay_hints = {
+    enable = true,
+    only_current_line = true,
+    only_current_line_autocmd = "CursorHold",
+    show_parameter_hints = true
+  }
 })
 
 -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-imports
@@ -39,6 +47,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         end
       end
     end
+
     vim.lsp.buf.format({async = false})
   end
 })

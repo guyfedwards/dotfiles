@@ -91,6 +91,17 @@ dclean(){
 
 alias deno='docker run --network host -v $(pwd):/app -w /app denoland/deno:1.22.3'
 
+function dnode() {
+  args=$*
+  exists=$(docker ps | grep -v CONTAINER | awk '{print $NF}' | grep node)
+
+  if [[ $exists == "" ]]; then
+    bash -c "docker run --rm --network host --name node -w /app -v $(pwd):/app node:21-slim $args"
+  else
+    bash -c "docker exec node $args"
+  fi
+}
+
 alias k="kubectl"
 function kx() {
   if [ -z $1 ]; then

@@ -24,6 +24,7 @@ Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'ray-x/go.nvim'
+Plug 'ziglang/zig.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
@@ -109,6 +110,7 @@ hi GitGutterDelete guibg=NONE ctermbg=NONE
 hi GitGutterChangeDelete guibg=NONE ctermbg=NONE
 " transparent gutter
 hi SignColumn guibg=NONE ctermbg=NONE
+set signcolumn "yes"
 " transparent line numbers
 hi LineNr guibg=NONE ctermbg=NONE
 hi def link jsObjectKey Label
@@ -222,23 +224,22 @@ nnoremap <leader>u :GundoToggle<CR>
 " open nerdtree
 nmap <leader>nt :NERDTreeToggle<CR>
 " open nerdtree current file
-nmap <leader>n :NERDTreeFind<CR>
 nmap <leader>nn :NERDTreeFind<CR>
-" toggle indent
-nmap <leader>tt :call ToggleIndent()<CR>
 " toggle color highlighting
 nmap <leader>c :ColorToggle<CR>
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>ev :tabnew $MYVIMRC <bar> :vnew $HOME/.config/nvim<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " turn off search highlight
-nnoremap <leader><space> :set hlsearch!<CR>
+nnoremap <leader><space> :nohlsearch<CR>
 " toggle scrolloff between 999 and 0. 999 keeps line center screen
 nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
 " toggle paste mode
 set pastetoggle=<leader>p
 " select text that was just pasted
 nnoremap <leader>v V`]
+nnoremap <leader>t :GoTestFunc -v<CR>
+nnoremap <leader>T :GoTest -v<CR>
 
 
 
@@ -255,7 +256,8 @@ let g:ale_linters = {
 \   'go': ['golangci-lint'],
 \   'sql': ['sqlint'],
 \   'typescript': ['eslint'],
-\   'rust': ['analyzer']
+\   'rust': ['analyzer'],
+\   'proto': ['protolint']
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint', 'standard'],
@@ -267,7 +269,7 @@ let g:ale_fixers = {
 \   'json': ['fixjson'],
 \   'sql': ['pgformatter'],
 \   'rust': ['rustfmt'],
-\   'terraform': ['terraform'],
+\   'terraform': ['terraform']
 \}
 let g:ale_rust_analyzer_config = {
 \ 'diagnostics': { 'disabled': ['unresolved-import'] },
@@ -279,9 +281,9 @@ let g:ale_javascript_eslint_executable='eslint_d'
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_sql_sqlfmt_executable='sqlfmt'
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '●'
-let g:ale_sign_column_always = 1
+" let g:ale_sign_error = '●'
+" let g:ale_sign_warning = '●'
+" let g:ale_sign_column_always = 1
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_completion_autoimport = 0

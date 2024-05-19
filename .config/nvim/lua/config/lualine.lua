@@ -34,8 +34,8 @@ ll.setup({
         sources = {'nvim_diagnostic', 'nvim_lsp', 'ale'},
         diagnostics_color = {
           error = {fg = theme.palette.red, bg = none},
-          warn  = 'DiagnosticWarn',
-          info  = 'DiagnosticInfo',
+          warn = {fg = theme.palette.orange, bg = none},
+          info = {fg = theme.palette.blue, bg = none},
           hint  = 'DiagnosticHint',
         },
       }
@@ -46,7 +46,7 @@ ll.setup({
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {'filename'},
+    lualine_c = {{'filename', path = 1}},
     lualine_x = {'location'},
     lualine_y = {},
     lualine_z = {}

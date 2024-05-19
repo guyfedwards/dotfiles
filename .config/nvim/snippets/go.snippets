@@ -11,7 +11,15 @@ snippet test
     ${2}
   }
 
+snippet bench
+  func Bench${1}(b *testing.B) {
+    for i := 0; i < b.N; i++ {
+      ${2}
+    }
+  }
+
 snippet go
   go func() {
     ${1}
   }()
+

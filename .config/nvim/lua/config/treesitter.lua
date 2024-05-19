@@ -13,9 +13,11 @@ configs.setup {
     "json",
     "lua",
     "markdown",
+    "proto",
     "rust",
     "tsx",
     "typescript",
+    "zig"
   },
   highlight = {
     enable = true
