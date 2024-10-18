@@ -10,6 +10,8 @@
   d = diff
   dc = diff --cached
   amend = commit --amend --no-edit
+  # pickaxe, search all commit contents for string
+  px = log -p -S
 
   dbs = !git diff --stat $(git merge-base HEAD develop)
 
@@ -42,15 +44,6 @@
   whitespace = space-before-tab,trailing-space
   editor = nvim
 
-[pager]
-  diff = delta
-  log = delta
-  reflog = delta
-  show = delta
-
-[delta]
-  side-by-side = true
-
 [color]
   # Use colors in Git commands that are capable of colored output when outputting to the terminal
   ui = true
@@ -68,12 +61,21 @@
   added = yellow
   changed = green
   untracked = cyan
+[delta]
+  side-by-side = true
 [filter "hawser"]
   clean = git hawser clean %f
   smudge = git hawser smudge %f
   required = true
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
 [push]
   default = simple
+[pull]
+  rebase = true
 [rebase]
   stat = true
 [rerere]

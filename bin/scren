@@ -1,6 +1,6 @@
 #!/bin/bash
 
-path="$HOME/Dropbox/Screenshots/"
+path="$HOME/Pictures/Screenshots/"
 
 fname=$(ls -lt "$path" | grep -Ev 'total|./' | head -n1 | awk '{ s = ""; for (i = 9; i <= NF; i++) s = s $i "\\ "; print s }' | rev | cut -d\\ -f2- | rev | sed 's/\\//g')
 

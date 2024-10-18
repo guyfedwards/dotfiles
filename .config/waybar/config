@@ -15,7 +15,9 @@
         "battery",
         "tray",
         "network",
-        "clock"
+        "clock#c2",
+        "clock",
+        "clock#c3",
     ],
     "battery": {
         "states": {
@@ -34,7 +36,15 @@
         ]
     },
     "clock": {
-        "format": "{:%H:%M %d-%m-%Y}"
+        "format": "LON: {:%H:%M %d-%m-%Y}"
+    },
+    "clock#c2": {
+        "format": "NYC: {:%H:%M}",
+        "timezone": "America/New_York"
+    },
+    "clock#c3": {
+        "format": "BEI: {:%H:%M}",
+        "timezone": "Asia/Shanghai"
     },
     "cpu": {
         "format": " {usage}%"

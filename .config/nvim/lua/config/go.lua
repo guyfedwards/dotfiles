@@ -20,10 +20,11 @@ require('go').setup({
     }
   },
   lsp_inlay_hints = {
-    enable = true,
-    only_current_line = true,
-    only_current_line_autocmd = "CursorHold",
-    show_parameter_hints = true
+    enable = false,
+    -- style = 'eol',
+    -- only_current_line = true,
+    -- only_current_line_autocmd = "CursorHold",
+    -- show_parameter_hints = true
   }
 })
 

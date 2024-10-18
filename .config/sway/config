@@ -88,7 +88,7 @@ default_floating_border pixel
 # Keybinds
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
-bindsym $mod+BackSpace exec $term --option window.dimensions.columns=60 --option window.dimensions.lines=5 --title launcher --class launcher -e "$HOME/dotfiles/scripts/launcher"
+bindsym $mod+BackSpace exec $term -W 60x5 --title launcher  -e "$HOME/dotfiles/scripts/launcher"
 for_window [app_id="^launcher$"] floating enable, border pixel 2
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -102,7 +102,7 @@ bindsym XF86MonBrightnessDown exec "light -U 5"
 bindsym XF86MonBrightnessUp exec "light -A 5"
 
 ## Screenshot
-bindsym $alt+s exec grim -g "$(slurp -d)" $HOME/Dropbox/Screenshots/$(date +'%Y-%m-%d_%H%M%S.png')
+bindsym $alt+s exec grim -g "$(slurp -d)" $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d_%H%M%S.png')
 bindsym $alt+Shift+s exec grim -g "$(slurp -d)" - | wl-copy
 bindsym $alt+r exec wf-recorder -g "$(slurp -d)" -f $HOME/Movies/$(date +'%Y-%m-%d_%H%M%S_recording.mp4')
 bindsym $alt+Shift+r exec killall -s SIGINT wf-recorder
@@ -178,6 +178,3 @@ bindsym $mod+Shift+5 move container to workspace $workspace5
 bindsym $mod+Shift+p move container to workspace $workspace5
 bindsym $mod+Shift+6 move container to workspace $workspace6
 bindsym $mod+Shift+7 move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+9 move container to workspace $workspace9
-bindsym $mod+Shift+0 move container to workspace $workspace10

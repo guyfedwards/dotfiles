@@ -34,7 +34,7 @@ Plug 'sindrets/diffview.nvim', {'branch': 'main'}
 Plug 'preservim/nerdtree'
 Plug 'stevearc/oil.nvim'
 Plug 'raimondi/delimitMate'
-Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -43,9 +43,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 " colorschemes
-" Plug 'junegunn/seoul256.vim'
 Plug 'neanias/everforest-nvim', { 'branch': 'main' }
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " File type specific
 " Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'javascript.typescript'] }
@@ -219,8 +217,8 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 let mapleader=","
 " Switch between last two files
 map <leader><leader> <c-^>
-" open gundo
-nnoremap <leader>u :GundoToggle<CR>
+" open undotree
+nnoremap <leader>u :UndotreeToggle<CR>
 " open nerdtree
 nmap <leader>nt :NERDTreeToggle<CR>
 " open nerdtree current file
