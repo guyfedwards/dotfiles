@@ -52,6 +52,7 @@ Plug 'neanias/everforest-nvim', { 'branch': 'main' }
 " Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'alvan/vim-closetag', { 'for': ['html', 'jsx', 'javascript', 'javascript.jsx']}
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Plug 'MeanderingProgrammer/markdown.nvim', { 'for': 'markdown'}
 call plug#end()
 
 " =====================
@@ -200,7 +201,6 @@ autocmd BufNewFile,BufReadPost *config set filetype=config
 " =====================
 " Commands
 " =====================
-nnoremap \ :Rg<SPACE>
 map Q <Nop>
 " paste date for notes
 map <F3> :.-1r! date +"\%a \%b \%d \%T \%Z \%Y \|\| \%s"<CR>

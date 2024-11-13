@@ -2,6 +2,7 @@
 require('config/completion')
 require('config/gitsigns')
 require('config/go')
+require('config/keybinds')
 require('config/lsp')
 require('config/lualine')
 require('config/neogen')
