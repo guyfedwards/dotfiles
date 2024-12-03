@@ -24,6 +24,7 @@ exec "mako"
 ## use `swaymsg -t get_inputs` to get input name
 input * {
   xkb_options ctrl:nocaps
+  xkb_layout us
 }
 
 ## Gpro wireless
@@ -48,17 +49,29 @@ input "1739:0:Synaptics_TM3289-002" {
   click_method none
 }
 
+## xps touchpad
+input "1267:12753:VEN_04F3:00_04F3:31D1_Touchpad" {
+  # tap to click
+  tap enabled
+  # 1 finger left, 2 fingers right, 3 fingers middle
+  tap_button_map lrm
+  # disable physical click
+  click_method none
+}
+
 output "*" background $bgimg fill
 
-## Thinkpad screen
-output eDP-1 {
+## XPS screen
+# output 'LG Display 0x06CE Unknown' {
+output 'LG Display 0x06CE Unknown' {
   pos 0,0
-  res 2560x1440
-  scale 2
+  res 1920x1200
+  scale 1.5
 }
 
 ## Asus home
-output HDMI-A-1 {
+output DP-4 {
+  pos 0,0
   mode 2560x1440
   scale 1
 }

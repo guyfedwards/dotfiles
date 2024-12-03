@@ -23,6 +23,7 @@ set -o ignoreeof
 alias sudo='sudo '
 
 alias v='nvim'
+alias vim='nvim'
 alias yt='youtube-dl'
 alias g='googler --count 5'
 alias cin='asciinema rec -c "/bin/bash -l"'
@@ -33,6 +34,8 @@ alias u='units'
 
 alias makoclear='makoctl dismiss -a'
 
+alias chrome='google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland'
+
 ### color `ls`
 colorflag="-G"
 alias ls="command ls ${colorflag}"
@@ -40,6 +43,8 @@ alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
 
 ### simple server
 alias server='python -m SimpleHTTPServer'
+
+alias lock='swaylock --daemonize & systemctl suspend'
 
 ### Notes
 function notes() {
