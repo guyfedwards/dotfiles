@@ -1,0 +1,14 @@
+
+snippet wireguard
+  [Interface]
+  Address = 172.30.0.69/32    # This clients address on the network that it's connecting to.
+  PrivateKey = <PRIVATE_KEY>  # This clients private key for this connection.
+  DNS = <DNS_SERVER: 1.1.1.1> # OPTIONAL: DNS servers to use.
+  ListenPort = 51820          # OPTIONAL: Port to listen for connections on.
+
+  # (Can have multiple Peers; list all others that are/could connect with this one)
+  [Peer]
+  PublicKey = <THEIR_PUBLIC_KEY>  # Connecting peers Public Key.
+  PresharedKey = <PRE_SHARED_KEY> # OPTIONAL: Matching peers PresharedKey.
+  Endpoint = <PEER IP>            # Public IP:PORT for the connection. NOTE: Only ONE side of the connection needs this.
+  AllowedIPs = <LIST, OF, CIDRS>  # OPTIONAL: Comma separated list of CIDRs behind this peer.

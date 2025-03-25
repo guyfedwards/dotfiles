@@ -102,10 +102,19 @@ window#waybar {
     color: #ffb400;
 }
 
+window#waybar.battery-warning {
+    color: #ffb400;
+}
+
 #battery.critical {
     /* color: #df2935; */
     color: #f6511d;
 }
+
+window#waybar.battery-critical {
+    background-color: #df2935;
+}
+
 
 #custom-docker {
     color: #0db7ed;

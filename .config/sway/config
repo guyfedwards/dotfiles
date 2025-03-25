@@ -1,6 +1,6 @@
 set $mod Mod4
 set $alt Mod1
-set $term foot
+set $term ghostty
 set $bgimg $HOME/Pictures/bg.jpg
 set $lockcmd "swaylock -f -i $bgimg -s fill"
 

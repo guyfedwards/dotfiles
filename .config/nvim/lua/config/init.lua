@@ -1,5 +1,6 @@
 -- require('config/lsp')
 require('config/completion')
+require('config/comments')
 require('config/gitsigns')
 require('config/go')
 require('config/keybinds')

@@ -37,6 +37,7 @@
 
 [branch]
   autosetuprebase = always
+  sort = -committerdate
 [core]
   # Use custom `.gitignore`
   excludesfile = ~/.gitignore
@@ -61,12 +62,32 @@
   added = yellow
   changed = green
   untracked = cyan
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[column]
+  ui = auto
 [delta]
   side-by-side = true
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
 [filter "hawser"]
   clean = git hawser clean %f
   smudge = git hawser smudge %f
   required = true
+[help]
+  autocorrect = prompt
+[init]
+  defaultBranch = main
 [pager]
   diff = delta
   log = delta
@@ -74,19 +95,19 @@
   show = delta
 [push]
   default = simple
+  autoSetupRemote = true
+  followTags = true
 [pull]
   rebase = true
 [rebase]
   stat = true
+  updateRefs = true
+  autoStash = true
 [rerere]
-  enabled=true
+  enabled = true
+  autoupdate = true
+[tag]
+  sort = version:refname
 [user]
   name = guyfedwards
   email = guyfedwards@gmail.com
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
-[init]
-	defaultBranch = master

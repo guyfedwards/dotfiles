@@ -36,6 +36,9 @@ alias makoclear='makoctl dismiss -a'
 
 alias chrome='google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland'
 
+alias mountdev='udisksctl mount -b /dev/sda1'
+alias unmountdev='udisksctl unmount -b /dev/sda1'
+
 ### color `ls`
 colorflag="-G"
 alias ls="command ls ${colorflag}"
@@ -225,7 +228,7 @@ function get_k8s_context() {
 
 ### Change this symbol to something sweet.
 ### (http://en.wikipedia.org/wiki/Unicode_symbols)
-symbol="\[$GRAY\]└ \[$ORANGE\]☲ \[$RESET\]"
+symbol="\[$GRAY\]└ \[$ORANGE\]> \[$RESET\]"
 # symbol="\[$GRAY\]└ \[$ORANGE\]☠️ \[$RESET\] "
 
 prompt_user="\[${BOLD}${LIGHTGRAY}\]\u$host"
