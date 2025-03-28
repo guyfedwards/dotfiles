@@ -8,7 +8,20 @@ snippet err
 
 snippet test
   func Test${1}(t *testing.T) {
-    ${2}
+    cases := []struct {
+      in   string
+      want string
+    }{{
+      in: ${3},
+      want: ,
+    }}
+
+    for _, tc := range cases {
+      got := ${2}
+      if got != tc.want {
+        t.Errorf("Got %s, want %s", got, tc.want)
+      }
+    }
   }
 
 snippet bench

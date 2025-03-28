@@ -16,8 +16,8 @@
         "tray",
         "network",
         "clock#c2",
-        "clock",
         "clock#c3",
+        "clock",
     ],
     "battery": {
         "states": {

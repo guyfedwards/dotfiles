@@ -9,9 +9,10 @@ ef.setup({
   ui_contrast = "high",
   -- transparent_background_level = 2,
   colours_override = function (palette)
-    -- palette.bg0 = "#21272B"
-    palette.bg0 = "#1D2226"
-    palette.bg1 = "#21272B"
+    if palette.bg0 == "#272e33" then
+      palette.bg0 = "#1D2226"
+      palette.bg1 = "#21272B"
+    end
   end
 })
 
