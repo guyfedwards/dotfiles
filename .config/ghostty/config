@@ -1,0 +1,5 @@
+theme = everforest-dark
+window-decoration = server
+cursor-style = block
+shell-integration-features = no-cursor
+font-feature = -calt
