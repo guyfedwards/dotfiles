@@ -1,22 +1,24 @@
 set $mod Mod4
 set $alt Mod1
 set $term ghostty
-set $bgimg $HOME/Pictures/bg.jpg
-set $lockcmd "swaylock -f -i $bgimg -s fill"
+# set $bgimg $HOME/Pictures/bg.jpg
+set $lockcmd "swaylock -f -s fill"
 
-exec swayidle -w \
-	timeout 600 $lockcmd \
-	# timeout 600 'swaymsg "output * power off"' \
-	# 	resume 'swaymsg "output * power on"' \
-	# timeout 900 'systemctl suspend' \
-	# before-sleep $lockcmd
+exec_always killall swayidle; swayidle -w \
+	timeout 615 $lockcmd \
+	timeout 600 'swaymsg "output * power off"' \
+	    resume 'swaymsg "output * power on"' \
+	timeout 900 'systemctl suspend' \
+	before-sleep $lockcmd
 
+font pango:"RobotoMono Nerd Font" Regular 11
 set $bg #f0f0f0
 set $fg #f0f0f0
 
 # Required to get `XDG_CURRENT_DESKTOP` from .bash_profile for
 # xdg-desktop-portal-wlr and screensharing to work
-exec "systemctl --user import-environment"
+# exec "systemctl --user import-environment"
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 exec "mako"
 
@@ -39,6 +41,17 @@ input "1133:50509:Logitech_USB_Receiver" {
     pointer_accel -0.3
 }
 
+
+## New Thinkpad touchpad
+input "1739:53160:SYNA802E:00_06CB:CFA8_Touchpad" {
+  # tap to click
+  tap enabled
+  # 1 finger left, 2 fingers right, 3 fingers middle
+  tap_button_map lrm
+  # disable physical click
+  click_method none
+}
+
 ## Thinkpad touchpad
 input "1739:0:Synaptics_TM3289-002" {
   # tap to click
@@ -59,7 +72,7 @@ input "1267:12753:VEN_04F3:00_04F3:31D1_Touchpad" {
   click_method none
 }
 
-output "*" background $bgimg fill
+# output "*" background $bgimg fill
 
 ## XPS screen
 # output 'LG Display 0x06CE Unknown' {
@@ -101,7 +114,7 @@ default_floating_border pixel
 # Keybinds
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
-bindsym $mod+BackSpace exec $term -W 60x5 --title launcher  -e "$HOME/dotfiles/scripts/launcher"
+bindsym $mod+BackSpace exec $term --window-width=60 --window-height=5 --title=launcher  --command="$HOME/dotfiles/scripts/launcher"
 for_window [app_id="^launcher$"] floating enable, border pixel 2
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -111,8 +124,8 @@ bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut.
 bindsym XF86AudioRaiseVolume exec "amixer set Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer set Master 5%-"
 bindsym XF86AudioMute exec "amixer set Master toggle"
-bindsym XF86MonBrightnessDown exec "light -U 5"
-bindsym XF86MonBrightnessUp exec "light -A 5"
+bindsym XF86MonBrightnessDown exec "brightnessctl set 5%-"
+bindsym XF86MonBrightnessUp exec "brightnessctl set +5%"
 
 ## Screenshot
 bindsym $alt+s exec grim -g "$(slurp -d)" $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d_%H%M%S.png')

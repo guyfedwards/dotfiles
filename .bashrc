@@ -1,10 +1,12 @@
+source $HOME/.bash_profile
+
 # Nothing to see here — Everything's in .bash_profile
 NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-# Unset manpath so we can inherit from /etc/manpath via the `manpath`
+# Unset manpath so we can inherit from /etc/manpath via the 'manpath'
 # command
-unset MANPATH
-MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+#unset MANPATH
+#MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 XDG_CURRENT_DESKTOP=sway
 
 ### Disable ctrl-s sending XOFF
@@ -41,8 +43,6 @@ test -f ~/.git-completion.bash && . $_
 if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then source "$HOME/google-cloud-sdk/path.bash.inc"; fi
 
 if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
-
-source $HOME/.bash_profile
 
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend
