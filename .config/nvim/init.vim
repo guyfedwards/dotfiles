@@ -232,8 +232,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nnoremap <leader><space> :nohlsearch<CR>
 " toggle scrolloff between 999 and 0. 999 keeps line center screen
 nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
-" toggle paste mode
-set pastetoggle=<leader>p
 " select text that was just pasted
 nnoremap <leader>v V`]
 nnoremap <leader>t :GoTestFunc -v<CR>

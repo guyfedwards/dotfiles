@@ -41,4 +41,14 @@ test -f ~/.git-completion.bash && . $_
 if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then source "$HOME/google-cloud-sdk/path.bash.inc"; fi
 
 if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
-# The next line enables shell command completion for gcloud.
+
+source $HOME/.bash_profile
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend
+# append history entries..
+shopt -s histappend
+# avoid duplicates..
+export HISTCONTROL=ignoredups:erasedups
+# After each command, save and reload history
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"

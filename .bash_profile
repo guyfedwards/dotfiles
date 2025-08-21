@@ -6,11 +6,12 @@ fi
 export EDITOR=nvim
 export DELTA_PAGER=bat
 
+if [ -f "$HOME/.bash_alias_local" ]; then
+source "$HOME/.bash_alias_local"
+fi
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
-
-# Append to the Bash history file, rather than overwriting it
-shopt -s histappend
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
@@ -104,7 +105,7 @@ function dnode() {
   exists=$(docker ps | grep -v CONTAINER | awk '{print $NF}' | grep node)
 
   if [[ $exists == "" ]]; then
-    bash -c "docker run --rm --network host --name node -w /app -v $(pwd):/app node:21-slim $args"
+    bash -c "docker run --rm --network host --name node -w /app -v $(pwd):/app node:22-slim $args"
   else
     bash -c "docker exec node $args"
   fi
