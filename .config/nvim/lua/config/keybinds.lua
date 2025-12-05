@@ -1,8 +1,8 @@
-vim.keymap.set('n', '\\', ':Rg ')
 -- invert yank on paste. Normal paste won't yank selection, P will
 vim.keymap.set('x', 'p', 'P', { noremap = true })
 vim.keymap.set('x', 'P', 'p', { noremap = true })
 
+-- \ calls :Rg, if visual selection, call :Rg <selection>
 vim.keymap.set('v', '\\', function()
   local t = get_visual_selection()
   vim.cmd("Rg " .. t)

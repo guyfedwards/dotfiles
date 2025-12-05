@@ -2,20 +2,20 @@
 " Plugins
 " =====================
 call plug#begin('~/.config/nvim/plugged')
-Plug 'andymass/vim-matchup'
-Plug 'chrisbra/Colorizer'
-Plug 'danymat/neogen', {'branch': 'main'}
+" Plug 'andymass/vim-matchup'
+" Plug 'chrisbra/Colorizer'
+" Plug 'danymat/neogen', {'branch': 'main'}
 Plug 'dense-analysis/ale'
-Plug 'folke/todo-comments.nvim', {'branch': 'main'}
-Plug 'folke/trouble.nvim', {'branch': 'main'}
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc '}
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-peekaboo'
-Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'lewis6991/gitsigns.nvim', {'branch': 'main'}
+" Plug 'folke/todo-comments.nvim', {'branch': 'main'}
+" Plug 'folke/trouble.nvim', {'branch': 'main'}
+" Plug 'nvim-lualine/lualine.nvim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc '}
+" Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/vim-peekaboo'
+" Plug 'kristijanhusak/vim-dadbod-ui'
+" Plug 'lewis6991/gitsigns.nvim', {'branch': 'main'}
 
-Plug 'neovim/nvim-lspconfig'
+" Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
 Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
 Plug 'hrsh7th/cmp-path', {'branch': 'main'}
@@ -23,27 +23,29 @@ Plug 'hrsh7th/cmp-cmdline', {'branch': 'main'}
 Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+
 Plug 'ray-x/go.nvim'
 Plug 'ziglang/zig.vim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-context'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvim-treesitter/playground'
 
 Plug 'sindrets/diffview.nvim', {'branch': 'main'}
+Plug 'shortcuts/no-neck-pain.nvim', {'tag': '*'}
 Plug 'preservim/nerdtree'
 Plug 'stevearc/oil.nvim'
 Plug 'raimondi/delimitMate'
 Plug 'mbbill/undotree'
 Plug 'numToStr/Comment.nvim'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 " colorschemes
-Plug 'neanias/everforest-nvim', { 'branch': 'main' }
+" Plug 'neanias/everforest-nvim', { 'branch': 'main' }
 
 " File type specific
 " Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'javascript.jsx', 'javascript.typescript'] }
@@ -51,7 +53,7 @@ Plug 'neanias/everforest-nvim', { 'branch': 'main' }
 " Plug 'moll/vim-node', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 " Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'javascript.jsx'] }
 Plug 'alvan/vim-closetag', { 'for': ['html', 'jsx', 'javascript', 'javascript.jsx']}
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " Plug 'MeanderingProgrammer/markdown.nvim', { 'for': 'markdown'}
 call plug#end()
 
@@ -214,7 +216,7 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " =====================
 " Leader Shortcuts
 " =====================
-let mapleader=","
+" let mapleader=","
 " Switch between last two files
 map <leader><leader> <c-^>
 " open undotree
@@ -296,7 +298,7 @@ nnoremap <leader>ad :ALEDetail<cr>
 " colorizer
 " =====================
 " auto highlight colors for these filetypes
-let g:colorizer_auto_filetype='css,html,scss,less,json'
+"let g:colorizer_auto_filetype='css,html,scss,less,json'
 
 
 " delimitMate
@@ -306,11 +308,11 @@ au FileType xml,html,phtml,php,xhtml,js,jsx,ts,tsx,javascript,javascript.jsx let
 
 " fzf
 " =====================
-let g:fzf_layout = { 'down': '40%' }
-nmap <C-p> :Files .<CR>
-nmap <C-t> :Tags <CR>
-nmap <C-b> :Buffers <CR>
-nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
+" let g:fzf_layout = { 'down': '40%' }
+" nmap <C-p> :Files .<CR>
+" nmap <C-t> :Tags <CR>
+" nmap <C-b> :Buffers <CR>
+" nnoremap <leader>P :Files <C-R>=expand('%:h')<CR><CR>
 
 "  NERDTree
 " =====================

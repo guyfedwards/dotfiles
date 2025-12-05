@@ -1,10 +1,10 @@
 local cmp = require('cmp')
 local luasnip = require("luasnip")
 
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+-- local has_words_before = function()
+--   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+--   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+-- end
 
 -- https://github.com/L3MON4D3/LuaSnip/issues/525
 luasnip.config.setup({
@@ -12,11 +12,6 @@ luasnip.config.setup({
     delete_check_events = "TextChanged,InsertEnter",
 })
 
--- Show all diagnostics on current line in floating window
-vim.api.nvim_set_keymap(
-  'n', '<Leader>d', ':lua vim.diagnostic.open_float()<CR>',
-  { noremap = true, silent = true }
-)
 
 cmp.setup({
   enabled = function()
