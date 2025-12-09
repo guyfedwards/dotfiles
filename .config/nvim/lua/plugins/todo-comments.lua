@@ -1,3 +1,3 @@
 return {
-  'folke/todo-comments.nvim',
+	"folke/todo-comments.nvim",
 }
