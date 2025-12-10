@@ -7,7 +7,7 @@ return {
 			function()
 				require("neogen").generate()
 			end,
-			"n",
+			mode = { "n", "v" },
 			noremap = true,
 			silent = true,
 			desc = "Generate annotations (neogen)",

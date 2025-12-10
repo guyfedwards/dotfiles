@@ -32,7 +32,7 @@ return {
 			function()
 				require("fzf-lua").files()
 			end,
-			"n",
+			mode = "n",
 			desc = "FZF files",
 		},
 		{
@@ -40,13 +40,8 @@ return {
 			function()
 				require("fzf-lua").buffers()
 			end,
-			"n",
+			mode = "n",
 			desc = "FZF buffers",
-		},
-		{
-			"\\",
-			":Rg ",
-			"n",
 		},
 		{
 			"\\",
@@ -74,7 +69,13 @@ return {
 				local t = get_visual_selection()
 				vim.cmd(":Rg " .. t)
 			end,
-			"v",
+			mode = "v",
+			noremap = true,
+		},
+		{
+			"\\",
+			":Rg ",
+			mode = "n",
 			noremap = true,
 		},
 	},
