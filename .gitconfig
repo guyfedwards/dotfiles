@@ -35,6 +35,11 @@
 
   prune = remote prune origin
 
+  # codebase - https://piechowski.io/post/git-commands-before-reading-code/
+  mostchanged = "!f() { git log --format=format: --name-only --since='1 year ago' | sort | uniq -c | sort -nr | head -20; }; f"
+  whobuiltthis = shortlog -sn --no-merges
+  wherebugs = "!f() { git log -i -E --grep='fix|bug|broken' --name-only --format='' | sort | uniq -c | sort -nr | head -20; }; f"
+
 [branch]
   autosetuprebase = always
   sort = -committerdate
