@@ -44,6 +44,7 @@
   # Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
   whitespace = space-before-tab,trailing-space
   editor = nvim
+  pager = delta
 
 [color]
   # Use colors in Git commands that are capable of colored output when outputting to the terminal
@@ -69,6 +70,7 @@
   newHighlight = green bold 22
 [delta]
   side-by-side = true
+  navigate = true
 [diff]
   algorithm = histogram
   colorMoved = plain
@@ -86,6 +88,10 @@
   autocorrect = prompt
 [init]
   defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only
+[merge]
+  conflictStyle = zdiff3
 [pager]
   diff = delta
   log = delta

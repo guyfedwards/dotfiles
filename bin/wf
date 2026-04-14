@@ -10,4 +10,4 @@ if [ "$1" = "hotspot" ]; then
     name="The hottest spot in town"
 fi
 
-nmcli con up id "$name"
+nmcli con up id "$name" --ask

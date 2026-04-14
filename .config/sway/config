@@ -20,7 +20,12 @@ set $fg #f0f0f0
 # exec "systemctl --user import-environment"
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
+# notifications
 exec "mako"
+
+# output profiles
+exec kanshi
+exec_always kill -1 $(pidof kanshi)
 
 # Input/Output
 ## use `swaymsg -t get_inputs` to get input name
@@ -50,6 +55,11 @@ input "1739:53160:SYNA802E:00_06CB:CFA8_Touchpad" {
   tap_button_map lrm
   # disable physical click
   click_method none
+}
+
+## Thinkpad touchscreen disable
+input "1267:17414:ELAN901C:00_04F3:4406" {
+  events disabled
 }
 
 ## Thinkpad touchpad
@@ -83,10 +93,23 @@ output 'LG Display 0x06CE Unknown' {
 }
 
 ## Asus home
+output HDMI-A-1 {
+  pos 0,0
+  mode 2560x1440
+  scale 1
+}
+
 output DP-4 {
   pos 0,0
   mode 2560x1440
   scale 1
+}
+
+
+output eDP-1 {
+  pos 0,0
+  mode 2560x1440
+  scale 2
 }
 
 ## Disable laptop screen on close lid
@@ -110,6 +133,7 @@ gaps outer 0
 client.focused          #666666 $bg     $fg  $bg       #666666
 default_border pixel
 default_floating_border pixel
+smart_borders on
 
 # Keybinds
 bindsym $mod+Return exec $term

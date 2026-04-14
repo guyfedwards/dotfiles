@@ -5,19 +5,19 @@
         "sway/workspaces",
         "sway/mode"
     ],
-    "modules-center": [
-    ],
+    "modules-center": [],
     "modules-right": [
         "custom/docker",
         "cpu",
         "memory",
         "pulseaudio",
         "battery",
+        "idle_inhibitor",
         "tray",
         "network",
         "clock#c2",
         "clock#c3",
-        "clock",
+        "clock"
     ],
     "battery": {
         "states": {
@@ -55,6 +55,13 @@
         "format": " {}",
         "interval": 60,
         "max-length": 5
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     },
     "memory": {
         "format": " {}%"

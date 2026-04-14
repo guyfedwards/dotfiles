@@ -25,6 +25,7 @@ alias sudo='sudo '
 
 alias v='nvim'
 alias vim='nvim'
+alias vc='vim /home/guy/.config'
 alias yt='youtube-dl'
 alias g='googler --count 5'
 alias cin='asciinema rec -c "/bin/bash -l"'
@@ -32,6 +33,7 @@ alias preview='open -a Preview'
 alias chrome='open -a google\ chrome'
 alias f='open -a Finder'
 alias u='units'
+alias crush='crush -c /home/guy/projects/crush'
 
 alias makoclear='makoctl dismiss -a'
 
@@ -91,7 +93,7 @@ function refenv() {
 alias allimgids='docker images | grep -v REPOSITORY | awk '\''{print $3}'\'''
 alias allcontids="docker ps | grep -v CONTAINER | awk '\''{print $1}'\''"
 alias denv='eval $(minikube docker-env)'
-alias dc='docker-compose'
+alias dc='docker compose'
 dclean(){
     docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
     docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
@@ -102,7 +104,7 @@ alias deno='docker run --network host -v $(pwd):/app -w /app denoland/deno:1.22.
 
 function dnode() {
   args=$*
-  exists=$(docker ps | grep -v CONTAINER | awk '{print $NF}' | grep node)
+  exists=$(docker ps | grep -v CONTAINER | awk '{print $NF}' | grep node | grep -v cluster)
 
   if [[ $exists == "" ]]; then
     bash -c "docker run --rm --network host --name node -w /app -v $(pwd):/app node:22-slim $args"

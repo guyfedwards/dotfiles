@@ -12,6 +12,7 @@ o.backspace = [[indent,eol,start]]
 o.undofile = true
 o.scrolloff = 3
 o.timeoutlen = 500
+o.swapfile = false
 
 if fn.executable("rg") == 1 then
 	o.grepprg = "rg --vimgrep"
