@@ -1,0 +1,22 @@
+output "HDMI-A-1" {
+  position 0,0
+  mode 2560x1440
+  scale 1
+  alias $asushome
+}
+
+output "eDP-1" {
+  position 0,0
+  mode 2560x1440
+  scale 2
+  alias $laptop
+}
+
+profile home {
+	output $asushome enable
+	output $laptop disable
+}
+
+profile laptop {
+	output $laptop enable
+}
