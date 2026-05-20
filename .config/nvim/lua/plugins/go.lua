@@ -1,5 +1,6 @@
 return {
 	"ray-x/go.nvim",
+	lazy = false,
 	dependencies = {
 		"neovim/nvim-lspconfig",
 		"nvim-treesitter/nvim-treesitter",

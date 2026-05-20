@@ -49,3 +49,6 @@ k.set("n", "k", "gk", { noremap = true })
 
 -- highlight last inserted text
 k.set("n", "gV", "`[v`]", { noremap = true })
+
+-- lsp diagnostics in quickfix list
+k.set("", "<leader>lsp", vim.diagnostic.setqflist)
