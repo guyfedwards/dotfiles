@@ -1,0 +1,16 @@
+[Unit]
+Description=Pogo
+# start after network is up
+After=network.target
+
+[Service]
+# process runs in foreground (go binaries do this by default)
+Type=simple
+ExecStart=%h/.bin/pogo
+# restart if process exits with non-zero code
+Restart=on-failure
+# wait 5 seconds before restarting
+RestartSec=5
+
+[Install]
+WantedBy=default.target
