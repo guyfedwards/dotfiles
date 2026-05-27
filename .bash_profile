@@ -1,7 +1,6 @@
-if [ -f "$HOME/.bashrc" ]; then
-  shellcheck source=/dev/null
- source "$HOME/.bashrc"
-fi
+#if [ -f "$HOME/.bashrc" ]; then
+# source "$HOME/.bashrc"
+#fi
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
@@ -50,8 +49,6 @@ if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then source "$HOME/google-clou
 if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
 # Append to the Bash history file, rather than overwriting it
-shopt -s histappend
-# append history entries..
 shopt -s histappend
 # avoid duplicates..
 export HISTCONTROL=ignoredups:erasedups
