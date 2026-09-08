@@ -16,10 +16,10 @@ snippet test
       want: ,
     }}
 
-    for _, tc := range cases {
+    for i, tc := range cases {
       got := ${2}
       if got != tc.want {
-        t.Errorf("Got %s, want %s", got, tc.want)
+        t.Errorf("%d: Got %s, want %s", i, got, tc.want)
       }
     }
   }
